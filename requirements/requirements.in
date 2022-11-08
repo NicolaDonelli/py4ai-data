@@ -1,0 +1,6 @@
+py4ai-core>=0.0.2
+dill>=0.3
+pymongo>=4.0
+setuptools>=61.2
+tomli>=2.0.1
+typing-extensions>=4.0
