@@ -1,0 +1,131 @@
+[build-system]
+requires = ["setuptools>=61.2", "versioneer[toml]>=0.26"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py4ai-data"
+authors = [
+    {name = "Nicola Donelli", email = "nicoladonelli87@gmail.com"},
+    {name = "Enrico Deusebio", email = "edeusebio85@gmail.com"},
+]
+description = "A Python library of data structures optimized for machine learning tasks"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+license = {text = "MIT"}
+requires-python = "~=3.7"
+dynamic = ["version", "dependencies", "optional-dependencies"]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+Homepage = "https://github.com/NicolaDonelli/py4ai-data"
+
+[tool.setuptools]
+zip-safe = false
+include-package-data = true
+license-files = ["LICENSE"]
+
+[tool.setuptools.package-data]
+py4ai = ["core/py.typed"]
+
+[tool.setuptools.packages.find]
+exclude = [
+    "tests*",
+    "build*",
+    "dist*",
+    "sphinx*",
+    "docs*",
+]
+namespaces = true
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements/requirements.in"]}
+optional-dependencies = {dev = {file = ["requirements/requirements_dev.in"]}}
+
+[tool.versioneer]
+VCS = "git"
+style = "pep440"
+versionfile_source = "py4ai/data/_version.py"
+versionfile_build = "py4ai/data/_version.py"
+tag_prefix = "v"
+parentdir_prefix = "py4ai-data"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --cov=./py4ai/data"
+
+[tool.flake8]
+exclude = "versioneer.py,py4ai/data/_version.py"
+per-file-ignores = [
+    '__init__.py:F401',
+    'tests/*: D',
+    'tests/test_utils.py: D, F601'
+]
+ignore = [
+# Ignored by black
+'E203', 'E266', 'E501', 'W503',
+# Ignored to conform to PEP257
+'D203', 'D212', 'D213', 'D214', 'D215', 'D404', 'D405', 'D406', 'D407', 'D408', 'D409', 'D410', 'D411', 'D413', 'D415', 'D416', 'D417',
+# Ignored to work with Sphinx
+'RST303', 'RST304', 'RST307']
+# line length is intentionally set to 80 here because black uses Bugbear
+# See https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#line-length for more details
+max-line-length = "80"
+max-complexity = "18"
+select = ['B','C','D','E','F','W','T4','B9','RST','DAR']
+docstring_style = "sphinx"
+
+[tool.isort]
+py_version = 3
+profile = 'black'
+skip = ['py4ai/data/_version.py']
+known_first_party = ['py4ai/data','tests']
+skip_gitignore = true
+
+[tool.sphinx]
+package_dir = "py4ai/data"
+name = "py4ai-data"
+
+[tool.mypy]
+namespace_packages = true
+follow_imports = "silent"
+
+[[tool.mypy.overrides]]
+module = ["pandas.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["matplotlib.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["sklearn.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["seaborn.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["scipy.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["dill.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["cfg_load.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["bson.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["pymongo.*"]
+ignore_missing_imports = true

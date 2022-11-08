@@ -1,0 +1,8 @@
+include README.md
+include LICENSE
+include requirements/requirements.in
+recursive-exclude * *.py[co]
+include versioneer.py
+include py4ai/data/_version.py
+include py4ai/data/py.typed
+recursive-include py4ai/data/datasets/data *
