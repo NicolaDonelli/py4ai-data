@@ -1,6 +1,10 @@
-py4ai-core>=0.0.2
+py4ai-core>=1.0.0
 dill>=0.3
+motor>=2.5
 pymongo>=4.0
 setuptools>=61.2
+sqlalchemy>=1.4.39
 tomli>=2.0.1
+tornado>=6.1
+typeguard>=2.13.0
 typing-extensions>=4.0
