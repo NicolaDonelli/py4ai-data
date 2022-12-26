@@ -21,6 +21,10 @@ from typing import (
 import numpy as np
 import pandas as pd
 from pandas import DataFrame, Series
+from py4ai.core.types import T
+from py4ai.core.utils.decorators import lazyproperty as lazy
+from py4ai.core.utils.decorators import same_type
+from py4ai.core.utils.pandas import loc
 from typing_extensions import Literal
 
 from py4ai.data.model.core import (
@@ -31,10 +35,6 @@ from py4ai.data.model.core import (
     LazyIterable,
     RegisterLazyCachedIterables,
 )
-from py4ai.core.typing import T
-from py4ai.core.utils.decorators import lazyproperty as lazy
-from py4ai.core.utils.decorators import same_type
-from py4ai.core.utils.pandas import loc
 
 if sys.version_info[0] < 3:
     from itertools import islice
@@ -138,7 +138,7 @@ class MultiFeatureSample(Sample[List[np.ndarray], LabType]):
         self,
         features: List[np.ndarray],
         label: Optional[LabType] = None,
-        name: str = None,
+        name: Optional[str] = None,
     ) -> None:
         """
         Object representing a single sample of a training or test set.
