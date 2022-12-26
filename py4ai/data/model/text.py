@@ -16,6 +16,7 @@ from typing import (
 
 import numpy as np
 import pandas as pd
+from py4ai.core.utils.dict import unflattenKeys, union
 
 from py4ai.data.model.core import (
     CachedIterable,
@@ -24,7 +25,6 @@ from py4ai.data.model.core import (
     LazyIterable,
     RegisterLazyCachedIterables,
 )
-from py4ai.core.utils.dict import unflattenKeys, union
 
 K = TypeVar("K", bound=Hashable)
 

@@ -1,7 +1,10 @@
 import unittest
+from shutil import rmtree
 from typing import Iterator
 
 import pandas as pd
+from py4ai.core.tests.core import TestCase, logTest
+from py4ai.core.utils.fs import create_dir_if_not_exists
 
 from py4ai.data.model.core import IterGenerator
 from py4ai.data.model.text import (
@@ -10,7 +13,6 @@ from py4ai.data.model.text import (
     LazyDocuments,
     generate_random_uuid,
 )
-from py4ai.core.tests.core import TestCase, logTest
 from tests import TMP_FOLDER
 
 dict_doc1 = {"name": "Bob", "language": ["English", "French"]}
@@ -38,7 +40,6 @@ class TestGenerate_random_uuid(TestCase):
 
 
 class TestDocument(TestCase):
-
     dict_doc = {"name": "Bob", "language": ["English", "French"]}
     key_doc = "123"
     doc = Document(key_doc, dict_doc)
@@ -99,6 +100,14 @@ class TestDocument(TestCase):
 
 
 class TestCachedDocuments(TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        create_dir_if_not_exists(TMP_FOLDER)
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        rmtree(TMP_FOLDER)
+
     @logTest
     def test_lazyType(self):
         self.assertIsInstance(
@@ -266,13 +275,11 @@ class TestLazyDocuments(TestCase):
         lazy_doc.foreach(func)
         self.assertEqual(lst, ["Bob", "Alice"])
 
-    @logTest
     def test_items(self):
         generator = lazy_doc.items
         self.assertEqual(next(generator).data, dict_doc1)
         self.assertEqual(next(generator).data, dict_doc2)
 
-    @logTest
     def test_cached(self):
         self.assertFalse(lazy_doc.cached)
 
