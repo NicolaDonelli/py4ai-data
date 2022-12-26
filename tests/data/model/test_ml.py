@@ -1,9 +1,12 @@
 import os
 import unittest
+from shutil import rmtree
 from typing import Generator, Iterator
 
 import numpy as np
 import pandas as pd
+from py4ai.core.tests.core import TestCase, logTest
+from py4ai.core.utils.fs import create_dir_if_not_exists
 
 from py4ai.data.model.ml import (
     CachedDataset,
@@ -15,7 +18,6 @@ from py4ai.data.model.ml import (
     Sample,
     features_and_labels_to_dataset,
 )
-from py4ai.core.tests.core import TestCase, logTest
 from tests import TMP_FOLDER
 
 samples = [
@@ -39,7 +41,6 @@ def samples_gen():
 
 class features_and_labels_to_datasetTests(TestCase):
     def test_features_and_labels_to_dataset(self):
-
         dataset = features_and_labels_to_dataset(
             pd.concat(
                 [
@@ -365,7 +366,6 @@ class CachedDatasetTests(TestCase):
 
     @logTest
     def test_to_df(self):
-
         self.assertTrue(isinstance(self.lazyDat.to_cached().to_df(), pd.DataFrame))
         self.assertTrue(
             (
@@ -382,7 +382,6 @@ class CachedDatasetTests(TestCase):
 
     @logTest
     def test_asPandasDataset(self):
-
         self.assertTrue(
             isinstance(CachedDataset(self.lazyDat).asPandasDataset, PandasDataset)
         )
@@ -453,6 +452,14 @@ class PandasDatasetTests(TestCase):
         )
     )
 
+    @classmethod
+    def setUpClass(cls) -> None:
+        create_dir_if_not_exists(TMP_FOLDER)
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        rmtree(TMP_FOLDER)
+
     @logTest
     def test_check_none(self):
         self.assertEqual(self.dataset._check_none(None), None)
@@ -464,7 +471,6 @@ class PandasDatasetTests(TestCase):
 
     @logTest
     def test_items(self):
-
         self.assertTrue(isinstance(self.dataset.items, Iterator))
         self.assertEqual(next(self.dataset.items).features, {"feat1": 1.0, "feat2": 1})
         self.assertEqual(next(self.dataset.items).label["Label"], 0)
@@ -533,7 +539,6 @@ class PandasDatasetTests(TestCase):
 
     @logTest
     def test_createObject(self):
-
         self.assertTrue(
             isinstance(
                 PandasDataset.createObject(
@@ -654,7 +659,6 @@ class PandasDatasetTests(TestCase):
         self.assertIsInstance(lazyDataset, LazyDataset)
 
         for format in ["pandas", "array", "dict"]:
-
             features1 = lazyDataset.getFeaturesAs(format)
             labels1 = lazyDataset.getLabelsAs(format)
 
@@ -755,6 +759,14 @@ class PandasTimeIndexedDatasetTests(TestCase):
         )
     )
 
+    @classmethod
+    def setUpClass(cls) -> None:
+        create_dir_if_not_exists(TMP_FOLDER)
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        rmtree(TMP_FOLDER)
+
     @logTest
     def test_time_index(self):
         # duck-typing check
@@ -779,7 +791,6 @@ class PandasTimeIndexedDatasetTests(TestCase):
 
     @logTest
     def test_createObject(self):
-
         NewDataset = self.dataset.createObject(
             features=pd.concat(
                 [

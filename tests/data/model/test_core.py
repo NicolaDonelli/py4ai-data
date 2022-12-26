@@ -1,8 +1,12 @@
 import os
-import pandas as pd
 import unittest
+from shutil import rmtree
 from typing import Iterator, Sequence, TypeVar
-from logging import getLogger
+
+import pandas as pd
+from py4ai.core.logging import getDefaultLogger
+from py4ai.core.tests.core import TestCase, logTest
+from py4ai.core.utils.fs import create_dir_if_not_exists
 
 from py4ai.data.model.core import (
     CachedIterable,
@@ -14,12 +18,11 @@ from py4ai.data.model.core import (
     Range,
     RegisterLazyCachedIterables,
 )
-from py4ai.core.tests.core import TestCase, logTest
 from tests import TMP_FOLDER
 
 T = TypeVar("T")
 
-logger = getLogger()
+logger = getDefaultLogger()
 
 n = 10
 
@@ -128,6 +131,14 @@ class TestLazyIterable(TestCase):
 
 
 class TestCachedIterables(TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        create_dir_if_not_exists(TMP_FOLDER)
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        rmtree(TMP_FOLDER)
+
     @staticmethod
     def functionWithSideEffect(lst):
         def function(x):

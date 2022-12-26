@@ -10,8 +10,7 @@ import dill
 import numpy as np
 import pandas as pd
 from pandas.core.tools.datetimes import DatetimeScalar, Timestamp
-
-from py4ai.core.typing import PathLike, T_co  # , T, T_co
+from py4ai.core.types import PathLike, T_co  # , T, T_co
 from py4ai.core.utils.dict import groupIterable
 
 if sys.version_info[0] < 3:

@@ -1,7 +1,8 @@
-"""Module for Mongo persistance layer."""
+"""Module for MongoDB persistence layer abstractions and implementations."""
+
 from typing import Any
 
-from py4ai.core.config import AuthConfig, BaseConfig
+from py4ai.core.config.configurations import AuthConfig, BaseConfig
 
 
 # TODO: Are we sure this is the best place for this class? Wouldn't it be better to place it in the config module?

@@ -1,10 +1,11 @@
 import unittest
-from logging import getLogger
 
-from py4ai.data.model.text import CachedDocuments, Document, LazyDocuments
+from py4ai.core.logging import getDefaultLogger
 from py4ai.core.tests.core import TestCase, logTest
 
-logger = getLogger()
+from py4ai.data.model.text import CachedDocuments, Document, LazyDocuments
+
+logger = getDefaultLogger()
 
 n = 10
 
@@ -22,7 +23,7 @@ class TestDocuments(TestCase):
     )
 
     @logTest
-    def test_documents_filtering(self):
+    def test_documents_parsing(self):
         filteredDocs = self.docs.filter(lambda x: int(x.uuid) % 2)
         self.assertIsInstance(filteredDocs, LazyDocuments)
         self.assertEqual(len(filteredDocs.to_cached()), n / 2)
