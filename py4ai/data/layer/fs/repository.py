@@ -19,10 +19,12 @@ from py4ai.data.layer.fs.criteria import (
 from py4ai.data.layer.fs.serializer import KE, E, FileSerializer, IndexedIO
 
 
-class FileSystemRepository(Repository[KE, str, E, IndexedIO, List[KE]], Generic[KE, E]):
+class FileSystemRepository(
+    Repository[KE, str, E, IndexedIO[KE], List[KE]], Generic[KE, E]
+):
     """Class implementing MongoDB repository."""
 
-    criteria: FileSystemCriteriaFactory
+    criteria: FileSystemCriteriaFactory[KE, E]
 
     def __init__(self, path: Path, serializer: FileSerializer[KE, E]):
         """Return a FileSystem Repository Implementation.
@@ -92,7 +94,7 @@ class FileSystemRepository(Repository[KE, str, E, IndexedIO, List[KE]], Generic[
                     "Multiple sorting options are not allowed for FileSystemRepository"
                 )
             criteria = self.criteria.sort_by(
-                cast(FileSystemSearchCriteria, criteria), options.sorting_options[0]
+                cast(FileSystemSearchCriteria[KE], criteria), options.sorting_options[0]
             )
 
         query = criteria.query

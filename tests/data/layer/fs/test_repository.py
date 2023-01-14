@@ -30,10 +30,10 @@ class PickleEntitySerializer(FileSerializer[int, Entity]):
     def to_object_key(self, key: int) -> str:
         return os.path.join(self.path, str(key) + ".pkl")
 
-    def to_entity(self, document: IndexedIO) -> Entity:
+    def to_entity(self, document: IndexedIO[int]) -> Entity:
         return pickle.load(document.buffer)
 
-    def to_object(self, entity: Entity) -> IndexedIO:
+    def to_object(self, entity: Entity) -> IndexedIO[int]:
         buffer = BytesIO()
         buffer.write(pickle.dumps(entity, protocol=pickle.HIGHEST_PROTOCOL))
         buffer.seek(0)
@@ -46,15 +46,15 @@ class FileSystemEntityCriteriaFactory(
     def get_index_fields(self, entity: Entity) -> Dict[str, Any]:
         return {"cai": entity.cai, "birth_year": entity.birth_year}
 
-    def by_cai(self, cai: int) -> FileSystemSearchCriteria:
+    def by_cai(self, cai: int) -> FileSystemSearchCriteria[int]:
         return self.filter_path_by_condition(lambda data: data["cai"] == cai)
 
-    def from_birth_year(self, birth_year: int) -> FileSystemSearchCriteria:
+    def from_birth_year(self, birth_year: int) -> FileSystemSearchCriteria[int]:
         return self.filter_path_by_condition(
             lambda data: data["birth_year"] >= birth_year
         )
 
-    def by_birth_year(self, birth_year: int) -> FileSystemSearchCriteria:
+    def by_birth_year(self, birth_year: int) -> FileSystemSearchCriteria[int]:
         return self.filter_path_by_condition(
             lambda data: data["birth_year"] == birth_year
         )
@@ -127,12 +127,12 @@ class TestRepository(TestCase):
         self.assertIsInstance(entity, Entity)
         self.assertEqual(entity.birth_year, 1985)
 
-    def test_004_retrieve_by_id(self):
+    def test_004_retrieve_by_id(self) -> None:
         self.assertIsNone(self._async.execute(self.repo.retrieve(00000)))
 
         self.assertIsNotNone(self._async.execute(self.repo.retrieve(1234)))
 
-    def test_005_create_and_delete_entity(self):
+    def test_005_create_and_delete_entity(self) -> None:
         new_entity = Entity(cai=9999, birth_year=2000)
 
         self.assertIsNone(self._async.execute(self.repo.retrieve(9999)))
@@ -166,7 +166,7 @@ class TestRepository(TestCase):
 
         self.assertEqual(len(all_entities.items), 2)
 
-    def test_007_delete_by_criteria(self):
+    def test_007_delete_by_criteria(self) -> None:
         criteria = self.repo.criteria.by_birth_year(1985)
 
         self.assertTrue(self._async.execute(self.repo.delete_by_criteria(criteria)))

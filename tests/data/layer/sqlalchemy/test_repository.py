@@ -6,6 +6,7 @@ from py4ai.core.tests.core import TestCase
 from py4ai.core.utils.executors import AsyncExecutor
 from py4ai.core.utils.fs import create_dir_if_not_exists
 from sqlalchemy import Column, Integer, MetaData, String, Table, func, select
+from sqlalchemy.engine.cursor import CursorResult
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 from sqlalchemy.sql import Select
 
@@ -45,12 +46,12 @@ class SqlEntitySerializer(
     def __init__(self, table: Table):
         super(SqlEntitySerializer, self).__init__(table)
 
-    def to_object(self, entity: Entity) -> dict:
+    def to_object(self, entity: Entity) -> Dict[str, int]:
         doc = entity.dict()
         doc["id"] = self.to_object_key(self.get_key(entity))
         return doc
 
-    def to_entity(self, document: dict) -> Entity:
+    def to_entity(self, document: Dict[str, int]) -> Entity:
         return Entity(**document)
 
     def to_object_key(self, key: int) -> int:
@@ -63,7 +64,7 @@ class SqlEntityRepository(
 ):
     def __init__(
         self, engine: AsyncEngine, serializer: SqlAlchemySerializer[int, int, Entity]
-    ):
+    ) -> None:
         super().__init__(engine, serializer)
         self.criteria = SqlCriteriaFactory(self.table)
 
@@ -92,16 +93,16 @@ class TestRepository(TestCase):
     repo = SqlEntityRepository(engine, SqlEntitySerializer(table))
 
     @classmethod
-    async def init_models(cls):
+    async def init_models(cls) -> None:
         async with cls.engine.begin() as conn:
             await conn.run_sync(cls.meta.drop_all)
             await conn.run_sync(cls.meta.create_all)
 
-    async def execute_query(self, query: Select):
+    async def execute_query(self, query: Select) -> CursorResult:
         async with self.engine.begin() as conn:
             return await conn.execute(query)
 
-    def count_elements(self):
+    def count_elements(self) -> int:
         q = select([func.count()]).select_from(self.table)
         return self._async.execute(self.execute_query(q)).all()[0][0]
 
@@ -141,12 +142,12 @@ class TestRepository(TestCase):
         self.assertIsInstance(entity, Entity)
         self.assertEqual(entity.birth_year, 1985)
 
-    def test_004_retrieve_by_id(self):
+    def test_004_retrieve_by_id(self) -> None:
         self.assertIsNone(self._async.execute(self.repo.retrieve(00000)))
 
         self.assertIsNotNone(self._async.execute(self.repo.retrieve(1234)))
 
-    def test_005_create_and_delete_entity(self):
+    def test_005_create_and_delete_entity(self) -> None:
         new_entity = Entity(cai=9999, birth_year=2000)
 
         self.assertIsNone(self._async.execute(self.repo.retrieve(9999)))
@@ -180,7 +181,7 @@ class TestRepository(TestCase):
 
         self.assertEqual(len(all_entities.items), 2)
 
-    def test_007_delete_by_criteria(self):
+    def test_007_delete_by_criteria(self) -> None:
         criteria = self.repo.criteria.by_birth_year(1985)
 
         self.assertTrue(self._async.execute(self.repo.delete_by_criteria(criteria)))

@@ -31,7 +31,7 @@ class FileSystemSearchCriteria(SearchCriteria[List[KE]]):
         return self.__elements__
 
     @same_type
-    def __or__(self, other: SearchCriteria) -> "FileSystemSearchCriteria":
+    def __or__(self, other: SearchCriteria[List[KE]]) -> "FileSystemSearchCriteria[KE]":
         """Return query resulting from OR operation between queries.
 
         :param other: the other query to be used in the AND operation
@@ -40,7 +40,9 @@ class FileSystemSearchCriteria(SearchCriteria[List[KE]]):
         return FileSystemSearchCriteria(set(self.query).union(other.query))
 
     @same_type
-    def __and__(self, other: SearchCriteria) -> "FileSystemSearchCriteria":
+    def __and__(
+        self, other: SearchCriteria[List[KE]]
+    ) -> "FileSystemSearchCriteria[KE]":
         """Return query resulting from AND operation between queries.
 
         :param other: the other query to be used in the AND operation
@@ -62,7 +64,7 @@ class FileSystemCriteriaFactory(Generic[KE, E]):
         self.index_file = index_file
 
     @property
-    def index(self) -> Dict[KE, Dict]:
+    def index(self) -> Dict[KE, Dict[Any, Any]]:
         """Return a hash-property dictionary, to be used to filter objects and retrieve the corresponding hash.
 
         :returns: dictionary with entity hash, properties as (key, value) pairs.
@@ -81,7 +83,7 @@ class FileSystemCriteriaFactory(Generic[KE, E]):
         """
         return {}
 
-    def update_index(self, key: KE, entity: E):
+    def update_index(self, key: KE, entity: E) -> None:
         """Update indices file in the file-system, with the entity key and the corresponding indexed fields.
 
         :param key: entity key
@@ -93,8 +95,8 @@ class FileSystemCriteriaFactory(Generic[KE, E]):
             json.dump(union(index, {key: data}), fid)
 
     def filter_path_by_condition(
-        self, condition: Callable[[Dict], bool]
-    ) -> FileSystemSearchCriteria:
+        self, condition: Callable[[Dict[Any, Any]], bool]
+    ) -> FileSystemSearchCriteria[KE]:
         """Return query with filtered elements based on a given condition.
 
         :param condition: filtering function to be applied at indexed fields.
@@ -104,7 +106,7 @@ class FileSystemCriteriaFactory(Generic[KE, E]):
         return FileSystemSearchCriteria(keys)
 
     @staticmethod
-    def format_name(name: Path, path: Path):
+    def format_name(name: Path, path: Path) -> str:
         """Reformat full path to transform it to a file-system key.
 
         :param name: full path.
@@ -113,7 +115,7 @@ class FileSystemCriteriaFactory(Generic[KE, E]):
         """
         return os.path.splitext(name.relative_to(path))[0]
 
-    def all(self) -> FileSystemSearchCriteria:
+    def all(self) -> FileSystemSearchCriteria[KE]:
         """Return empty query.
 
         :returns: empty query.
@@ -122,9 +124,9 @@ class FileSystemCriteriaFactory(Generic[KE, E]):
 
     def sort_by(
         self,
-        criteria: FileSystemSearchCriteria,
+        criteria: FileSystemSearchCriteria[KE],
         sorting_option: Tuple[str, SortingDirection],
-    ) -> FileSystemSearchCriteria:
+    ) -> FileSystemSearchCriteria[KE]:
         """Create a sorted query, based on a sorting option.
 
         :param criteria: file-system query.

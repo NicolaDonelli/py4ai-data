@@ -2,7 +2,7 @@
 Test criteria files
 """
 
-from typing import Any, Callable
+from typing import Any, Callable, Dict
 
 import numpy as np
 import pandas as pd
@@ -12,14 +12,15 @@ from py4ai.data.layer.common.criteria import SearchCriteria
 from py4ai.data.layer.pandas.criteria import PandasSearchCriteria
 
 
-class DummyCriteria(SearchCriteria[dict]):
-    def query(self) -> dict:
+class DummyCriteria(SearchCriteria[Dict[Any, Any]]):
+    @property
+    def query(self) -> Dict[Any, Any]:
         return {}
 
-    def __or__(self, other: SearchCriteria) -> "DummyCriteria":
+    def __or__(self, other: SearchCriteria[Any]) -> "DummyCriteria":
         return DummyCriteria()
 
-    def __and__(self, other: SearchCriteria) -> "DummyCriteria":
+    def __and__(self, other: SearchCriteria[Any]) -> "DummyCriteria":
         return DummyCriteria()
 
 
@@ -62,12 +63,12 @@ class TestConfig(TestCase):
 
     def test_query_or_invalid(self) -> None:
         self.assertRaises(
-            TypeError, lambda: self.filter_by_key_value("a", 5) | DummyCriteria()
+            TypeError, lambda: self.filter_by_key_value("a", 5) | DummyCriteria()  # type: ignore
         )
 
     def test_query_and_invalid(self) -> None:
         self.assertRaises(
-            TypeError, lambda: self.filter_by_key_value("a", 5) & DummyCriteria()
+            TypeError, lambda: self.filter_by_key_value("a", 5) & DummyCriteria()  # type: ignore
         )
 
     def test_query_and(self) -> None:

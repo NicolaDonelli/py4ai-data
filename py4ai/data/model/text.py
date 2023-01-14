@@ -76,7 +76,7 @@ class Document(Generic[K]):
             else:
                 raise e
 
-    def removeProperty(self, key: str) -> "Document":
+    def removeProperty(self, key: str) -> "Document[K]":
         """
         Generate new Document instance without given data element.
 
@@ -85,7 +85,7 @@ class Document(Generic[K]):
         """
         return Document(self.uuid, {k: v for k, v in self.data.items() if k != key})
 
-    def addProperty(self, key: str, value: Any) -> "Document":
+    def addProperty(self, key: str, value: Any) -> "Document[K]":
         """
         Generate new Document instance with given new data element.
 
@@ -95,7 +95,7 @@ class Document(Generic[K]):
         """
         return Document(self.uuid, union(self.data, unflattenKeys({key: value})))
 
-    def setRandomUUID(self) -> "Document":
+    def setRandomUUID(self) -> "Document[bytes]":
         """
         Generate new document instance with the same data as the current one but with random uuid.
 
@@ -160,12 +160,12 @@ class Document(Generic[K]):
 
 
 class DocumentsUtilsMixin(
-    IterableUtilsMixin[Document, "LazyDocuments", "CachedDocuments"]
+    IterableUtilsMixin[Document[Any], "LazyDocuments", "CachedDocuments"]
 ):
     """Utilities for Documents iterables."""
 
     @property
-    def type(self) -> Type[Document]:
+    def type(self) -> Type[Document[Any]]:
         """
         Return the type of the objects in the Iterable.
 
@@ -175,7 +175,7 @@ class DocumentsUtilsMixin(
 
 
 class CachedDocuments(
-    CachedIterable[Document],
+    CachedIterable[Document[Any]],
     DocumentsUtilsMixin,
     DillSerialization,
 ):
@@ -217,7 +217,7 @@ class CachedDocuments(
 
 @RegisterLazyCachedIterables(CachedDocuments)
 class LazyDocuments(
-    LazyIterable[Document],
+    LazyIterable[Document[Any]],
     DocumentsUtilsMixin,
 ):
     """Class representing a collection of documents provided by a generator."""

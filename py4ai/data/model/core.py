@@ -35,7 +35,7 @@ class Serializable(ABC):
 
     @classmethod
     @abstractmethod
-    def load(cls, filename: PathLike) -> "Serializable":
+    def load(cls, filename: PathLike) -> Any:
         """
         Load class from a file.
 
@@ -57,7 +57,7 @@ class PickleSerialization(Serializable):
             pickle.dump(self, fid)
 
     @classmethod
-    def load(cls, filename: PathLike) -> "PickleSerialization":
+    def load(cls, filename: PathLike) -> Any:
         """
         Load instance from pickle.
 
@@ -81,7 +81,7 @@ class DillSerialization(Serializable):
             dill.dump(self, fid)
 
     @classmethod
-    def load(cls, filename: PathLike) -> "DillSerialization":
+    def load(cls, filename: PathLike) -> Any:
         """
         Load instance from file.
 
@@ -137,9 +137,9 @@ class IterGenerator(Generic[T]):
         return self.generator_function()
 
 
-LazyIterableType = TypeVar("LazyIterableType", bound="LazyIterable")
-CachedIterableType = TypeVar("CachedIterableType", bound="CachedIterable")
-BaseIterableType = TypeVar("BaseIterableType", bound="BaseIterable")
+LazyIterableType = TypeVar("LazyIterableType", bound="LazyIterable")  # type: ignore
+CachedIterableType = TypeVar("CachedIterableType", bound="CachedIterable")  # type: ignore
+BaseIterableType = TypeVar("BaseIterableType", bound="BaseIterable")  # type: ignore
 
 
 class BaseIterable(Generic[T]):
@@ -149,7 +149,7 @@ class BaseIterable(Generic[T]):
     @abstractmethod
     def type(self) -> Type[T]:
         """Return the type of the objects in the Iterable."""
-        raise NotImplementedError
+        ...
 
     @property
     @abstractmethod
@@ -159,7 +159,7 @@ class BaseIterable(Generic[T]):
 
         :return: Iterable[T]
         """
-        raise NotImplementedError
+        ...
 
     @property
     @abstractmethod
@@ -169,13 +169,22 @@ class BaseIterable(Generic[T]):
 
         :return: boolean indicating whether iterable is fully-stored in memory
         """
-        raise NotImplementedError
+        ...
 
     @classmethod
     @abstractmethod
     def empty(cls: Type[BaseIterableType]) -> BaseIterableType:
         """Return an empty iterable instance."""
-        raise NotImplementedError
+        ...
+
+    def __iter__(self) -> Iterator[T]:
+        """
+        Iterate over items.
+
+        :yield: iterator over items
+        """
+        for i in self.items:
+            yield i
 
 
 class LazyIterable(BaseIterable[T]):
@@ -192,13 +201,13 @@ class LazyIterable(BaseIterable[T]):
         :return: lazy iterable
         """
 
-        def generator():
+        def generator() -> Iterator[T]:
             for item in iterable:
                 yield item
 
         return cls(IterGenerator(generator))
 
-    def __init__(self, items: IterGenerator):
+    def __init__(self, items: IterGenerator[T]):
         """
         Return an instance of the class to be used for implementing lazy iterables.
 
@@ -230,7 +239,7 @@ class LazyIterable(BaseIterable[T]):
         :return: Empty instance
         """
 
-        def empty():
+        def empty() -> Iterator[None]:
             return iter(())
 
         return cls(IterGenerator(empty))
@@ -316,7 +325,7 @@ class IterableUtilsMixin(
     cached_type: Type[CachedIterableType]
 
     @staticmethod
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls, *args, **kwargs):  # type: ignore
         """
         Create a new instance of this class.
 
@@ -380,7 +389,7 @@ class IterableUtilsMixin(
         :return: lazy iterable with elements filtered
         """
 
-        def generator():
+        def generator() -> Iterator[T]:
             for item in self:
                 if f(item):
                     yield item
@@ -414,13 +423,13 @@ class IterableUtilsMixin(
         :return: mapped iterable
         """
 
-        def generator():
+        def generator() -> Iterator[T_co]:
             for item in self:
                 yield f(item)
 
         return self.lazy_type(IterGenerator(generator))
 
-    def foreach(self, f: Callable[[T], Any]):
+    def foreach(self, f: Callable[[T], Any]) -> None:
         """
         Execute the provided function on each element of the iterable.
 
@@ -430,7 +439,7 @@ class IterableUtilsMixin(
             f(doc)
 
     def from_element(
-        self, value: T, cached=True
+        self, value: T, cached: bool = True
     ) -> Union[LazyIterableType, CachedIterableType]:
         """
         Instantiate a new object of this class from a single element.
@@ -443,23 +452,25 @@ class IterableUtilsMixin(
             return self.cached_type([value])
         else:
 
-            def generator():
+            def generator() -> Iterator[T]:
                 yield value
 
             return self.lazy_type(IterGenerator(generator))
 
 
 IterableUtilsMixinType = TypeVar(
-    "IterableUtilsMixinType", bound=IterableUtilsMixin, covariant=True
+    "IterableUtilsMixinType", bound=IterableUtilsMixin, covariant=True  # type: ignore
 )
 
 
-class RegisterLazyCachedIterables:
+class RegisterLazyCachedIterables(Generic[T, LazyIterableType, CachedIterableType]):
     """Register the lazy and cached version of the iterables."""
 
     def __init__(
         self,
-        class_object_first: Type[IterableUtilsMixin],
+        class_object_first: Type[
+            IterableUtilsMixin[T, LazyIterableType, CachedIterableType]
+        ],
         unidirectional_link: bool = False,
     ):
         """
@@ -473,28 +484,36 @@ class RegisterLazyCachedIterables:
 
     @staticmethod
     def register_lazy(
-        class_object_lazy: Type[IterableUtilsMixin],
-        class_object_cached: Type[IterableUtilsMixin],
-    ):
+        class_object_lazy: Type[
+            IterableUtilsMixin[T, LazyIterableType, CachedIterableType]
+        ],
+        class_object_cached: Type[
+            IterableUtilsMixin[T, LazyIterableType, CachedIterableType]
+        ],
+    ) -> None:
         """
         Link the lazy and cached versions.
 
         :param class_object_lazy: the lazy iterable class object
-        :param class_object_cached: the chached iterable class object
+        :param class_object_cached: the cached iterable class object
         """
         class_object_lazy.cached_type = class_object_cached
         class_object_lazy.lazy_type = class_object_lazy
 
     @staticmethod
     def register_cached(
-        class_object_lazy: Type[IterableUtilsMixin],
-        class_object_cached: Type[IterableUtilsMixin],
-    ):
+        class_object_lazy: Type[
+            IterableUtilsMixin[T, LazyIterableType, CachedIterableType]
+        ],
+        class_object_cached: Type[
+            IterableUtilsMixin[T, LazyIterableType, CachedIterableType]
+        ],
+    ) -> None:
         """
         Link the lazy and cached versions.
 
         :param class_object_lazy: the lazy iterable class object
-        :param class_object_cached: the chached iterable class object
+        :param class_object_cached: the cached iterable class object
         """
         class_object_cached.cached_type = class_object_cached
         class_object_cached.lazy_type = class_object_lazy
@@ -582,7 +601,7 @@ class BaseRange(ABC):
         ...
 
     @abstractmethod
-    def range(self, freq="H") -> List[Timestamp]:
+    def range(self, freq: str = "H") -> List[Timestamp]:
         """
         Return list of timestamps, spaced by given frequency.
 
@@ -672,7 +691,7 @@ class Range(BaseRange):
         """
         yield Range(self.start, self.end)
 
-    def range(self, freq="H") -> List[Timestamp]:
+    def range(self, freq: str = "H") -> List[Timestamp]:
         """
         Return list of timestamps, spaced by given frequency.
 
@@ -789,7 +808,7 @@ class CompositeRange(BaseRange):
         for range in self.ranges:
             yield range
 
-    def range(self, freq="H") -> List[Timestamp]:
+    def range(self, freq: str = "H") -> List[Timestamp]:
         """
         Return list of timestamps, spaced by given frequency.
 

@@ -67,7 +67,7 @@ class CsvSerializer(FileSerializer[str, TabularData]):
         """
         return os.path.join(self.path, key + ".csv")
 
-    def to_entity(self, document: IndexedIO) -> TabularData:
+    def to_entity(self, document: IndexedIO[str]) -> TabularData:
         """Deserialize raw content into domain object entity.
 
         :param document: raw content
@@ -76,7 +76,7 @@ class CsvSerializer(FileSerializer[str, TabularData]):
         data = pd.read_csv(document.buffer, sep=self.sep, dtype=str)
         return TabularData(name=document.name, data=data.set_index(data.columns[0]))
 
-    def to_object(self, entity: TabularData) -> IndexedIO:
+    def to_object(self, entity: TabularData) -> IndexedIO[str]:
         """Serialize domain object entity into raw content.
 
         :param entity: domain object entity
@@ -101,7 +101,7 @@ class PickleSerializer(CsvSerializer):
         """
         return os.path.join(self.path, key + ".pkl")
 
-    def to_entity(self, document: IndexedIO) -> TabularData:
+    def to_entity(self, document: IndexedIO[str]) -> TabularData:
         """Deserialize raw content into domain object entity.
 
         :param document: raw content
@@ -109,7 +109,7 @@ class PickleSerializer(CsvSerializer):
         """
         return TabularData(name=document.name, data=pd.read_pickle(document.buffer))
 
-    def to_object(self, entity: TabularData) -> IndexedIO:
+    def to_object(self, entity: TabularData) -> IndexedIO[str]:
         """Serialize domain object entity into raw content.
 
         :param entity: domain object entity

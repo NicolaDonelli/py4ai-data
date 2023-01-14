@@ -36,7 +36,7 @@ class MongoConfig(BaseConfig):
         """
         return self.getValue("db_name")
 
-    def getCollection(self, name) -> str:
+    def getCollection(self, name: str) -> str:
         """
         Return collection name at a given configuration node.
 

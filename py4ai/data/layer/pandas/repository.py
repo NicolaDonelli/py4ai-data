@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from functools import cached_property
-from typing import Optional, Sequence, Tuple, TypeVar
+from typing import Any, Optional, Sequence, Tuple, TypeVar
 
 import pandas as pd
 from pandas.errors import EmptyDataError
@@ -18,7 +18,7 @@ from py4ai.data.layer.common.repository import (
 from py4ai.data.layer.common.serialiazer import DataSerializer
 from py4ai.data.layer.pandas.criteria import PandasFilter, PandasSearchCriteria
 
-KD = TypeVar("KD", str, int, Tuple)
+KD = TypeVar("KD", str, int, Tuple[Any])
 
 
 class PandasRepository(Repository[KE, KD, E, pd.Series, PandasFilter], ABC):
@@ -71,7 +71,7 @@ class PandasRepository(Repository[KE, KD, E, pd.Series, PandasFilter], ABC):
         """
         self._data = value
 
-    def commit(self):
+    def commit(self) -> "PandasRepository[KE, KD, E]":
         """
         Persist data stored in memory in the file.
 
@@ -190,7 +190,7 @@ class PandasRepository(Repository[KE, KD, E, pd.Series, PandasFilter], ABC):
         :param criteria: query to be used for deleting entries.
         :returns: boolean value indicating whether the deletion has completed successfully.
         """
-        rows = self.data[criteria.query(self.data)]
+        rows = self.data[criteria.query(self.data)]  # type: ignore
         self.data = self.data.drop(rows.index)
         self.commit()
         return True

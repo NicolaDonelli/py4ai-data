@@ -32,29 +32,30 @@ help:
 	@echo " "
 	@echo "Type 'make' followed by one of these keywords:"
 	@echo " "
-	@echo "  - setup for installing base requirements"
-	@echo "  - setup_dev for installing requirements for development"
-	@echo "  - format for reformatting files to adhere to PEP8 standards"
-	@echo "  - dist for building a tar.gz distribution"
-	@echo "  - install for installing the package"
-	@echo "  - install_dev for installing the package with development environment"
-	@echo "  - reinstall for deleting and reinstalling the package"
-	@echo "  - reinstall_dev for deleting and reinstalling the package with development environment"
-	@echo "  - uninstall for uninstalling the environment"
-	@echo "  - tests for running unittests"
-	@echo "  - lint for performing linting"
-	@echo "  - mypy for performing static type checking"
-	@echo "  - docs for producing documentation in html format"
-	@echo "  - checks for running format, mypy, lint and tests altogether"
-	@echo "  - clean for removing cache file"
-	@echo "  - publish_test for publishing package on TestPyPI"
-	@echo "  - publish for publishing package on PyPI"
+	@echo "  - reqs_dev to build closed development requirements, requirements/requirements_dev.txt, from requirements/requirements_dev.in and requirements/requirements.in"
+	@echo "  - reqs to build closed minimal requirements, requirements/requirements.txt, from requirements/requirements.in"
+	@echo "  - setup to install minimal requirements"
+	@echo "  - setup_dev to install development requirements"
+	@echo "  - format to reformat files to adhere to PEP8 standards"
+	@echo "  - dist to build a tar.gz distribution"
+	@echo "  - install to install the package with minimal requirements"
+	@echo "  - install_dev to install the package with development environment"
+	@echo "  - uninstall to uninstall the package and its dependencies"
+	@echo "  - tests to run unittests using pytest as configured in pyproject.toml"
+	@echo "  - lint to perform linting using flake8 as configured in pyproject.toml"
+	@echo "  - mypy to perform static type checking using mypy as configured in pyproject.toml"
+	@echo "  - bandit to find security issues in app code using bandit as configured in pyproject.toml"
+	@echo "  - licensecheck to check dependencies licences compatibility with application license using licensecheck as configured in pyproject.toml"
+	@echo "  - docs to produce documentation in html format using sphinx as configured in pyproject.toml"
+	@echo "  - checks to run mypy, lint, bandit, licensecheck, tests and check formatting altogether"
+	@echo "  - clean to remove cache file"
 	@echo "------------------------------------"
 
 $(pre_deps_tag):
 	@echo "==Installing pip-tools and black=="
-	grep "^pip-tools\|^black"  requirements/requirements_dev.in | xargs ${PYTHON} -m pip install
-	grep "^tomli"  requirements/requirements.in | xargs ${PYTHON} -m pip install
+	${PYTHON} -m pip install --upgrade --quiet pip
+	grep "^pip-tools\|^black"  requirements/requirements_dev.in | xargs ${PYTHON} -m pip install --quiet
+	grep "^tomli\|^setuptools"  requirements/requirements.in | xargs ${PYTHON} -m pip install --upgrade --quiet
 	touch $(pre_deps_tag)
 
 requirements/requirements.txt: requirements/requirements_dev.txt
@@ -121,17 +122,23 @@ lint: setup_dev
 	${PYTHON} -m flake8 $(folders)
 
 mypy: setup_dev $(install_tag)
-	${PYTHON} -m mypy --install-types --non-interactive --package py4ai --package tests
+	${PYTHON} -m mypy --install-types --non-interactive --package tests --package py4ai
 
 tests: setup_dev $(install_tag)
 	${PYTHON} -m pytest tests
 
-checks: lint mypy tests
+bandit: setup_dev
+	${PYTHON} -m bandit -r -c pyproject.toml --severity-level high --confidence-level high .
+
+licensecheck: setup_dev
+	${PYTHON} -m licensecheck --zero
+
+checks: lint mypy bandit licensecheck tests
 	${PYTHON} -m black --check $(folders)
 	${PYTHON} -m isort $(folders) -c
 
 docs: setup_dev $(install_tag) $(doc_files) pyproject.toml
-	sphinx-apidoc --implicit-namespaces -f -o sphinx/source/api py4ai
+	sphinx-apidoc --implicit-namespaces -f -d 20 -M -e -o sphinx/source/api py4ai
 	make --directory=sphinx --file=Makefile clean html
 
 clean:

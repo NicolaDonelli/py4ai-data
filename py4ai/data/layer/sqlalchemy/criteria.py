@@ -30,9 +30,7 @@ class SqlAlchemySearchCriteria(SearchCriteria[SqlAlchemyQuery]):
         return self.__query__ if self.__query__ is not None else 1 == 1
 
     @same_type
-    def __or__(
-        self, other: "SearchCriteria[SqlAlchemyQuery]"
-    ) -> "SearchCriteria[SqlAlchemyQuery]":
+    def __or__(self, other: "SqlAlchemySearchCriteria") -> "SqlAlchemySearchCriteria":
         """Return query resulting from OR operation between queries.
 
         :param other: the other query to be used in the OR operation
@@ -41,9 +39,7 @@ class SqlAlchemySearchCriteria(SearchCriteria[SqlAlchemyQuery]):
         return SqlAlchemySearchCriteria(or_(self.query, other.query))
 
     @same_type
-    def __and__(
-        self, other: "SearchCriteria[SqlAlchemyQuery]"
-    ) -> "SearchCriteria[SqlAlchemyQuery]":
+    def __and__(self, other: "SqlAlchemySearchCriteria") -> "SqlAlchemySearchCriteria":
         """Return query resulting from AND operation between queries.
 
         :param other: the other query to be used in the AND operation

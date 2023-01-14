@@ -2,7 +2,7 @@ py4ai data
 ====
 
 [![PyPI](https://img.shields.io/pypi/v/py4ai-data.svg)](https://pypi.python.org/pypi/py4ai-data)
-[![Python version](https://img.shields.io/badge/python-3.7+-blue.svg)](https://pypi.python.org/pypi/py4ai-data)
+[![Python version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://pypi.python.org/pypi/py4ai-data)
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://py4ai.github.io/py4ai-data/)
 ![Python package](https://github.com/NicolaDonelli/py4ai-data/workflows/CI%20-%20Build%20and%20Test/badge.svg)
 
@@ -18,14 +18,12 @@ ingestion pipelines and run end to end machine learning pipelines.
 The library offers lightweight object-oriented interface to MongoDB as well as Pandas based data structures. 
 The aim of the library is to provide extensive support for developing machine learning based applications 
 with a focus on practicing clean code and modular design. 
+The detailed documentation for all its features is available [here](https://nicoladonelli.github.io/py4ai-data/intro/readme.html).
 
 ## Features
 Some cool features that we are proud to mention are: 
 
-## Features
-Some cool features that we are proud to mention are: 
-
-### Data layers 
+### [Data layers](https://nicoladonelli.github.io/py4ai-data/api/py4ai.data.layer.html) 
 The Data Layer abstractions are designed to decouple the business layers from 
 the detail of the persistence layer implementation.
 We currently implemented a few data layers based on some common abstractions:
@@ -38,7 +36,7 @@ The data layer currently implemented are:
 * mongo: access data stored in MongoDB. Serializers for this layer should be implemented by the user according to its specific needs.
 * sqlalchemy: access data stored in a database handled with sqlalchemy ORM. Serializers for this layer should be implemented by the user according to its specific needs.
 
-### Data Model
+### [Data Model](https://nicoladonelli.github.io/py4ai-data/api/py4ai.data.model.html)
 Offers the following data structures: 
 1. Document : Data structure specifically designed to work with NLP applications that parses a json-like document 
 into a couple of uuid and dictionary of information.

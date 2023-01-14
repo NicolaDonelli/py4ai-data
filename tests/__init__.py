@@ -1,5 +1,6 @@
 import os
 import random
+from typing import Any
 
 from mongomock import MongoClient
 from py4ai.core.utils.fs import create_dir_if_not_exists
@@ -19,14 +20,14 @@ os.environ["TMP_LOG_FOLDER"] = str(
 
 DB_NAME = "db"
 
-client: MongoClient = MongoClient()
+client: Any = MongoClient()
 
 db = client[DB_NAME]
 
 
-def clean_tmp_folder():
-    os.system(f"rm -rf {TMP_FOLDER}/*")
+def clean_tmp_folder() -> None:
+    os.rmdir(TMP_FOLDER)
 
 
-def unset_TMP_FOLDER():
+def unset_TMP_FOLDER() -> None:
     del os.environ["TMP_LOG_FOLDER"]

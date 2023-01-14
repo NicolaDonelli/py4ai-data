@@ -16,7 +16,7 @@ import os
 import re
 import subprocess
 import sys
-from typing import Callable, Dict
+from typing import Any, Callable, Dict
 
 
 def get_keywords():
@@ -641,7 +641,7 @@ def render(pieces, style):
     }
 
 
-def get_versions():
+def get_versions() -> Dict[str, Any]:
     """Get version information or return default if unable to do so."""
     # I am in _version.py, which lives at ROOT/VERSIONFILE_SOURCE. If we have
     # __file__, we can work backwards from there to the root. Some

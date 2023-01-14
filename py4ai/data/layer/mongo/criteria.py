@@ -26,7 +26,7 @@ class MongoSearchCriteria(SearchCriteria[Dict[str, Any]]):
         return self.__query__ if self.__query__ is not None else dict()
 
     @same_type
-    def __or__(self, other: SearchCriteria) -> "MongoSearchCriteria":
+    def __or__(self, other: SearchCriteria[Dict[str, Any]]) -> "MongoSearchCriteria":
         """Return a new Criteria resulting from the OR condition between two queries.
 
         :param other: MongoSearchCriteria to be used in the OR condition
@@ -36,7 +36,7 @@ class MongoSearchCriteria(SearchCriteria[Dict[str, Any]]):
         return MongoSearchCriteria({"$or": queries})
 
     @same_type
-    def __and__(self, other: SearchCriteria) -> "MongoSearchCriteria":
+    def __and__(self, other: SearchCriteria[Dict[str, Any]]) -> "MongoSearchCriteria":
         """Return a new Criteria resulting from the AND condition between two queries.
 
         :param other: SearchCriteria to be used in the AND condition

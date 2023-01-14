@@ -42,13 +42,14 @@ if sys.version_info[0] < 3:
 else:
     from itertools import islice
 
-TPandasDataset = TypeVar("TPandasDataset", bound="PandasDataset")
-TDatasetUtilsMixin = TypeVar("TDatasetUtilsMixin", bound="DatasetUtilsMixin")
+TPandasDataset = TypeVar("TPandasDataset", bound="PandasDataset")  # type: ignore
+TDatasetUtilsMixin = TypeVar("TDatasetUtilsMixin", bound="DatasetUtilsMixin")  # type: ignore
 
 FeatType = TypeVar(
-    "FeatType", bound=Union[List[Any], Tuple[Any], np.ndarray, Dict[str, Any]]
+    "FeatType",
+    bound=Union[List[Any], Tuple[Any], np.ndarray[Any, np.dtype[Any]], Dict[str, Any]],
 )
-LabType = TypeVar("LabType", int, float)
+LabType = TypeVar("LabType", int, float, None)
 FeaturesType = Union[
     np.ndarray,
     pd.DataFrame,
@@ -57,6 +58,7 @@ FeaturesType = Union[
     Iterator[FeatType],
 ]
 LabelsType = Union[
+    None,
     np.ndarray,
     pd.DataFrame,
     Dict[Union[str, int], LabType],
@@ -69,7 +71,7 @@ AllowedTypes = Literal["array", "pandas", "dict", "list", "lazy"]
 def features_and_labels_to_dataset(
     X: Union[pd.DataFrame, pd.Series],
     y: Optional[Union[pd.DataFrame, pd.Series]] = None,
-) -> "CachedDataset":
+) -> "CachedDataset[Dict[Any, Any], int]":
     """
     Pack features and labels into a CachedDataset.
 
@@ -116,11 +118,11 @@ class Sample(DillSerialization, Generic[FeatType, LabType]):
         self.name: Optional[Union[str, int, Any]] = name
 
 
-class MultiFeatureSample(Sample[List[np.ndarray], LabType]):
+class MultiFeatureSample(Sample[List[np.ndarray[Any, Any]], LabType]):
     """Class representing an observation defined by a nested list of arrays."""
 
     @staticmethod
-    def _check_features(features: List[np.ndarray]) -> None:
+    def _check_features(features: List[np.ndarray[Any, Any]]) -> None:
         """
         Check that features is list of lists.
 
@@ -136,7 +138,7 @@ class MultiFeatureSample(Sample[List[np.ndarray], LabType]):
 
     def __init__(
         self,
-        features: List[np.ndarray],
+        features: List[np.ndarray[Any, Any]],
         label: Optional[LabType] = None,
         name: Optional[str] = None,
     ) -> None:
@@ -163,7 +165,8 @@ class DatasetUtilsMixin(
 ):
     """Base class for representing datasets as iterable over Samples."""
 
-    def type(self):
+    @property
+    def type(self) -> Type[Sample[FeatType, LabType]]:
         """
         Return the type of the objects in the Iterable.
 
@@ -186,7 +189,7 @@ class DatasetUtilsMixin(
             return x if isinstance(x, int) else str(x)
 
     @overload
-    def getFeaturesAs(self, type: Literal["array"]) -> np.ndarray:
+    def getFeaturesAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
         ...
 
     @overload
@@ -205,7 +208,7 @@ class DatasetUtilsMixin(
     def getFeaturesAs(self, type: Literal["lazy"]) -> Iterator[FeatType]:
         ...
 
-    def getFeaturesAs(self, type: AllowedTypes = "array") -> FeaturesType:
+    def getFeaturesAs(self, type: AllowedTypes = "array") -> FeaturesType[FeatType]:
         """
         Return object of the specified type containing the feature space.
 
@@ -241,7 +244,7 @@ class DatasetUtilsMixin(
             raise ValueError(f"Type {type} not allowed")
 
     @overload
-    def getLabelsAs(self, type: Literal["array"]) -> np.ndarray:
+    def getLabelsAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
         ...
 
     @overload
@@ -260,7 +263,7 @@ class DatasetUtilsMixin(
     def getLabelsAs(self, type: Literal["lazy"]) -> Iterator[LabType]:
         ...
 
-    def getLabelsAs(self, type: AllowedTypes = "array") -> Optional[LabelsType]:
+    def getLabelsAs(self, type: AllowedTypes = "array") -> LabelsType[LabType]:
         """
         Return an object of the specified type containing the labels.
 
@@ -291,12 +294,13 @@ class DatasetUtilsMixin(
                     return pd.DataFrame(labels)
                 except ValueError:
                     return pd.Series(labels).to_frame("labels")
-
         else:
-            raise ValueError("Type %s not allowed" % type)
+            raise ValueError(f"Type {type} not allowed")
 
     @abstractmethod
-    def union(self, other: TDatasetUtilsMixin) -> "DatasetUtilsMixin":
+    def union(
+        self, other: TDatasetUtilsMixin
+    ) -> "DatasetUtilsMixin[FeatType, LabType]":
         """
         Return a union of datasets.
 
@@ -306,7 +310,7 @@ class DatasetUtilsMixin(
         raise NotImplementedError
 
     @property
-    def asPandasDataset(self) -> "PandasDataset":
+    def asPandasDataset(self) -> "PandasDataset[FeatType, LabType]":
         """
         Cast object as a PandasDataset.
 
@@ -336,7 +340,7 @@ class CachedDataset(
             axis=1,
         )
 
-    def union(self, other: TDatasetUtilsMixin) -> "CachedDataset":
+    def union(self, other: TDatasetUtilsMixin) -> "CachedDataset[FeatType, LabType]":
         """
         Perform union on CachedDatasets.
 
@@ -352,7 +356,7 @@ class LazyDataset(
 ):
     """Class that represents dataset derived by a lazy iterable of samples."""
 
-    def withLookback(self, lookback: int) -> "LazyDataset":
+    def withLookback(self, lookback: int) -> "LazyDataset[FeatType, LabType]":
         """
         Create a LazyDataset with features that are an array of ``lookback`` lists of samples' features.
 
@@ -360,11 +364,13 @@ class LazyDataset(
         :return: ``LazyDataset`` with changed samples
         """
 
-        def _transformed_sample_generator() -> Iterator[Sample]:
+        def _transformed_sample_generator() -> Iterator[Sample[FeatType, LabType]]:
             slices = [islice(self, n, None) for n in range(lookback)]
             for ss in zip(*slices):
                 yield Sample(
-                    features=np.array([s.features for s in ss], dtype=object),
+                    features=cast(
+                        FeatType, np.array([s.features for s in ss], dtype=object)
+                    ),
                     label=ss[-1].label,
                 )
 
@@ -387,7 +393,7 @@ class LazyDataset(
         return self.getLabelsAs("lazy")
 
     @overload
-    def getFeaturesAs(self, type: Literal["array"]) -> np.ndarray:
+    def getFeaturesAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
         ...
 
     @overload
@@ -406,7 +412,7 @@ class LazyDataset(
     def getFeaturesAs(self, type: Literal["lazy"]) -> Iterator[FeatType]:
         ...
 
-    def getFeaturesAs(self, type: AllowedTypes = "lazy") -> FeaturesType:
+    def getFeaturesAs(self, type: AllowedTypes = "lazy") -> FeaturesType[FeatType]:
         """
         Return object of the specified type containing the feature space.
 
@@ -416,7 +422,7 @@ class LazyDataset(
         return super(LazyDataset, self).getFeaturesAs(type)
 
     @overload
-    def getLabelsAs(self, type: Literal["array"]) -> np.ndarray:
+    def getLabelsAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
         ...
 
     @overload
@@ -435,7 +441,7 @@ class LazyDataset(
     def getLabelsAs(self, type: Literal["lazy"]) -> Iterator[LabType]:
         ...
 
-    def getLabelsAs(self, type: AllowedTypes = "lazy") -> LabelsType:
+    def getLabelsAs(self, type: AllowedTypes = "lazy") -> LabelsType[LabType]:
         """
         Return an object of the specified type containing the labels.
 
@@ -444,7 +450,7 @@ class LazyDataset(
         """
         return super(LazyDataset, self).getLabelsAs(type)
 
-    def union(self, other: TDatasetUtilsMixin) -> "LazyDataset":
+    def union(self, other: TDatasetUtilsMixin) -> "LazyDataset[FeatType, LabType]":
         """
         Perform union on LazyDatasets.
 
@@ -452,7 +458,7 @@ class LazyDataset(
         :return: union of LazyDatasets
         """
 
-        def _generator():
+        def _generator() -> Iterator[Sample[FeatType, LabType]]:
             for sample in self:
                 yield sample
             for sample in other:
@@ -496,14 +502,16 @@ class PandasDataset(
         elif isinstance(labels, pd.DataFrame):
             self._labels = labels
         elif labels is None:
-            self._labels = labels
+            self._labels = pd.DataFrame(
+                labels, index=self._features.index, columns=[None]
+            )
         else:
             raise TypeError(
                 "Labels must be of type pandas.Series or pandas.DataFrame or None"
             )
 
     @property
-    def items(self) -> Iterator[Sample]:
+    def items(self) -> Iterator[Sample[FeatType, LabType]]:
         """
         Get features as an iterator of Samples.
 
@@ -615,18 +623,13 @@ class PandasDataset(
         Find given indices in features and labels.
 
         :param idx: input indices
-        :return: ``PandasDataset`` with features and labels filtered on input indices
+        :return: PandasDataset with features and labels filtered on input indices
         """
-        features = (
-            loc(self.features, idx)
-            if isinstance(self.features, pd.DataFrame)
-            else self.features.loc[idx]
-        )
+        features = loc(self.features, idx)
         labels = self.labels.loc[idx] if self.labels is not None else None
-
         return self.createObject(features, labels)
 
-    def dropna(self: TPandasDataset, **kwargs) -> TPandasDataset:
+    def dropna(self: TPandasDataset, **kwargs: Any) -> TPandasDataset:
         """
         Drop NAs from feature and labels.
 
@@ -663,7 +666,7 @@ class PandasDataset(
         return self.loc(idx)
 
     @overload
-    def getFeaturesAs(self, type: Literal["array"]) -> np.ndarray:
+    def getFeaturesAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
         ...
 
     @overload
@@ -682,7 +685,7 @@ class PandasDataset(
     def getFeaturesAs(self, type: Literal["lazy"]) -> Iterator[FeatType]:
         ...
 
-    def getFeaturesAs(self, type: AllowedTypes = "array") -> FeaturesType:
+    def getFeaturesAs(self, type: AllowedTypes = "array") -> FeaturesType[FeatType]:
         """
         Get features as numpy array, pandas dataframe or dictionary.
 
@@ -705,7 +708,7 @@ class PandasDataset(
             )
 
     @overload
-    def getLabelsAs(self, type: Literal["array"]) -> np.ndarray:
+    def getLabelsAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
         ...
 
     @overload
@@ -724,7 +727,7 @@ class PandasDataset(
     def getLabelsAs(self, type: Literal["lazy"]) -> Iterator[LabType]:
         ...
 
-    def getLabelsAs(self, type: AllowedTypes = "array") -> LabelsType:
+    def getLabelsAs(self, type: AllowedTypes = "array") -> LabelsType[LabType]:
         """
         Get labels as numpy array, pandas dataframe or dictionary.
 
@@ -797,7 +800,9 @@ class PandasDataset(
         return cast(TPandasDataset, self.createObject(features, labels))
 
 
-class PandasTimeIndexedDataset(PandasDataset):
+class PandasTimeIndexedDataset(
+    PandasDataset[FeatType, LabType], Generic[FeatType, LabType]
+):
     """Class to be used for datasets that have time-indexed samples."""
 
     def __init__(

@@ -90,40 +90,26 @@ skip_gitignore = true
 package_dir = "py4ai/data"
 name = "py4ai-data"
 
+[tool.bandit]
+targets = ["py4ai/data"]
+
 [tool.mypy]
 namespace_packages = true
 follow_imports = "silent"
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_any_generics = true
+warn_redundant_casts = true
+strict_equality = false
+plugins = ["sqlalchemy.ext.mypy.plugin"]
+exclude = ['_version.py']
 
 [[tool.mypy.overrides]]
 module = ["pandas.*"]
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
-module = ["matplotlib.*"]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = ["sklearn.*"]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = ["seaborn.*"]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = ["scipy.*"]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
 module = ["dill.*"]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = ["cfg_load.*"]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = ["bson.*"]
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
@@ -141,3 +127,7 @@ ignore_missing_imports = true
 [[tool.mypy.overrides]]
 module = ["mongomock_motor.*"]
 ignore_missing_imports = true
+
+[tool.licensecheck]
+using = "requirements:requirements/requirements.txt"
+

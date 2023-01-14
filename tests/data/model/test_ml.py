@@ -1,7 +1,7 @@
 import os
 import unittest
 from shutil import rmtree
-from typing import Generator, Iterator
+from typing import Any, Generator, Iterator, List, cast
 
 import numpy as np
 import pandas as pd
@@ -9,6 +9,7 @@ from py4ai.core.tests.core import TestCase, logTest
 from py4ai.core.utils.fs import create_dir_if_not_exists
 
 from py4ai.data.model.ml import (
+    AllowedTypes,
     CachedDataset,
     IterGenerator,
     LazyDataset,
@@ -33,14 +34,14 @@ samples = [
 ]
 
 
-def samples_gen():
+def samples_gen() -> Iterator[Sample[List[int], int]]:
     for sample in samples:
         if not any([np.isnan(x).any() for x in sample.features]):
             yield sample
 
 
-class features_and_labels_to_datasetTests(TestCase):
-    def test_features_and_labels_to_dataset(self):
+class TestFeaturesAndLabelsToDataset(TestCase):
+    def test_features_and_labels_to_dataset(self) -> None:
         dataset = features_and_labels_to_dataset(
             pd.concat(
                 [
@@ -89,9 +90,9 @@ class features_and_labels_to_datasetTests(TestCase):
         )
 
 
-class LazyDatasetTests(TestCase):
+class TestLazyDataset(TestCase):
     @logTest
-    def test_withLookback_MultiFeatureSample(self):
+    def test_withLookback_MultiFeatureSample(self) -> None:
         samples = [
             MultiFeatureSample(
                 features=[np.array([100.0, 101.0]), np.array([np.NaN])], label=1.0
@@ -122,7 +123,7 @@ class LazyDatasetTests(TestCase):
             ),
         ]
 
-        def samples_gen():
+        def samples_gen() -> Iterator[MultiFeatureSample[float]]:
             for sample in samples:
                 if not any([np.isnan(x).any() for x in sample.features]):
                     yield sample
@@ -156,12 +157,16 @@ class LazyDatasetTests(TestCase):
         lookback = 3
         batch_size = 4
 
-        lazyDat = LazyDataset(IterGenerator(samples_gen))
-        lookbackDat = lazyDat.withLookback(lookback)
+        lazyDat: LazyDataset[List[np.ndarray[Any, np.dtype[Any]]], float] = LazyDataset(
+            IterGenerator(samples_gen)
+        )
+        lookbackDat: LazyDataset[
+            List[np.ndarray[Any, np.dtype[Any]]], float
+        ] = lazyDat.withLookback(lookback)
         batch_gen = lookbackDat.batch(batch_size)
 
-        batch1: CachedDataset = next(batch_gen)
-        batch2: CachedDataset = next(batch_gen)
+        batch1: CachedDataset[List[np.ndarray[Any, Any]], float] = next(batch_gen)
+        batch2: CachedDataset[List[np.ndarray[Any, Any]], float] = next(batch_gen)
 
         tmp1 = batch1.getFeaturesAs("array")
         temp1X = np.array(list(map(lambda x: np.stack(x), tmp1[:, :, 0])))
@@ -188,7 +193,7 @@ class LazyDatasetTests(TestCase):
         self.assertTrue(all(res))
 
     @logTest
-    def test_withLookback_ArrayFeatureSample(self):
+    def test_withLookback_ArrayFeatureSample(self) -> None:
 
         samples = [
             Sample(features=np.array([100, 101]), label=1),
@@ -202,7 +207,7 @@ class LazyDatasetTests(TestCase):
             Sample(features=np.array([116, 117]), label=9),
         ]
 
-        def samples_gen():
+        def samples_gen() -> Iterator[Sample[np.ndarray[Any, np.dtype[Any]], int]]:
             for sample in samples:
                 if not any([np.isnan(x).any() for x in sample.features]):
                     yield sample
@@ -228,12 +233,16 @@ class LazyDatasetTests(TestCase):
         lookback = 3
         batch_size = 4
 
-        lazyDat = LazyDataset(IterGenerator(samples_gen))
-        lookbackDat = lazyDat.withLookback(lookback)
+        lazyDat: LazyDataset[np.ndarray[Any, np.dtype[Any]], int] = LazyDataset(
+            IterGenerator(samples_gen)
+        )
+        lookbackDat: LazyDataset[
+            np.ndarray[Any, np.dtype[Any]], int
+        ] = lazyDat.withLookback(lookback)
         batch_gen = lookbackDat.batch(batch_size)
 
-        batch1: CachedDataset = next(batch_gen)
-        batch2: CachedDataset = next(batch_gen)
+        batch1: CachedDataset[np.ndarray[Any, Any], int] = next(batch_gen)
+        batch2: CachedDataset[np.ndarray[Any, Any], int] = next(batch_gen)
 
         tmp1 = batch1.getFeaturesAs("array")
         tmp1lab = batch1.getLabelsAs("array")
@@ -248,7 +257,7 @@ class LazyDatasetTests(TestCase):
         self.assertTrue(all(res))
 
     @logTest
-    def test_withLookback_ListFeatureSample(self):
+    def test_withLookback_ListFeatureSample(self) -> None:
 
         samples = [
             Sample(features=[100, 101], label=1),
@@ -262,7 +271,7 @@ class LazyDatasetTests(TestCase):
             Sample(features=[116, 117], label=9),
         ]
 
-        def samples_gen():
+        def samples_gen() -> Iterator[Sample[List[int], int]]:
             for sample in samples:
                 if not any([np.isnan(x).any() for x in sample.features]):
                     yield sample
@@ -288,12 +297,12 @@ class LazyDatasetTests(TestCase):
         lookback = 3
         batch_size = 4
 
-        lazyDat = LazyDataset(IterGenerator(samples_gen))
-        lookbackDat = lazyDat.withLookback(lookback)
+        lazyDat: LazyDataset[List[int], int] = LazyDataset(IterGenerator(samples_gen))
+        lookbackDat: LazyDataset[List[int], int] = lazyDat.withLookback(lookback)
         batch_gen = lookbackDat.batch(batch_size)
 
-        batch1: CachedDataset = next(batch_gen)
-        batch2: CachedDataset = next(batch_gen)
+        batch1: CachedDataset[List[int], int] = next(batch_gen)
+        batch2: CachedDataset[List[int], int] = next(batch_gen)
 
         tmp1 = batch1.getFeaturesAs("array")
         tmp1lab = batch1.getLabelsAs("array")
@@ -308,35 +317,39 @@ class LazyDatasetTests(TestCase):
         self.assertTrue(all(res))
 
     @logTest
-    def test_features_labels(self):
-        lazyDat = LazyDataset(IterGenerator(samples_gen))
+    def test_features_labels(self) -> None:
+        lazyDat: LazyDataset[List[int], int] = LazyDataset(IterGenerator(samples_gen))
         self.assertTrue(isinstance(lazyDat.features(), Generator))
         self.assertTrue(isinstance(lazyDat.labels(), Generator))
-        self.assertTrue(isinstance(lazyDat.getFeaturesAs(), Generator))
-        self.assertTrue(isinstance(lazyDat.getLabelsAs(), Generator))
-        self.assertEqual(next(lazyDat.getFeaturesAs()), samples[0].features)
-        self.assertEqual(next(lazyDat.getLabelsAs()), samples[0].label)
+        self.assertTrue(isinstance(lazyDat.getFeaturesAs("lazy"), Generator))
+        self.assertTrue(isinstance(lazyDat.getLabelsAs("lazy"), Generator))
+        self.assertEqual(next(lazyDat.getFeaturesAs("lazy")), samples[0].features)
+        self.assertEqual(next(lazyDat.getLabelsAs("lazy")), samples[0].label)
         self.assertEqual(next(lazyDat.features()), samples[0].features)
         self.assertEqual(next(lazyDat.labels()), samples[0].label)
 
     @logTest
-    def test_union(self):
-        dataset = LazyDataset(IterGenerator(samples_gen))
+    def test_union(self) -> None:
+        dataset: LazyDataset[List[int], int] = LazyDataset(IterGenerator(samples_gen))
 
-        def samples_gen_1():
+        def samples_gen_1() -> Iterator[Sample[List[int], int]]:
             for sample in samples[:2]:
                 if not any([np.isnan(x).any() for x in sample.features]):
                     yield sample
 
-        dataset_1 = LazyDataset(IterGenerator(samples_gen_1))
+        dataset_1: LazyDataset[List[int], int] = LazyDataset(
+            IterGenerator(samples_gen_1)
+        )
 
-        def samples_gen_2():
+        def samples_gen_2() -> Iterator[Sample[List[int], int]]:
             for sample in samples[2:]:
                 if not any([np.isnan(x).any() for x in sample.features]):
                     yield sample
 
-        dataset_2 = LazyDataset(IterGenerator(samples_gen_2))
-        cached_2 = CachedDataset(list(samples_gen_2()))
+        dataset_2: LazyDataset[List[int], int] = LazyDataset(
+            IterGenerator(samples_gen_2)
+        )
+        cached_2: CachedDataset[List[int], int] = CachedDataset(list(samples_gen_2()))
 
         self.assertEqual(
             dataset_1.union(dataset_2).getFeaturesAs("pandas"),
@@ -357,15 +370,15 @@ class LazyDatasetTests(TestCase):
         )
 
 
-class CachedDatasetTests(TestCase):
-    lazyDat: LazyDataset
+class TestCachedDataset(TestCase):
+    lazyDat: LazyDataset[List[int], int]
 
     @classmethod
     def setUpClass(cls) -> None:
         cls.lazyDat = LazyDataset(IterGenerator(samples_gen))
 
     @logTest
-    def test_to_df(self):
+    def test_to_df(self) -> None:
         self.assertTrue(isinstance(self.lazyDat.to_cached().to_df(), pd.DataFrame))
         self.assertTrue(
             (
@@ -381,7 +394,7 @@ class CachedDatasetTests(TestCase):
         )
 
     @logTest
-    def test_asPandasDataset(self):
+    def test_asPandasDataset(self) -> None:
         self.assertTrue(
             isinstance(CachedDataset(self.lazyDat).asPandasDataset, PandasDataset)
         )
@@ -399,17 +412,17 @@ class CachedDatasetTests(TestCase):
         )
 
     @logTest
-    def test_union(self):
-        dataset = CachedDataset(samples)
-        dataset_1 = CachedDataset(samples[:2])
-        dataset_2 = CachedDataset(samples[2:])
+    def test_union(self) -> None:
+        dataset: CachedDataset[List[int], int] = CachedDataset(samples)
+        dataset_1: CachedDataset[List[int], int] = CachedDataset(samples[:2])
+        dataset_2: CachedDataset[List[int], int] = CachedDataset(samples[2:])
 
-        def samples_gen_2():
+        def samples_gen_2() -> Iterator[Sample[List[int], int]]:
             for sample in samples[2:]:
                 if not any([np.isnan(x).any() for x in sample.features]):
                     yield sample
 
-        lazy_2 = LazyDataset(IterGenerator(samples_gen_2))
+        lazy_2: LazyDataset[List[int], int] = LazyDataset(IterGenerator(samples_gen_2))
 
         self.assertEqual(
             dataset_1.union(dataset_2).getFeaturesAs("pandas"),
@@ -430,8 +443,8 @@ class CachedDatasetTests(TestCase):
         )
 
 
-class PandasDatasetTests(TestCase):
-    dataset: PandasDataset = PandasDataset(
+class TestPandasDataset(TestCase):
+    dataset: PandasDataset[pd.DataFrame, pd.Series] = PandasDataset(
         features=pd.concat(
             [
                 pd.Series([1, np.nan, 2, 3], name="feat1"),
@@ -442,7 +455,7 @@ class PandasDatasetTests(TestCase):
         labels=pd.Series([0, 0, 0, 1], name="Label"),
     )
 
-    dataset_no_label: PandasDataset = PandasDataset(
+    dataset_no_label: PandasDataset[Any, Any] = PandasDataset(
         features=pd.concat(
             [
                 pd.Series([1, np.nan, 2, 3], name="feat1"),
@@ -461,26 +474,31 @@ class PandasDatasetTests(TestCase):
         rmtree(TMP_FOLDER)
 
     @logTest
-    def test_check_none(self):
+    def test_check_none(self) -> None:
         self.assertEqual(self.dataset._check_none(None), None)
         self.assertEqual(self.dataset._check_none("test"), "test")
 
     @logTest
-    def test__len__(self):
+    def test__len__(self) -> None:
         self.assertEqual(self.dataset.__len__(), 4)
 
     @logTest
-    def test_items(self):
+    def test_items(self) -> None:
         self.assertTrue(isinstance(self.dataset.items, Iterator))
         self.assertEqual(next(self.dataset.items).features, {"feat1": 1.0, "feat2": 1})
-        self.assertEqual(next(self.dataset.items).label["Label"], 0)
+        self.assertEqual(cast(pd.DataFrame, next(self.dataset.items).label)["Label"], 0)
         self.assertEqual(
             next(self.dataset_no_label.items).features, {"feat1": 1.0, "feat2": 1}
         )
-        self.assertEqual(next(self.dataset_no_label.items).label, None)
+        self.assertEqual(
+            next(self.dataset_no_label.items).label,
+            pd.Series(
+                np.nan, index=[None], name=self.dataset_no_label.index[0], dtype=object
+            ),
+        )
 
     @logTest
-    def test_dropna_none_labels(self):
+    def test_dropna_none_labels(self) -> None:
         res = pd.concat(
             [pd.Series([1, 2, 3], name="feat1"), pd.Series([1, 3, 4], name="feat2")],
             axis=1,
@@ -516,11 +534,11 @@ class PandasDatasetTests(TestCase):
         )
 
     @logTest
-    def test_cached(self):
+    def test_cached(self) -> None:
         self.assertTrue(self.dataset.cached)
 
     @logTest
-    def test_features_labels(self):
+    def test_features_labels(self) -> None:
         self.assertEqual(
             self.dataset.features,
             pd.concat(
@@ -534,11 +552,11 @@ class PandasDatasetTests(TestCase):
         self.assertTrue((self.dataset.labels["Label"] == pd.Series([0, 0, 0, 1])).all())
 
     @logTest
-    def test_index(self):
+    def test_index(self) -> None:
         self.assertTrue((self.dataset.index == range(4)).all())
 
     @logTest
-    def test_createObject(self):
+    def test_createObject(self) -> None:
         self.assertTrue(
             isinstance(
                 PandasDataset.createObject(
@@ -582,7 +600,7 @@ class PandasDatasetTests(TestCase):
         )
 
     @logTest
-    def test_take(self):
+    def test_take(self) -> None:
         self.assertTrue(isinstance(self.dataset.takeAsPandas(1), PandasDataset))
         self.assertEqual(
             self.dataset.takeAsPandas(1).features.feat2, pd.Series([1], name="feat2")
@@ -592,14 +610,22 @@ class PandasDatasetTests(TestCase):
         )
 
     @logTest
-    def test_loc(self):
-        self.assertEqual(self.dataset.loc(2).features[2]["feat1"], 2)
-        self.assertEqual(self.dataset.loc(2).features[2]["feat2"], 3)
-        self.assertEqual(self.dataset.loc(2).labels[2]["Label"], 0)
-        self.assertTrue(self.dataset_no_label.loc(2).labels is None)
+    def test_loc(self) -> None:
+        self.assertEqual(self.dataset.loc([2]).features.loc[2]["feat1"], 2)
+        self.assertEqual(self.dataset.loc([2]).features.loc[2]["feat2"], 3)
+        self.assertEqual(self.dataset.loc([2]).labels.loc[2]["Label"], 0)
+        self.assertEqual(
+            self.dataset_no_label.loc([2]).labels,
+            pd.DataFrame(
+                np.nan,
+                index=[self.dataset.features.index[2]],
+                columns=[None],
+                dtype=object,
+            ),
+        )
 
     @logTest
-    def test_from_sequence(self):
+    def test_from_sequence(self) -> None:
         features_1 = pd.DataFrame(
             {"feat1": [1, 2, 3, 4], "feat2": [100, 200, 300, 400]}, index=[1, 2, 3, 4]
         )
@@ -614,9 +640,15 @@ class PandasDatasetTests(TestCase):
         labels_1 = pd.DataFrame({"target": [1, 0, 1, 1]}, index=[1, 2, 3, 4])
         labels_2 = pd.DataFrame({"target": [1, 1, 1, 0]}, index=[10, 11, 12, 13])
         labels_3 = pd.DataFrame({"target": [0, 1, 1, 0]}, index=[15, 16, 17, 18])
-        dataset_1 = PandasDataset(features_1, labels_1)
-        dataset_2 = PandasDataset(features_2, labels_2)
-        dataset_3 = PandasDataset(features_3, labels_3)
+        dataset_1: PandasDataset[pd.DataFrame, pd.DataFrame] = PandasDataset(
+            features_1, labels_1
+        )
+        dataset_2: PandasDataset[pd.DataFrame, pd.DataFrame] = PandasDataset(
+            features_2, labels_2
+        )
+        dataset_3: PandasDataset[pd.DataFrame, pd.DataFrame] = PandasDataset(
+            features_3, labels_3
+        )
         dataset_merged = PandasDataset.from_sequence([dataset_1, dataset_2, dataset_3])
         self.assertEqual(
             pd.concat([features_1, features_2, features_3]), dataset_merged.features
@@ -626,12 +658,14 @@ class PandasDatasetTests(TestCase):
         )
 
     @logTest
-    def test_serialization(self):
+    def test_serialization(self) -> None:
         filename = os.path.join(TMP_FOLDER, "my_dataset.p")
 
         self.dataset.write(filename)
 
-        newDataset: PandasDataset = PandasDataset.load(filename)
+        newDataset: PandasDataset[pd.DataFrame, pd.Series] = PandasDataset.load(
+            filename
+        )
 
         self.assertTrue(isinstance(newDataset, PandasDataset))
         self.assertTrue(
@@ -641,7 +675,7 @@ class PandasDatasetTests(TestCase):
         )
 
     @logTest
-    def test_creation_from_samples(self):
+    def test_creation_from_samples(self) -> None:
         samples = [
             Sample(features=[100, 101], label=1, name=1),
             Sample(features=[102, 103], label=2, name=2),
@@ -654,34 +688,36 @@ class PandasDatasetTests(TestCase):
             Sample(features=[116, 117], label=2, name=9),
         ]
 
-        lazyDataset = CachedDataset(samples).filter(lambda x: x.label <= 5)
+        lazyDataset: LazyDataset[Any, int] = CachedDataset(samples).filter(
+            lambda x: cast(int, x.label) <= 5
+        )
 
         self.assertIsInstance(lazyDataset, LazyDataset)
 
         for format in ["pandas", "array", "dict"]:
-            features1 = lazyDataset.getFeaturesAs(format)
-            labels1 = lazyDataset.getLabelsAs(format)
+            features1 = lazyDataset.getFeaturesAs(cast(AllowedTypes, format))
+            labels1 = lazyDataset.getLabelsAs(cast(AllowedTypes, format))
 
-            cached: CachedDataset = lazyDataset.to_cached()
+            cached: CachedDataset[List[int], int] = lazyDataset.to_cached()
 
-            features2 = cached.getFeaturesAs(format)
-            labels2 = cached.getLabelsAs(format)
+            features2 = cached.getFeaturesAs(cast(AllowedTypes, format))
+            labels2 = cached.getLabelsAs(cast(AllowedTypes, format))
 
             self.assertEqual(features1, features2)
             self.assertEqual(labels1, labels2)
 
             pandasDataset = cached.asPandasDataset
 
-            features3 = pandasDataset.getFeaturesAs(format)
-            labels3 = pandasDataset.getLabelsAs(format)
+            features3 = pandasDataset.getFeaturesAs(cast(AllowedTypes, format))
+            labels3 = pandasDataset.getLabelsAs(cast(AllowedTypes, format))
 
             self.assertEqual(features1, features3)
             self.assertEqual(labels1, labels3)
 
     @logTest
-    def test_union(self):
+    def test_union(self) -> None:
         union = self.dataset.union(
-            PandasDataset(
+            PandasDataset(  # type: ignore
                 features=pd.concat(
                     [
                         pd.Series([np.nan, 5, 6, 7], name="feat1"),
@@ -716,8 +752,8 @@ class PandasDatasetTests(TestCase):
         )
 
     @logTest
-    def test_intersection(self):
-        other = PandasDataset(
+    def test_intersection(self) -> None:
+        other: PandasDataset[pd.DataFrame, pd.Series] = PandasDataset(
             features=pd.concat(
                 [
                     pd.Series([1, 2, 3, 4], name="feat1"),
@@ -732,13 +768,13 @@ class PandasDatasetTests(TestCase):
         self.assertEqual(other.intersection().features.index.to_list(), [0, 1])
 
     @logTest
-    def test_getFeaturesAs(self):
+    def test_getFeaturesAs(self) -> None:
         self.assertTrue(isinstance(self.dataset.getFeaturesAs("array"), np.ndarray))
         self.assertTrue(isinstance(self.dataset.getFeaturesAs("pandas"), pd.DataFrame))
         self.assertTrue(isinstance(self.dataset.getFeaturesAs("dict"), dict))
 
     @logTest
-    def test_getLabelsAs(self):
+    def test_getLabelsAs(self) -> None:
         self.assertTrue(isinstance(self.dataset.getLabelsAs("array"), np.ndarray))
         self.assertTrue(isinstance(self.dataset.getLabelsAs("pandas"), pd.DataFrame))
         self.assertTrue(isinstance(self.dataset.getLabelsAs("dict"), dict))
@@ -749,7 +785,7 @@ class PandasTimeIndexedDatasetTests(TestCase):
 
     dateStr = [str(x) for x in dates]
 
-    dataset = PandasTimeIndexedDataset(
+    dataset: PandasTimeIndexedDataset[List[float], None] = PandasTimeIndexedDataset(
         features=pd.concat(
             [
                 pd.Series([1, np.nan, 2, 3], index=dateStr, name="feat1"),
@@ -768,19 +804,21 @@ class PandasTimeIndexedDatasetTests(TestCase):
         rmtree(TMP_FOLDER)
 
     @logTest
-    def test_time_index(self):
+    def test_time_index(self) -> None:
         # duck-typing check
         days = [x.day for x in self.dataset.features.index]
 
         self.assertTrue(set(days), set(range(4)))
 
     @logTest
-    def test_serialization(self):
+    def test_serialization(self) -> None:
         filename = os.path.join(TMP_FOLDER, "my_dataset.p")
 
         self.dataset.write(filename)
 
-        newDataset = type(self.dataset).load(filename)
+        newDataset: PandasTimeIndexedDataset[List[float], None] = type(
+            self.dataset
+        ).load(filename)
 
         self.assertTrue(isinstance(newDataset, PandasTimeIndexedDataset))
         self.assertTrue(
@@ -790,7 +828,7 @@ class PandasTimeIndexedDatasetTests(TestCase):
         )
 
     @logTest
-    def test_createObject(self):
+    def test_createObject(self) -> None:
         NewDataset = self.dataset.createObject(
             features=pd.concat(
                 [
@@ -833,11 +871,13 @@ class PandasTimeIndexedDatasetTests(TestCase):
         )
 
     @logTest
-    def test_loc(self):
+    def test_loc(self) -> None:
         new_dataset = self.dataset.loc(
             [x for x in pd.date_range("2010-01-01", "2010-01-02")]
         )
-        to_check = PandasTimeIndexedDataset(
+        to_check: PandasTimeIndexedDataset[
+            List[float], None
+        ] = PandasTimeIndexedDataset(
             features=pd.DataFrame(self.dataset.features.iloc[:2])
         )
         self.assertIsInstance(new_dataset, PandasTimeIndexedDataset)

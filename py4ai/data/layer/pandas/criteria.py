@@ -29,7 +29,7 @@ class PandasSearchCriteria(SearchCriteria[PandasFilter]):
         return self.condition
 
     @same_type
-    def __or__(self, other: SearchCriteria) -> "PandasSearchCriteria":
+    def __or__(self, other: SearchCriteria[PandasFilter]) -> "PandasSearchCriteria":
         """Return query resulting from OR operation between queries.
 
         :param other: the other query to be used in the OR operation
@@ -38,7 +38,7 @@ class PandasSearchCriteria(SearchCriteria[PandasFilter]):
         return PandasSearchCriteria(lambda df: self.query(df) | other.query(df))
 
     @same_type
-    def __and__(self, other: SearchCriteria) -> "PandasSearchCriteria":
+    def __and__(self, other: SearchCriteria[PandasFilter]) -> "PandasSearchCriteria":
         """Return query resulting from AND operation between queries.
 
         :param other: the other query to be used in the AND operation

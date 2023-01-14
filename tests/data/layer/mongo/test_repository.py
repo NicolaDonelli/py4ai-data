@@ -1,5 +1,5 @@
 import os
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import pandas as pd
 from bson import ObjectId
@@ -38,13 +38,15 @@ class MongoCriteriaFactory(CriteriaFactory[Dict[str, Any]]):
         return MongoSearchCriteria({str(self.model.birth_year): birth_year})
 
 
-class MongoEntitySerializer(EntityDataSerializer[ObjectId, dict]):
-    def to_object(self, entity: Entity) -> dict:
+class MongoEntitySerializer(
+    EntityDataSerializer[ObjectId, Dict[str, Union[int, ObjectId]]]
+):
+    def to_object(self, entity: Entity) -> Dict[str, Union[int, ObjectId]]:
         doc = entity.dict()
         doc["_id"] = self.to_object_key(self.get_key(entity))
         return doc
 
-    def to_entity(self, document: dict) -> Entity:
+    def to_entity(self, document: Dict[str, Union[int, ObjectId]]) -> Entity:
         return Entity(**document)
 
     def to_object_key(self, key: int) -> ObjectId:
@@ -53,7 +55,7 @@ class MongoEntitySerializer(EntityDataSerializer[ObjectId, dict]):
 
 class MongoEntityRepository(
     MongoRepository[int, ObjectId, Entity],
-    EntityRepository[ObjectId, dict, Dict[str, Any]],
+    EntityRepository[ObjectId, Dict[str, Union[int, ObjectId]], Dict[str, Any]],
 ):
     criteria = MongoCriteriaFactory()
 
@@ -114,12 +116,12 @@ class TestRepository(TestCase):
         self.assertIsInstance(entity, Entity)
         self.assertEqual(entity.birth_year, 1985)
 
-    def test_004_retrieve_by_id(self):
+    def test_004_retrieve_by_id(self) -> None:
         self.assertIsNone(self._async.execute(self.repo.retrieve(00000)))
 
         self.assertIsNotNone(self._async.execute(self.repo.retrieve(1234)))
 
-    def test_005_create_and_delete_entity(self):
+    def test_005_create_and_delete_entity(self) -> None:
         new_entity = Entity(cai=9999, birth_year=2000)
 
         self.assertIsNone(self._async.execute(self.repo.retrieve(9999)))
@@ -153,7 +155,7 @@ class TestRepository(TestCase):
 
         self.assertEqual(len(all_entities.items), 2)
 
-    def test_007_delete_by_criteria(self):
+    def test_007_delete_by_criteria(self) -> None:
         criteria = self.repo.criteria.by_birth_year(1985)
 
         self.assertTrue(self._async.execute(self.repo.delete_by_criteria(criteria)))

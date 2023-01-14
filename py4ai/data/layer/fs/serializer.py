@@ -31,7 +31,7 @@ class FileSerializerMode(str, Enum):
     BINARY = "b"
 
 
-class FileSerializer(Generic[KE, E], DataSerializer[KE, str, E, IndexedIO], ABC):
+class FileSerializer(Generic[KE, E], DataSerializer[KE, str, E, IndexedIO[KE]], ABC):
     """DataSerializer to read raw data and convert it into IndexedIO."""
 
     mode: FileSerializerMode = FileSerializerMode.TEXT
@@ -46,7 +46,7 @@ class FileSerializer(Generic[KE, E], DataSerializer[KE, str, E, IndexedIO], ABC)
         self.encoding = encoding if self.mode is FileSerializerMode.TEXT else None
 
     @classmethod
-    def with_path(cls, path: Path) -> "FileSerializer":
+    def with_path(cls, path: Path) -> "FileSerializer[KE, E]":
         """Return an instance of the class, pointing to a given path.
 
         :param path: new path to be used for the serializer.

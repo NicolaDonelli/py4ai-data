@@ -1,6 +1,6 @@
 """Module for implementation of serializer objects for Mongo persistence layers."""
 
-from hashlib import md5
+from hashlib import sha256
 
 from bson import ObjectId
 from pydantic.main import ModelMetaclass
@@ -12,7 +12,7 @@ def create_mongo_id(key: str) -> ObjectId:
     :param key: input string to be converted to a Mongo compatible hash
     :returns: MongoDB compatible ObjectId
     """
-    return ObjectId(md5(str(key).encode("utf-8")).hexdigest()[:24])
+    return ObjectId(sha256(str(key).encode("utf-8")).hexdigest()[:24])
 
 
 class MongoModel(ModelMetaclass):

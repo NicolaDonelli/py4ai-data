@@ -20,13 +20,15 @@ from py4ai.data.layer.common.serialiazer import DataSerializer
 from py4ai.data.layer.mongo.criteria import MongoSearchCriteria
 
 
-class MongoRepository(Repository[KE, KD, E, dict, Dict[str, Any]], Generic[KE, KD, E]):
+class MongoRepository(
+    Repository[KE, KD, E, Dict[Any, Any], Dict[str, Any]], Generic[KE, KD, E]
+):
     """Class implementing MongoDB repository."""
 
     def __init__(
         self,
         collection: MotorCollection,
-        serializer: DataSerializer[KE, KD, E, dict],
+        serializer: DataSerializer[KE, KD, E, Dict[Any, Any]],
         session: Optional[MotorClientSession] = None,
     ):
         """Return a MongoDB Repository Implementation.
@@ -42,7 +44,7 @@ class MongoRepository(Repository[KE, KD, E, dict, Dict[str, Any]], Generic[KE, K
         self.session = session
 
     @cached_property
-    def serializer(self) -> DataSerializer[KE, KD, E, dict]:
+    def serializer(self) -> DataSerializer[KE, KD, E, Dict[Any, Any]]:
         """Return the serializer.
 
         :return: DataSerializer for serializing/deserializing MongoDB documents into domain objects

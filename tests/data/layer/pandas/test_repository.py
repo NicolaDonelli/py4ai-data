@@ -87,7 +87,7 @@ class TestRepository(TestCase):
         self.assertIsInstance(entity, DummyEntity)
         self.assertEqual(entity.birth_year, 1985)
 
-    def test_retrieve_by_id(self):
+    def test_retrieve_by_id(self) -> None:
         filename = os.path.join(DATA_FOLDER, "donors.dummy.csv")
 
         repo = CsvRepository(filename, DummySerializer())
@@ -96,7 +96,7 @@ class TestRepository(TestCase):
 
         self.assertIsNotNone(self._async.execute(repo.retrieve(1234)))
 
-    def test_create_and_delete_entity(self):
+    def test_create_and_delete_entity(self) -> None:
         copyfile(
             os.path.join(DATA_FOLDER, "donors.dummy.csv"),
             os.path.join(TMP_FOLDER, "donors.dummy.csv"),
@@ -141,7 +141,7 @@ class TestRepository(TestCase):
 
         self.assertEqual(len(all.items), 2)
 
-    def test_delete_by_criteria(self):
+    def test_delete_by_criteria(self) -> None:
         copyfile(
             os.path.join(DATA_FOLDER, "donors.dummy.csv"),
             os.path.join(TMP_FOLDER, "donors.dummy.csv"),

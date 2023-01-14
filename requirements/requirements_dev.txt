@@ -8,10 +8,14 @@ aiosqlite==0.18.0
     # via -r requirements/requirements_dev.in
 alabaster==0.7.12
     # via sphinx
-attrs==22.2.0
-    # via pytest
+attrs==21.4.0
+    # via
+    #   fhconfparser
+    #   pytest
 babel==2.11.0
     # via sphinx
+bandit[toml]==1.7.4
+    # via -r requirements/requirements_dev.in
 black==22.12.0
     # via -r requirements/requirements_dev.in
 bleach==5.0.1
@@ -52,6 +56,8 @@ docutils==0.17.1
     #   sphinx-rtd-theme
 exceptiongroup==1.1.0
     # via pytest
+fhconfparser==2022
+    # via licensecheck
 flake8==6.0.0
     # via
     #   -r requirements/requirements_dev.in
@@ -64,6 +70,10 @@ flake8-pyproject==1.2.2
     # via -r requirements/requirements_dev.in
 flake8-rst-docstrings==0.3.0
     # via -r requirements/requirements_dev.in
+gitdb==4.0.10
+    # via gitpython
+gitpython==3.1.30
+    # via bandit
 greenlet==2.0.1
     # via -r requirements/requirements_dev.in
 idna==3.4
@@ -84,6 +94,8 @@ jinja2==3.1.2
     # via sphinx
 keyring==23.13.1
     # via twine
+licensecheck==2023
+    # via -r requirements/requirements_dev.in
 m2r2==0.3.2
     # via -r requirements/requirements_dev.in
 markupsafe==2.1.1
@@ -125,6 +137,8 @@ pandas==1.5.2
     # via py4ai-core
 pathspec==0.10.3
     # via black
+pbr==5.11.1
+    # via stevedore
 pep517==0.13.0
     # via build
 pip-tools==6.12.1
@@ -172,7 +186,9 @@ pytz==2022.7
 pytz-deprecation-shim==0.1.0.post0
     # via tzlocal
 pyyaml==6.0
-    # via cfg-load
+    # via
+    #   bandit
+    #   cfg-load
 readme-renderer==37.3
     # via twine
 recommonmark==0.7.1
@@ -180,17 +196,22 @@ recommonmark==0.7.1
 requests==2.28.1
     # via
     #   cfg-load
+    #   licensecheck
     #   requests-toolbelt
     #   sphinx
     #   twine
 requests-toolbelt==0.10.1
     # via twine
+requirements-parser==0.5.0
+    # via licensecheck
 restructuredtext-lint==1.4.0
     # via flake8-rst-docstrings
 rfc3986==2.0.0
     # via twine
-rich==13.0.0
-    # via twine
+rich==12.6.0
+    # via
+    #   licensecheck
+    #   twine
 scipy==1.9.3
     # via
     #   -r requirements/requirements_dev.in
@@ -202,6 +223,8 @@ six==1.16.0
     #   bleach
     #   cfg-load
     #   python-dateutil
+smmap==5.0.0
+    # via gitdb
 snowballstemmer==2.2.0
     # via
     #   pydocstyle
@@ -227,13 +250,19 @@ sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
 sqlalchemy==1.4.45
     # via -r requirements/requirements.in
+stevedore==4.1.1
+    # via bandit
+toml==0.10.2
+    # via bandit
 tomli==2.0.1
     # via
     #   -r requirements/requirements.in
     #   black
     #   build
     #   coverage
+    #   fhconfparser
     #   flake8-pyproject
+    #   licensecheck
     #   mypy
     #   pep517
     #   py4ai-core
@@ -244,6 +273,10 @@ twine==4.0.2
     # via -r requirements/requirements_dev.in
 typeguard==2.13.3
     # via -r requirements/requirements.in
+types-docutils==0.19.1.1
+    # via types-setuptools
+types-setuptools==65.7.0.1
+    # via requirements-parser
 typing-extensions==4.4.0
     # via
     #   -r requirements/requirements.in
