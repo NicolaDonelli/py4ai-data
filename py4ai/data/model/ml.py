@@ -1,7 +1,7 @@
 """Module for specifying data-models to be used in modelling."""
 
-import sys
 from abc import ABC, abstractmethod
+from itertools import islice
 from typing import (
     Any,
     Dict,
@@ -20,6 +20,7 @@ from typing import (
 
 import numpy as np
 import pandas as pd
+from numpy.typing import NDArray
 from pandas import DataFrame, Series
 from py4ai.core.types import T
 from py4ai.core.utils.decorators import lazyproperty as lazy
@@ -36,18 +37,12 @@ from py4ai.data.model.core import (
     RegisterLazyCachedIterables,
 )
 
-if sys.version_info[0] < 3:
-    from itertools import islice
-    from itertools import izip as zip
-else:
-    from itertools import islice
-
 TPandasDataset = TypeVar("TPandasDataset", bound="PandasDataset")  # type: ignore
 TDatasetUtilsMixin = TypeVar("TDatasetUtilsMixin", bound="DatasetUtilsMixin")  # type: ignore
 
 FeatType = TypeVar(
     "FeatType",
-    bound=Union[List[Any], Tuple[Any], np.ndarray[Any, np.dtype[Any]], Dict[str, Any]],
+    bound=Union[List[Any], Tuple[Any], NDArray[Any], Dict[str, Any]],
 )
 LabType = TypeVar("LabType", int, float, None)
 FeaturesType = Union[
@@ -118,11 +113,11 @@ class Sample(DillSerialization, Generic[FeatType, LabType]):
         self.name: Optional[Union[str, int, Any]] = name
 
 
-class MultiFeatureSample(Sample[List[np.ndarray[Any, Any]], LabType]):
+class MultiFeatureSample(Sample[List[NDArray[Any]], LabType]):
     """Class representing an observation defined by a nested list of arrays."""
 
     @staticmethod
-    def _check_features(features: List[np.ndarray[Any, Any]]) -> None:
+    def _check_features(features: List[NDArray[Any]]) -> None:
         """
         Check that features is list of lists.
 
@@ -138,7 +133,7 @@ class MultiFeatureSample(Sample[List[np.ndarray[Any, Any]], LabType]):
 
     def __init__(
         self,
-        features: List[np.ndarray[Any, Any]],
+        features: List[NDArray[Any]],
         label: Optional[LabType] = None,
         name: Optional[str] = None,
     ) -> None:
@@ -189,7 +184,7 @@ class DatasetUtilsMixin(
             return x if isinstance(x, int) else str(x)
 
     @overload
-    def getFeaturesAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
+    def getFeaturesAs(self, type: Literal["array"]) -> NDArray[Any]:
         ...
 
     @overload
@@ -244,7 +239,7 @@ class DatasetUtilsMixin(
             raise ValueError(f"Type {type} not allowed")
 
     @overload
-    def getLabelsAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
+    def getLabelsAs(self, type: Literal["array"]) -> NDArray[Any]:
         ...
 
     @overload
@@ -393,7 +388,7 @@ class LazyDataset(
         return self.getLabelsAs("lazy")
 
     @overload
-    def getFeaturesAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
+    def getFeaturesAs(self, type: Literal["array"]) -> NDArray[Any]:
         ...
 
     @overload
@@ -422,7 +417,7 @@ class LazyDataset(
         return super(LazyDataset, self).getFeaturesAs(type)
 
     @overload
-    def getLabelsAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
+    def getLabelsAs(self, type: Literal["array"]) -> NDArray[Any]:
         ...
 
     @overload
@@ -666,7 +661,7 @@ class PandasDataset(
         return self.loc(idx)
 
     @overload
-    def getFeaturesAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
+    def getFeaturesAs(self, type: Literal["array"]) -> NDArray[Any]:
         ...
 
     @overload
@@ -708,7 +703,7 @@ class PandasDataset(
             )
 
     @overload
-    def getLabelsAs(self, type: Literal["array"]) -> np.ndarray[Any, Any]:
+    def getLabelsAs(self, type: Literal["array"]) -> NDArray[Any]:
         ...
 
     @overload

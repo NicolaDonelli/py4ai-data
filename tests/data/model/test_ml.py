@@ -5,6 +5,7 @@ from typing import Any, Generator, Iterator, List, cast
 
 import numpy as np
 import pandas as pd
+from numpy.typing import NDArray
 from py4ai.core.tests.core import TestCase, logTest
 from py4ai.core.utils.fs import create_dir_if_not_exists
 
@@ -157,16 +158,16 @@ class TestLazyDataset(TestCase):
         lookback = 3
         batch_size = 4
 
-        lazyDat: LazyDataset[List[np.ndarray[Any, np.dtype[Any]]], float] = LazyDataset(
+        lazyDat: LazyDataset[List[NDArray[Any]], float] = LazyDataset(
             IterGenerator(samples_gen)
         )
-        lookbackDat: LazyDataset[
-            List[np.ndarray[Any, np.dtype[Any]]], float
-        ] = lazyDat.withLookback(lookback)
+        lookbackDat: LazyDataset[List[NDArray[Any]], float] = lazyDat.withLookback(
+            lookback
+        )
         batch_gen = lookbackDat.batch(batch_size)
 
-        batch1: CachedDataset[List[np.ndarray[Any, Any]], float] = next(batch_gen)
-        batch2: CachedDataset[List[np.ndarray[Any, Any]], float] = next(batch_gen)
+        batch1: CachedDataset[List[NDArray[Any]], float] = next(batch_gen)
+        batch2: CachedDataset[List[NDArray[Any]], float] = next(batch_gen)
 
         tmp1 = batch1.getFeaturesAs("array")
         temp1X = np.array(list(map(lambda x: np.stack(x), tmp1[:, :, 0])))
@@ -207,7 +208,7 @@ class TestLazyDataset(TestCase):
             Sample(features=np.array([116, 117]), label=9),
         ]
 
-        def samples_gen() -> Iterator[Sample[np.ndarray[Any, np.dtype[Any]], int]]:
+        def samples_gen() -> Iterator[Sample[NDArray[Any], int]]:
             for sample in samples:
                 if not any([np.isnan(x).any() for x in sample.features]):
                     yield sample
@@ -233,16 +234,14 @@ class TestLazyDataset(TestCase):
         lookback = 3
         batch_size = 4
 
-        lazyDat: LazyDataset[np.ndarray[Any, np.dtype[Any]], int] = LazyDataset(
+        lazyDat: LazyDataset[NDArray[Any], int] = LazyDataset(
             IterGenerator(samples_gen)
         )
-        lookbackDat: LazyDataset[
-            np.ndarray[Any, np.dtype[Any]], int
-        ] = lazyDat.withLookback(lookback)
+        lookbackDat: LazyDataset[NDArray[Any], int] = lazyDat.withLookback(lookback)
         batch_gen = lookbackDat.batch(batch_size)
 
-        batch1: CachedDataset[np.ndarray[Any, Any], int] = next(batch_gen)
-        batch2: CachedDataset[np.ndarray[Any, Any], int] = next(batch_gen)
+        batch1: CachedDataset[NDArray[Any], int] = next(batch_gen)
+        batch2: CachedDataset[NDArray[Any], int] = next(batch_gen)
 
         tmp1 = batch1.getFeaturesAs("array")
         tmp1lab = batch1.getLabelsAs("array")
