@@ -1,0 +1,37 @@
+py4ai.data.layer.sqlalchemy package
+===================================
+
+Submodules
+----------
+
+py4ai.data.layer.sqlalchemy.criteria module
+-------------------------------------------
+
+.. automodule:: py4ai.data.layer.sqlalchemy.criteria
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py4ai.data.layer.sqlalchemy.repository module
+---------------------------------------------
+
+.. automodule:: py4ai.data.layer.sqlalchemy.repository
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py4ai.data.layer.sqlalchemy.serializer module
+---------------------------------------------
+
+.. automodule:: py4ai.data.layer.sqlalchemy.serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: py4ai.data.layer.sqlalchemy
+   :members:
+   :undoc-members:
+   :show-inheritance:

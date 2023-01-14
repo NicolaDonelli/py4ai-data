@@ -1,0 +1,22 @@
+py4ai.data.layer package
+========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   py4ai.data.layer.common
+   py4ai.data.layer.fs
+   py4ai.data.layer.mongo
+   py4ai.data.layer.pandas
+   py4ai.data.layer.sqlalchemy
+
+Module contents
+---------------
+
+.. automodule:: py4ai.data.layer
+   :members:
+   :undoc-members:
+   :show-inheritance:

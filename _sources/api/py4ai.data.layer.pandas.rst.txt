@@ -1,0 +1,29 @@
+py4ai.data.layer.pandas package
+===============================
+
+Submodules
+----------
+
+py4ai.data.layer.pandas.criteria module
+---------------------------------------
+
+.. automodule:: py4ai.data.layer.pandas.criteria
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py4ai.data.layer.pandas.repository module
+-----------------------------------------
+
+.. automodule:: py4ai.data.layer.pandas.repository
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: py4ai.data.layer.pandas
+   :members:
+   :undoc-members:
+   :show-inheritance:

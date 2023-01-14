@@ -1,0 +1,37 @@
+py4ai.data.layer.mongo package
+==============================
+
+Submodules
+----------
+
+py4ai.data.layer.mongo.criteria module
+--------------------------------------
+
+.. automodule:: py4ai.data.layer.mongo.criteria
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py4ai.data.layer.mongo.repository module
+----------------------------------------
+
+.. automodule:: py4ai.data.layer.mongo.repository
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py4ai.data.layer.mongo.serializer module
+----------------------------------------
+
+.. automodule:: py4ai.data.layer.mongo.serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: py4ai.data.layer.mongo
+   :members:
+   :undoc-members:
+   :show-inheritance:

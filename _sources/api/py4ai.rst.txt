@@ -1,0 +1,12 @@
+py4ai namespace
+===============
+
+.. py:module:: py4ai
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   py4ai.data

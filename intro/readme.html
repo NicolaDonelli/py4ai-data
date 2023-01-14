@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>py4ai data &mdash; py4ai-data  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation" href="../userguide/index.html" />
+    <link rel="prev" title="Welcome to py4ai-data documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> py4ai-data
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Intro:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">py4ai data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-it">What is it ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-layers">Data layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-model">Data Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checks">Checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Data Layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#abstracting-data-querying">Abstracting Data Querying</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Data Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-contribute">How to contribute ?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#where-to-start">Where to start ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contributing-to-py4ai-data">Contributing to py4ai-data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userguide/index.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">py4ai</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">py4ai-data</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">py4ai data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/intro/readme.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="py4ai-data">
+<h1>py4ai data<a class="headerlink" href="#py4ai-data" title="Permalink to this heading"></a></h1>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/py4ai-data"><img alt="PyPI" src="https://img.shields.io/pypi/v/py4ai-data.svg" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/py4ai-data"><img alt="Python version" src="https://img.shields.io/badge/python-3.7+-blue.svg" /></a>
+<a class="reference external image-reference" href="https://py4ai.github.io/py4ai-data/"><img alt="Documentation" src="https://img.shields.io/badge/docs-latest-brightgreen.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/NicolaDonelli/py4ai-data/workflows/CI%20-%20Build%20and%20Test/badge.svg"><img alt="Python package" src="https://github.com/NicolaDonelli/py4ai-data/workflows/CI%20-%20Build%20and%20Test/badge.svg" /></a>
+<hr class="docutils" />
+<p>A Python library defining data structures optimized for machine learning pipelines</p>
+<section id="what-is-it">
+<h2>What is it ?<a class="headerlink" href="#what-is-it" title="Permalink to this heading"></a></h2>
+<p><strong>py4ai-data</strong> is a Python package with modular design that provides powerful abstractions to build data
+ingestion pipelines and run end to end machine learning pipelines.
+The library offers lightweight object-oriented interface to MongoDB as well as Pandas based data structures.
+The aim of the library is to provide extensive support for developing machine learning based applications
+with a focus on practicing clean code and modular design.</p>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<p>Some cool features that we are proud to mention are:</p>
+</section>
+<section id="id1">
+<h2>Features<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>Some cool features that we are proud to mention are:</p>
+<section id="data-layers">
+<h3>Data layers<a class="headerlink" href="#data-layers" title="Permalink to this heading"></a></h3>
+<p>The Data Layer abstractions are designed to decouple the business layers from
+the detail of the persistence layer implementation.
+We currently implemented a few data layers based on some common abstractions:</p>
+<ol class="arabic simple">
+<li><p>Repository: class representing the access point to data. Specifies the methods to read/write data from/to persistence layer. It must be instantiated by passing it a Serializer, to specify how to read/write data from/to persistence layer to/from memory.</p></li>
+<li><p>Serializer: class that specifies how to read/write data from/to persistence layer to/from memory.</p></li>
+<li><p>Criteria: class implementing query method to filter data retrieved from repository.
+The data layer currently implemented are:</p></li>
+</ol>
+<ul class="simple">
+<li><p>file-system: access generic data stored in the file system as generic files, handling them in memory as generic indexed objects.</p></li>
+<li><p>pandas: access tabular data stored in the file system as csv files, handling them in memory as pandas objects.</p></li>
+<li><p>mongo: access data stored in MongoDB. Serializers for this layer should be implemented by the user according to its specific needs.</p></li>
+<li><p>sqlalchemy: access data stored in a database handled with sqlalchemy ORM. Serializers for this layer should be implemented by the user according to its specific needs.</p></li>
+</ul>
+</section>
+<section id="data-model">
+<h3>Data Model<a class="headerlink" href="#data-model" title="Permalink to this heading"></a></h3>
+<p>Offers the following data structures:</p>
+<ol class="arabic simple">
+<li><p>Document : Data structure specifically designed to work with NLP applications that parses a json-like document
+into a couple of uuid and dictionary of information.</p></li>
+<li><p>Sample : Data structure representing an observation (a.k.a. sample) as used in machine learning applications</p></li>
+<li><p>MultiFeatureSample : Data structure representing an observation defined by a nested list of arrays.</p></li>
+<li><p>Dataset : Data structure designed to be used specifically for machine learning applications representing a collection
+of samples.</p></li>
+</ol>
+</section>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<p>From pypi server</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">py4ai</span><span class="o">-</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>From source</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NicolaDonelli</span><span class="o">/</span><span class="n">py4ai</span><span class="o">-</span><span class="n">data</span>
+<span class="n">cd</span> <span class="n">py4ai</span><span class="o">-</span><span class="n">data</span>
+<span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+</section>
+<section id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">tests</span>
+</pre></div>
+</div>
+</section>
+<section id="checks">
+<h2>Checks<a class="headerlink" href="#checks" title="Permalink to this heading"></a></h2>
+<p>To run predefined checks (unit-tests, linting checks, formatting checks and static typing checks):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">checks</span>
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<section id="id2">
+<h3>Data Layers<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>The Data Layer abstractions are designed to decouple the business layers from
+the detail of the persistence layer implementation. The basic abstraction that will
+make this possible is the <code class="docutils literal notranslate"><span class="pre">Repository</span></code>.</p>
+<p>As an example, imagine to have a domain business object <code class="docutils literal notranslate"><span class="pre">Entity</span></code> that associates some string data to an integer id.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="k">class</span> <span class="nc">Entity</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">my_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">my_data</span><span class="p">:</span> <span class="nb">str</span>
+</pre></div>
+</div>
+<p>To start with, imagine we want to use csv files store on disk as a persistence
+layer. To do so, we will use the <code class="docutils literal notranslate"><span class="pre">CsvRepository</span></code> that uses pandas DataFrames stored
+in memory and written to the disk as csv. Thus, we need to write the business logic
+to serialize the <code class="docutils literal notranslate"><span class="pre">Entity</span></code> into a row of the pandas DataFrame, i.e. a pandas Series:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">py4ai.data.layer.common.serialiazer</span> <span class="kn">import</span> <span class="n">DataSerializer</span>
+
+<span class="k">class</span> <span class="nc">EntitySerializer</span><span class="p">(</span><span class="n">DataSerializer</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">Entity</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">to_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="n">Entity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">to_entity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Entity</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Entity</span><span class="p">(</span><span class="o">**</span><span class="n">document</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">to_object_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">key</span>
+
+    <span class="k">def</span> <span class="nf">get_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="n">Entity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">entity</span><span class="o">.</span><span class="n">my_id</span>
+</pre></div>
+</div>
+<p>We can now instantiate the repository class that has all the methods for
+reading and writing objects from the persistence layer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">py4ai.data.layer.pandas.repository</span> <span class="kn">import</span> <span class="n">CsvRepository</span>
+
+<span class="n">repo</span> <span class="o">=</span> <span class="n">CsvRepository</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">EntitySerializer</span><span class="p">())</span>
+
+<span class="n">entity</span> <span class="o">=</span> <span class="n">Entity</span><span class="p">(</span><span class="n">my_id</span><span class="o">=</span><span class="mi">1234</span><span class="p">,</span> <span class="n">my_data</span><span class="o">=</span><span class="s2">&quot;Important data&quot;</span><span class="p">)</span>
+
+<span class="c1"># This will create the entity in the persistence layer</span>
+<span class="k">await</span> <span class="n">repo</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+
+<span class="c1"># Retrieving the entity</span>
+<span class="n">retrieved</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+
+<span class="c1"># Retrieving all entities</span>
+<span class="n">all_entities</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Imagine now that, given the data increase in size, we now would like to change the
+persistence layer with a proper backend into something more structured and scalable, such
+as a NoSQL document-based data platform, such as MongoDB. We only need to create
+a new business logic to serialize/deserialize our class into a json (represented
+in python by a dictionary):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bson</span> <span class="kn">import</span> <span class="n">ObjectId</span>
+<span class="kn">from</span> <span class="nn">py4ai.data.layer.mongo.serializer</span> <span class="kn">import</span> <span class="n">create_mongo_id</span>
+<span class="kn">from</span> <span class="nn">py4ai.data.layer.common.serialiazer</span> <span class="kn">import</span> <span class="n">DataSerializer</span>
+
+<span class="k">class</span> <span class="nc">MongoDataSerializer</span><span class="p">(</span><span class="n">DataSerializer</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">ObjectId</span><span class="p">,</span> <span class="n">Entity</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">get_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="n">Entity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">entity</span><span class="o">.</span><span class="n">my_id</span>
+
+    <span class="k">def</span> <span class="nf">to_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="n">Entity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+        <span class="n">doc</span><span class="p">[</span><span class="s2">&quot;_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_object_key</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_key</span><span class="p">(</span><span class="n">entity</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">doc</span>
+
+    <span class="k">def</span> <span class="nf">to_entity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">document</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Entity</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Entity</span><span class="p">(</span><span class="o">**</span><span class="n">document</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">to_object_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ObjectId</span><span class="p">:</span>
+        <span class="c1"># This converts a string into an hash compatible with MongoDB format</span>
+        <span class="k">return</span> <span class="n">create_mongo_id</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>A new repository based on the MongoDB persistence layer can now be created using</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">py4ai.data.layer.mongo.repository</span> <span class="kn">import</span> <span class="n">MongoRepository</span>
+
+<span class="n">repo</span> <span class="o">=</span> <span class="n">MongoRepository</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">MongoDataSerializer</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This repository is compatible with the previous and can be used in place of the
+previous one, having the same signatures.</p>
+<section id="abstracting-data-querying">
+<h4>Abstracting Data Querying<a class="headerlink" href="#abstracting-data-querying" title="Permalink to this heading"></a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">Repository</span></code> abstraction also allow to retrieve data based on certain queries/filters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entities</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">retrieve_by_query</span><span class="p">(</span><span class="n">criteria</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>However, the format of the query also depends on the type of the persistence layer and
+more specifically on how the data are organized. Therefore, in order to abstract
+and decouple the notion of the underlying persistence layer, we need to define a general
+class containing the possible queries for a certain database:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generic</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="kn">from</span> <span class="nn">py4ai.data.layer.common.criteria</span> <span class="kn">import</span> <span class="n">SearchCriteria</span>
+
+
+<span class="k">class</span> <span class="nc">EntityQueryFactory</span><span class="p">(</span><span class="n">ABC</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">Q</span><span class="p">]):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SearchCriteria</span><span class="p">[</span><span class="n">Q</span><span class="p">]:</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>When considering a particular persistence layer, the querying business logic
+needs to be specified</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">py4ai.data.layer.mongo.criteria</span> <span class="kn">import</span> <span class="n">MongoSearchCriteria</span>
+
+
+<span class="k">class</span> <span class="nc">MongoQueryFactory</span><span class="p">(</span><span class="n">EntityQueryFactory</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]):</span>
+
+    <span class="k">def</span> <span class="nf">by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">my_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MongoSearchCriteria</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">MongoSearchCriteria</span><span class="p">({</span><span class="s2">&quot;my_id&quot;</span><span class="p">:</span> <span class="n">my_id</span><span class="p">})</span>
+
+
+<span class="n">criteria</span> <span class="o">=</span> <span class="n">MongoQueryFactory</span><span class="p">()</span>
+
+<span class="n">entities</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">retrieve_by_query</span><span class="p">(</span><span class="n">criteria</span><span class="o">.</span><span class="n">by_id</span><span class="p">(</span><span class="mi">1234</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">SearchCriteria</span></code> can be also joined using logical operators:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entities</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">retrieve_by_query</span><span class="p">(</span>
+    <span class="n">criteria</span><span class="o">.</span><span class="n">by_id</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">criteria</span><span class="o">.</span><span class="n">by_id</span><span class="p">(</span><span class="mi">1235</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">entities</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">retrieve_by_query</span><span class="p">(</span>
+    <span class="n">criteria</span><span class="o">.</span><span class="n">by_id</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span> <span class="o">|</span> <span class="n">criteria</span><span class="o">.</span><span class="n">by_id</span><span class="p">(</span><span class="mi">1235</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id3">
+<h3>Data Model<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>The <em>data.model</em> module contains data structures commonly used.
+The most relevant structures defined in the <em>core</em> submodule are <code class="docutils literal notranslate"><span class="pre">CachedIterable</span></code> and <code class="docutils literal notranslate"><span class="pre">LazyIterable</span></code>
+that represent iterable objects that are either completely stored in memory or accessed lazily. In
+the same submodule we also define <code class="docutils literal notranslate"><span class="pre">Range</span></code> and <code class="docutils literal notranslate"><span class="pre">CompositeRange</span></code> that represent time and numeric ranges,
+either continuous or not, with methods to compare two instances checking for overlaps or performing
+range union by sum.</p>
+<p>The <em>ml</em> submodule on the other hand defines some data structures that are of common use in
+Machine Learning applications.
+The basic structure we define is the <code class="docutils literal notranslate"><span class="pre">Sample</span></code>, which is a simple serializable object characterized
+by a set of features, an optional set of labels and an optional name identifier:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Sample</span><span class="p">(</span><span class="n">DillSerialization</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">FeatType</span><span class="p">,</span> <span class="n">LabType</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for representing a sample/observation.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">features</span><span class="p">:</span> <span class="n">FeatType</span><span class="p">,</span>
+        <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LabType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return an object representing a single sample of a training or test set.</span>
+
+<span class="sd">        :param features: features of the sample</span>
+<span class="sd">        :param label: labels of the sample (optional)</span>
+<span class="sd">        :param name: id of the sample (optional)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span> <span class="n">FeatType</span> <span class="o">=</span> <span class="n">features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LabType</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>We also define a specialization of this class, called <code class="docutils literal notranslate"><span class="pre">MultiFeatureSample</span></code>,
+thought for Deep Learning applications, for which the features attribute is a list of numpy arrays.
+The most used objects defined in this module are the datasets, which represents collections of Samples
+in various fashions. All the datasets share some common method allowing to retrieve the type of the Samples,
+to check the names of the samples, to retrieve features and labels in a form to be chosen among
+<code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, or a generator of samples. In particular, we defined:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LazyDataset</span></code>: a collection with lazy access to samples</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CachedDataset</span></code>: a collection of samples fully stored in memory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PandasDataset</span></code>: a collection of samples, fully stored in memory, where features and labels are pd.DataFrames</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PandasTimeIndexedDataset</span></code>: a collection of samples, fully stored in memory, where features and labels are pd.DataFrames with time index</p></li>
+</ul>
+<p>Creating a PandasDataset object</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">py4ai.data.model.ml</span> <span class="kn">import</span> <span class="n">PandasDataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">PandasDataset</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;feat1&quot;</span><span class="p">),</span>
+                                            <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;feat2&quot;</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                        <span class="n">labels</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Label&quot;</span><span class="p">))</span>
+
+<span class="c1"># access features as a pandas dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># access labels as pandas dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># access features as a python dictionary</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">getFeaturesAs</span><span class="p">(</span><span class="s1">&#39;dict&#39;</span><span class="p">)</span>
+<span class="c1"># access features as numpy array</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">getFeaturesAs</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">)</span>
+
+<span class="c1"># indexing operations</span>
+<span class="c1"># access features and labels at the given index as a pandas dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Creating a PandasTimeIndexedDataset object</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">py4ai.data.model.ml</span> <span class="kn">import</span> <span class="n">PandasTimeIndexedDataset</span>
+
+<span class="n">dateStr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2010-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2010-01-04&#39;</span><span class="p">)]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">PandasTimeIndexedDataset</span><span class="p">(</span>
+    <span class="n">features</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">dateStr</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;feat1&quot;</span><span class="p">),</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">dateStr</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;feat2&quot;</span><span class="p">)</span>
+    <span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="how-to-contribute">
+<h2>How to contribute ?<a class="headerlink" href="#how-to-contribute" title="Permalink to this heading"></a></h2>
+<p>We are very much willing to welcome any kind of contribution whether it is bug report, bug fixes, contributions to the
+existing codebase or improving the documentation.</p>
+<section id="where-to-start">
+<h3>Where to start ?<a class="headerlink" href="#where-to-start" title="Permalink to this heading"></a></h3>
+<p>Please look at the <a class="reference external" href="https://github.com/NicolaDonelli/py4ai-data/issues">Github issues tab</a> to start working on open
+issues</p>
+</section>
+<section id="contributing-to-py4ai-data">
+<h3>Contributing to py4ai-data<a class="headerlink" href="#contributing-to-py4ai-data" title="Permalink to this heading"></a></h3>
+<p>Please make sure the general guidelines for contributing to the code base are respected</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects">Fork</a> the py4ai-data repository.</p></li>
+<li><p>Create/choose an issue to work on in the <a class="reference external" href="https://github.com/NicolaDonelli/py4ai-data/issues">Github issues page</a>.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/get-started/quickstart/github-flow">Create a new branch</a> to work on the issue.</p></li>
+<li><p>Commit your changes and run the tests to make sure the changes do not break any test.</p></li>
+<li><p>Open a Pull Request on Github referencing the issue.</p></li>
+<li><p>Once the PR is approved, the maintainers will merge it on the main branch.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to py4ai-data documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../userguide/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Nicola Donelli &amp; Enrico Deusebio.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
