@@ -97,8 +97,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="py4ai-data-datasets-package">
-<h1>py4ai.data.datasets package<a class="headerlink" href="#py4ai-data-datasets-package" title="Permalink to this heading"></a></h1>
+  <section id="module-py4ai.data.datasets">
+<span id="py4ai-data-datasets-package"></span><h1>py4ai.data.datasets package<a class="headerlink" href="#module-py4ai.data.datasets" title="Permalink to this heading"></a></h1>
+<p>Module containing samples datasets to be used for testing.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="py4ai.data.datasets.get_unbalanced_dataset">
+<span class="sig-prename descclassname"><span class="pre">py4ai.data.datasets.</span></span><span class="sig-name descname"><span class="pre">get_unbalanced_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/home/runner/work/py4ai-data/py4ai-data/py4ai/data/datasets/data/unbalanced_features.p'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/home/runner/work/py4ai-data/py4ai-data/py4ai/data/datasets/data/unbalanced_labels.p'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset" title="py4ai.data.model.ml.PandasDataset"><span class="pre">PandasDataset</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.datasets.get_unbalanced_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>Return unbalanced dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features_file</strong> – name of the pickle file where the features data are stored.</p></li>
+<li><p><strong>labels_file</strong> – name of the pickle file where the labels data are stored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>PandasDataset object with unbalanced classes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py4ai.data.datasets.get_weather_nyc_dataset">
+<span class="sig-prename descclassname"><span class="pre">py4ai.data.datasets.</span></span><span class="sig-name descname"><span class="pre">get_weather_nyc_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/home/runner/work/py4ai-data/py4ai-data/py4ai/data/datasets/data/weather_nyc_short.csv'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasTimeIndexedDataset" title="py4ai.data.model.ml.PandasTimeIndexedDataset"><span class="pre">PandasTimeIndexedDataset</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.datasets.get_weather_nyc_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>Return the NYC Weather dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – name of the csv file where the Weather NYC data are stored.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>PandasTimeIndexedDataset object with the NYC Weather dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

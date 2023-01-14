@@ -98,8 +98,630 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="py4ai-data-model-ml-module">
-<h1>py4ai.data.model.ml module<a class="headerlink" href="#py4ai-data-model-ml-module" title="Permalink to this heading"></a></h1>
+  <section id="module-py4ai.data.model.ml">
+<span id="py4ai-data-model-ml-module"></span><h1>py4ai.data.model.ml module<a class="headerlink" href="#module-py4ai.data.model.ml" title="Permalink to this heading"></a></h1>
+<p>Module for specifying data-models to be used in modelling.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.CachedDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.ml.</span></span><span class="sig-name descname"><span class="pre">CachedDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.ml.CachedDataset" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#py4ai.data.model.ml.DatasetUtilsMixin" title="py4ai.data.model.ml.DatasetUtilsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetUtilsMixin</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>], <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.CachedIterable" title="py4ai.data.model.core.CachedIterable"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedIterable</span></code></a>[<a class="reference internal" href="#py4ai.data.model.ml.Sample" title="py4ai.data.model.ml.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>]], <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.DillSerialization" title="py4ai.data.model.core.DillSerialization"><code class="xref py py-class docutils literal notranslate"><span class="pre">DillSerialization</span></code></a></p>
+<p>Class that represents dataset cached in-memory, derived by a cached iterables of samples.</p>
+<p>Return instance of a class to be used for implementing cached iterables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> – sequence or iterable of elements</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.CachedDataset.cached_type">
+<span class="sig-name descname"><span class="pre">cached_type</span></span><a class="headerlink" href="#py4ai.data.model.ml.CachedDataset.cached_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.ml.CachedDataset" title="py4ai.data.model.ml.CachedDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedDataset</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.CachedDataset.lazy_type">
+<span class="sig-name descname"><span class="pre">lazy_type</span></span><a class="headerlink" href="#py4ai.data.model.ml.CachedDataset.lazy_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.ml.LazyDataset" title="py4ai.data.model.ml.LazyDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LazyDataset</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.CachedDataset.to_df">
+<span class="sig-name descname"><span class="pre">to_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#py4ai.data.model.ml.CachedDataset.to_df" title="Permalink to this definition"></a></dt>
+<dd><p>Reformat the Features and Labels as a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>DataFrame, Dataframe with features and labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.CachedDataset.union">
+<span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TDatasetUtilsMixin</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.model.ml.CachedDataset" title="py4ai.data.model.ml.CachedDataset"><span class="pre">CachedDataset</span></a><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.CachedDataset.union" title="Permalink to this definition"></a></dt>
+<dd><p>Perform union on CachedDatasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> – CachedDataset</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>union of current and other CachedDataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.DatasetUtilsMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.ml.</span></span><span class="sig-name descname"><span class="pre">DatasetUtilsMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.ml.DatasetUtilsMixin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.IterableUtilsMixin" title="py4ai.data.model.core.IterableUtilsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterableUtilsMixin</span></code></a>[<a class="reference internal" href="#py4ai.data.model.ml.Sample" title="py4ai.data.model.ml.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">LazyDataset[FeatType,</span> <span class="pre">LabType]</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CachedDataset[FeatType,</span> <span class="pre">LabType]</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base class for representing datasets as iterable over Samples.</p>
+<p>Create a new instance of this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> – parent object class</p></li>
+<li><p><strong>args</strong> – passed to the super class __new__ method</p></li>
+<li><p><strong>kwargs</strong> – passed to the super class __new__ method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – if the cached and lazy versions were not defined before instantiating the class</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an instance of this class</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.DatasetUtilsMixin.asPandasDataset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asPandasDataset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.model.ml.PandasDataset" title="py4ai.data.model.ml.PandasDataset"><span class="pre">PandasDataset</span></a><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.ml.DatasetUtilsMixin.asPandasDataset" title="Permalink to this definition"></a></dt>
+<dd><p>Cast object as a PandasDataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.DatasetUtilsMixin.cached_type">
+<span class="sig-name descname"><span class="pre">cached_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">CachedIterableType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.ml.DatasetUtilsMixin.cached_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.DatasetUtilsMixin.checkNames">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checkNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.DatasetUtilsMixin.checkNames" title="Permalink to this definition"></a></dt>
+<dd><p>Check that feature names comply with format and cast them to either string or int.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – feature name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>name as int or str</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>AttributeError</strong> – if x is none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.DatasetUtilsMixin.getFeaturesAs">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'array'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.DatasetUtilsMixin.getFeaturesAs" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'pandas'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'dict'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'list'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'lazy'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><p>Return object of the specified type containing the feature space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> – type of return. Can be one of “pandas”, “dict”, “list” or “array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an object of the specified type containing the features</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if the provided type is not one of the allowed ones</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.DatasetUtilsMixin.getLabelsAs">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'array'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.DatasetUtilsMixin.getLabelsAs" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'pandas'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'dict'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'list'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'lazy'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><p>Return an object of the specified type containing the labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> – type of return. Can be one of “pandas”, “dict”, “list” or “array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an object of the specified type containing the features</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if the provided type is not one of the allowed ones</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.DatasetUtilsMixin.lazy_type">
+<span class="sig-name descname"><span class="pre">lazy_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">LazyIterableType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.ml.DatasetUtilsMixin.lazy_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.DatasetUtilsMixin.type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#py4ai.data.model.ml.Sample" title="py4ai.data.model.ml.Sample"><span class="pre">Sample</span></a><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.ml.DatasetUtilsMixin.type" title="Permalink to this definition"></a></dt>
+<dd><p>Return the type of the objects in the Iterable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>type of the object of the iterable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.DatasetUtilsMixin.union">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TDatasetUtilsMixin</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.model.ml.DatasetUtilsMixin" title="py4ai.data.model.ml.DatasetUtilsMixin"><span class="pre">DatasetUtilsMixin</span></a><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.DatasetUtilsMixin.union" title="Permalink to this definition"></a></dt>
+<dd><p>Return a union of datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> – other dataset to join</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>union dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.LazyDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.ml.</span></span><span class="sig-name descname"><span class="pre">LazyDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.ml.LazyDataset" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.LazyIterable" title="py4ai.data.model.core.LazyIterable"><code class="xref py py-class docutils literal notranslate"><span class="pre">LazyIterable</span></code></a>[<a class="reference internal" href="#py4ai.data.model.ml.Sample" title="py4ai.data.model.ml.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>]], <a class="reference internal" href="#py4ai.data.model.ml.DatasetUtilsMixin" title="py4ai.data.model.ml.DatasetUtilsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetUtilsMixin</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>]</p>
+<p>Class that represents dataset derived by a lazy iterable of samples.</p>
+<p>Return an instance of the class to be used for implementing lazy iterables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> – IterGenerator containing the generator of items</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.LazyDataset.cached_type">
+<span class="sig-name descname"><span class="pre">cached_type</span></span><a class="headerlink" href="#py4ai.data.model.ml.LazyDataset.cached_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.ml.CachedDataset" title="py4ai.data.model.ml.CachedDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedDataset</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.LazyDataset.features">
+<span class="sig-name descname"><span class="pre">features</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.LazyDataset.features" title="Permalink to this definition"></a></dt>
+<dd><p>Return an iterator over sample features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>iterable of features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.LazyDataset.getFeaturesAs">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'array'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.LazyDataset.getFeaturesAs" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'pandas'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'dict'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'list'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'lazy'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><p>Return object of the specified type containing the feature space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> – type of return. Can be one of “pandas”, “dict”, “list” or “array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an object of the specified type containing the features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.LazyDataset.getLabelsAs">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'array'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.LazyDataset.getLabelsAs" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'pandas'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'dict'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'list'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'lazy'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><p>Return an object of the specified type containing the labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> – type of return. Can be one of “pandas”, “dict”, “list”, “array” or iterators</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an object of the specified type containing the features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.LazyDataset.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.LazyDataset.labels" title="Permalink to this definition"></a></dt>
+<dd><p>Return an iterator over sample labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>iterable of labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.LazyDataset.lazy_type">
+<span class="sig-name descname"><span class="pre">lazy_type</span></span><a class="headerlink" href="#py4ai.data.model.ml.LazyDataset.lazy_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.ml.LazyDataset" title="py4ai.data.model.ml.LazyDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LazyDataset</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.LazyDataset.union">
+<span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TDatasetUtilsMixin</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.model.ml.LazyDataset" title="py4ai.data.model.ml.LazyDataset"><span class="pre">LazyDataset</span></a><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.LazyDataset.union" title="Permalink to this definition"></a></dt>
+<dd><p>Perform union on LazyDatasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> – LazyDataset</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>union of LazyDatasets</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.LazyDataset.withLookback">
+<span class="sig-name descname"><span class="pre">withLookback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lookback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.model.ml.LazyDataset" title="py4ai.data.model.ml.LazyDataset"><span class="pre">LazyDataset</span></a><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.LazyDataset.withLookback" title="Permalink to this definition"></a></dt>
+<dd><p>Create a LazyDataset with features that are an array of <code class="docutils literal notranslate"><span class="pre">lookback</span></code> lists of samples’ features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lookback</strong> – number of samples’ features to look at</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">LazyDataset</span></code> with changed samples</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.MultiFeatureSample">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.ml.</span></span><span class="sig-name descname"><span class="pre">MultiFeatureSample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.ml.MultiFeatureSample" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#py4ai.data.model.ml.Sample" title="py4ai.data.model.ml.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>], <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>]</p>
+<p>Class representing an observation defined by a nested list of arrays.</p>
+<p>Object representing a single sample of a training or test set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features</strong> – features of the sample</p></li>
+<li><p><strong>label</strong> – labels of the sample (optional)</p></li>
+<li><p><strong>name</strong> – id of the sample (optional)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.ml.</span></span><span class="sig-name descname"><span class="pre">PandasDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>], <a class="reference internal" href="#py4ai.data.model.ml.DatasetUtilsMixin" title="py4ai.data.model.ml.DatasetUtilsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetUtilsMixin</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>], <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.DillSerialization" title="py4ai.data.model.core.DillSerialization"><code class="xref py py-class docutils literal notranslate"><span class="pre">DillSerialization</span></code></a></p>
+<p>Dataset represented via pandas Dataframes for features and labels.</p>
+<p>Return a datastructure built on top of pandas dataframes.</p>
+<p>The PandasDataFrame allows to pack features and labels together and obtain features and labels  as a pandas
+dataframe, numpy array or a dictionary. For unsupervised learning tasks the labels are left as None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features</strong> – a dataframe or a series of features</p></li>
+<li><p><strong>labels</strong> – a dataframe or a series of labels. None in case no labels are present.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – if the labels or features are not DataFrames nor Series</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.cached">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cached</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.cached" title="Permalink to this definition"></a></dt>
+<dd><p>Return whether the dataset is cached or not in memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.cached_type">
+<span class="sig-name descname"><span class="pre">cached_type</span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.cached_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.ml.PandasDataset" title="py4ai.data.model.ml.PandasDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">PandasDataset</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.createObject">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">createObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TPandasDataset</span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.createObject" title="Permalink to this definition"></a></dt>
+<dd><p>Create a PandasDataset object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features</strong> – features as pandas dataframe/series</p></li>
+<li><p><strong>labels</strong> – labels as pandas dataframe/series</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <code class="docutils literal notranslate"><span class="pre">PandasDataset</span></code> object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.dropna">
+<span class="sig-name descname"><span class="pre">dropna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TPandasDataset</span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.dropna" title="Permalink to this definition"></a></dt>
+<dd><p>Drop NAs from feature and labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – keyworded arguments are passed to dropna</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">PandasDataset</span></code> with features and labels without NAs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.empty">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TPandasDataset</span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.empty" title="Permalink to this definition"></a></dt>
+<dd><p>Return empty object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Empty instance of class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.features">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.features" title="Permalink to this definition"></a></dt>
+<dd><p>Get features as pandas dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.from_sequence">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TPandasDataset</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TPandasDataset</span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.from_sequence" title="Permalink to this definition"></a></dt>
+<dd><p>Create a PandasDataset from a list of pandas datasets using pd.concat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datasets</strong> – list of PandasDatasets</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">PandasDataset</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.getFeaturesAs">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'array'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.getFeaturesAs" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'pandas'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'dict'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'list'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getFeaturesAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'lazy'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><p>Get features as numpy array, pandas dataframe or dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> – str, default is ‘array’, can be ‘array’,’pandas’,’dict’</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>features according to the given type</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – provided type not allowed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.getLabelsAs">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'array'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.getLabelsAs" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'pandas'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'dict'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'list'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">getLabelsAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'lazy'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><p>Get labels as numpy array, pandas dataframe or dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> – str, default is ‘array’, can be ‘array’,’pandas’,’dict’</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>labels according to the given type</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – provided type not allowed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.index">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Index</span></em><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.index" title="Permalink to this definition"></a></dt>
+<dd><p>Get Dataset index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>pd.Index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.intersection">
+<span class="sig-name descname"><span class="pre">intersection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TPandasDataset</span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.intersection" title="Permalink to this definition"></a></dt>
+<dd><p>Intersect feature and labels indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">PandasDataset</span></code> with features and labels with intersected indices</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.items">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">items</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#py4ai.data.model.ml.Sample" title="py4ai.data.model.ml.Sample"><span class="pre">Sample</span></a><span class="p"><span class="pre">[</span></span><span class="pre">FeatType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.items" title="Permalink to this definition"></a></dt>
+<dd><p>Get features as an iterator of Samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Yield</dt>
+<dd class="field-odd"><p>Iterator of objects of <a class="reference internal" href="#py4ai.data.model.ml.Sample" title="py4ai.data.model.ml.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">py4ai.data.model.ml.Sample</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.labels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">labels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.labels" title="Permalink to this definition"></a></dt>
+<dd><p>Get labels as a pandas dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.lazy_type">
+<span class="sig-name descname"><span class="pre">lazy_type</span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.lazy_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.ml.LazyDataset" title="py4ai.data.model.ml.LazyDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LazyDataset</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.loc">
+<span class="sig-name descname"><span class="pre">loc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TPandasDataset</span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.loc" title="Permalink to this definition"></a></dt>
+<dd><p>Find given indices in features and labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> – input indices</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>PandasDataset with features and labels filtered on input indices</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.takeAsPandas">
+<span class="sig-name descname"><span class="pre">takeAsPandas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TPandasDataset</span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.takeAsPandas" title="Permalink to this definition"></a></dt>
+<dd><p>Return top n records as a PandasDataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – int specifying number of records to output</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">PandasDataset</span></code> of length n</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasDataset.union">
+<span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TPandasDataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TPandasDataset</span></span></span><a class="headerlink" href="#py4ai.data.model.ml.PandasDataset.union" title="Permalink to this definition"></a></dt>
+<dd><p>Return a union between PandasDatasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> – Dataset to be merged</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dataset resulting from the merge</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.PandasTimeIndexedDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.ml.</span></span><span class="sig-name descname"><span class="pre">PandasTimeIndexedDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.ml.PandasTimeIndexedDataset" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#py4ai.data.model.ml.PandasDataset" title="py4ai.data.model.ml.PandasDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">PandasDataset</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>]</p>
+<p>Class to be used for datasets that have time-indexed samples.</p>
+<p>Return a datastructure built on top of pandas dataframes that allows to pack features and labels that are time indexed.</p>
+<p>Features and labels can be obtained as a pandas dataframe, numpy array or a dictionary.
+For unsupervised learning tasks the labels are left as None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features</strong> – pandas dataframe/series where index elements are dates in string format</p></li>
+<li><p><strong>labels</strong> – pandas dataframe/series where index elements are dates in string format</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.Sample">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.ml.</span></span><span class="sig-name descname"><span class="pre">Sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FeatType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">LabType</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.ml.Sample" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.DillSerialization" title="py4ai.data.model.core.DillSerialization"><code class="xref py py-class docutils literal notranslate"><span class="pre">DillSerialization</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">FeatType</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">LabType</span></code>]</p>
+<p>Base class for representing a sample/observation.</p>
+<p>Return an object representing a single sample of a training or test set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features</strong> – features of the sample</p></li>
+<li><p><strong>label</strong> – labels of the sample (optional)</p></li>
+<li><p><strong>name</strong> – id of the sample (optional)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py4ai.data.model.ml.features_and_labels_to_dataset">
+<span class="sig-prename descclassname"><span class="pre">py4ai.data.model.ml.</span></span><span class="sig-name descname"><span class="pre">features_and_labels_to_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.model.ml.CachedDataset" title="py4ai.data.model.ml.CachedDataset"><span class="pre">CachedDataset</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.ml.features_and_labels_to_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>Pack features and labels into a CachedDataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – features which can be a pandas dataframe or a pandas series object</p></li>
+<li><p><strong>y</strong> – labels which can be a pandas dataframe or a pandas series object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an instance of <a class="reference internal" href="#py4ai.data.model.ml.CachedDataset" title="py4ai.data.model.ml.CachedDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">py4ai.data.model.ml.CachedDataset</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

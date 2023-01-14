@@ -94,7 +94,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="py4ai.data.html">py4ai.data package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="py4ai.data.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="py4ai.data.datasets.html">py4ai.data.datasets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.datasets.html">py4ai.data.datasets package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py4ai.data.datasets.html#py4ai.data.datasets.get_unbalanced_dataset"><code class="docutils literal notranslate"><span class="pre">get_unbalanced_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="py4ai.data.datasets.html#py4ai.data.datasets.get_weather_nyc_dataset"><code class="docutils literal notranslate"><span class="pre">get_weather_nyc_dataset()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.html">py4ai.data.layer package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="py4ai.data.layer.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="py4ai.data.layer.common.html">py4ai.data.layer.common package</a><ul>
@@ -442,7 +446,62 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="py4ai.data.model.ml.html">py4ai.data.model.ml module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="py4ai.data.model.ml.html">py4ai.data.model.ml module</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.CachedDataset"><code class="docutils literal notranslate"><span class="pre">CachedDataset</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.CachedDataset.cached_type"><code class="docutils literal notranslate"><span class="pre">CachedDataset.cached_type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.CachedDataset.lazy_type"><code class="docutils literal notranslate"><span class="pre">CachedDataset.lazy_type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.CachedDataset.to_df"><code class="docutils literal notranslate"><span class="pre">CachedDataset.to_df()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.CachedDataset.union"><code class="docutils literal notranslate"><span class="pre">CachedDataset.union()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.DatasetUtilsMixin"><code class="docutils literal notranslate"><span class="pre">DatasetUtilsMixin</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.DatasetUtilsMixin.asPandasDataset"><code class="docutils literal notranslate"><span class="pre">DatasetUtilsMixin.asPandasDataset</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.DatasetUtilsMixin.cached_type"><code class="docutils literal notranslate"><span class="pre">DatasetUtilsMixin.cached_type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.DatasetUtilsMixin.checkNames"><code class="docutils literal notranslate"><span class="pre">DatasetUtilsMixin.checkNames()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.DatasetUtilsMixin.getFeaturesAs"><code class="docutils literal notranslate"><span class="pre">DatasetUtilsMixin.getFeaturesAs()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.DatasetUtilsMixin.getLabelsAs"><code class="docutils literal notranslate"><span class="pre">DatasetUtilsMixin.getLabelsAs()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.DatasetUtilsMixin.lazy_type"><code class="docutils literal notranslate"><span class="pre">DatasetUtilsMixin.lazy_type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.DatasetUtilsMixin.type"><code class="docutils literal notranslate"><span class="pre">DatasetUtilsMixin.type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.DatasetUtilsMixin.union"><code class="docutils literal notranslate"><span class="pre">DatasetUtilsMixin.union()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.LazyDataset"><code class="docutils literal notranslate"><span class="pre">LazyDataset</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.LazyDataset.cached_type"><code class="docutils literal notranslate"><span class="pre">LazyDataset.cached_type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.LazyDataset.features"><code class="docutils literal notranslate"><span class="pre">LazyDataset.features()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.LazyDataset.getFeaturesAs"><code class="docutils literal notranslate"><span class="pre">LazyDataset.getFeaturesAs()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.LazyDataset.getLabelsAs"><code class="docutils literal notranslate"><span class="pre">LazyDataset.getLabelsAs()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.LazyDataset.labels"><code class="docutils literal notranslate"><span class="pre">LazyDataset.labels()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.LazyDataset.lazy_type"><code class="docutils literal notranslate"><span class="pre">LazyDataset.lazy_type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.LazyDataset.union"><code class="docutils literal notranslate"><span class="pre">LazyDataset.union()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.LazyDataset.withLookback"><code class="docutils literal notranslate"><span class="pre">LazyDataset.withLookback()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.MultiFeatureSample"><code class="docutils literal notranslate"><span class="pre">MultiFeatureSample</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset"><code class="docutils literal notranslate"><span class="pre">PandasDataset</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.cached"><code class="docutils literal notranslate"><span class="pre">PandasDataset.cached</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.cached_type"><code class="docutils literal notranslate"><span class="pre">PandasDataset.cached_type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.createObject"><code class="docutils literal notranslate"><span class="pre">PandasDataset.createObject()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.dropna"><code class="docutils literal notranslate"><span class="pre">PandasDataset.dropna()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.empty"><code class="docutils literal notranslate"><span class="pre">PandasDataset.empty()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.features"><code class="docutils literal notranslate"><span class="pre">PandasDataset.features</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.from_sequence"><code class="docutils literal notranslate"><span class="pre">PandasDataset.from_sequence()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.getFeaturesAs"><code class="docutils literal notranslate"><span class="pre">PandasDataset.getFeaturesAs()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.getLabelsAs"><code class="docutils literal notranslate"><span class="pre">PandasDataset.getLabelsAs()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.index"><code class="docutils literal notranslate"><span class="pre">PandasDataset.index</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.intersection"><code class="docutils literal notranslate"><span class="pre">PandasDataset.intersection()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.items"><code class="docutils literal notranslate"><span class="pre">PandasDataset.items</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.labels"><code class="docutils literal notranslate"><span class="pre">PandasDataset.labels</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.lazy_type"><code class="docutils literal notranslate"><span class="pre">PandasDataset.lazy_type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.loc"><code class="docutils literal notranslate"><span class="pre">PandasDataset.loc()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.takeAsPandas"><code class="docutils literal notranslate"><span class="pre">PandasDataset.takeAsPandas()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasDataset.union"><code class="docutils literal notranslate"><span class="pre">PandasDataset.union()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.PandasTimeIndexedDataset"><code class="docutils literal notranslate"><span class="pre">PandasTimeIndexedDataset</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.Sample"><code class="docutils literal notranslate"><span class="pre">Sample</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.ml.html#py4ai.data.model.ml.features_and_labels_to_dataset"><code class="docutils literal notranslate"><span class="pre">features_and_labels_to_dataset()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l5"><a class="reference internal" href="py4ai.data.model.text.html">py4ai.data.model.text module</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.text.html#py4ai.data.model.text.CachedDocuments"><code class="docutils literal notranslate"><span class="pre">CachedDocuments</span></code></a><ul>
 <li class="toctree-l7"><a class="reference internal" href="py4ai.data.model.text.html#py4ai.data.model.text.CachedDocuments.cached_type"><code class="docutils literal notranslate"><span class="pre">CachedDocuments.cached_type</span></code></a></li>
