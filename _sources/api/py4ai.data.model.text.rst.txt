@@ -1,0 +1,7 @@
+py4ai.data.model.text module
+============================
+
+.. automodule:: py4ai.data.model.text
+   :members:
+   :undoc-members:
+   :show-inheritance:

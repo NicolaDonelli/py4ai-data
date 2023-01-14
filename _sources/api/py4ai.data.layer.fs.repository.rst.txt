@@ -1,0 +1,7 @@
+py4ai.data.layer.fs.repository module
+=====================================
+
+.. automodule:: py4ai.data.layer.fs.repository
+   :members:
+   :undoc-members:
+   :show-inheritance:

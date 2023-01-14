@@ -43,21 +43,20 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">py4ai data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-it">What is it ?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Features</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#data-layers">Data layers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-model">Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Data layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Data Model</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tests">Tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#checks">Checks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Data Layers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Data Layers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#abstracting-data-querying">Abstracting Data Querying</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Data Model</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-contribute">How to contribute ?</a><ul>
@@ -104,7 +103,7 @@
   <section id="py4ai-data">
 <h1>py4ai data<a class="headerlink" href="#py4ai-data" title="Permalink to this heading"></a></h1>
 <a class="reference external image-reference" href="https://pypi.python.org/pypi/py4ai-data"><img alt="PyPI" src="https://img.shields.io/pypi/v/py4ai-data.svg" /></a>
-<a class="reference external image-reference" href="https://pypi.python.org/pypi/py4ai-data"><img alt="Python version" src="https://img.shields.io/badge/python-3.7+-blue.svg" /></a>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/py4ai-data"><img alt="Python version" src="https://img.shields.io/badge/python-3.8+-blue.svg" /></a>
 <a class="reference external image-reference" href="https://py4ai.github.io/py4ai-data/"><img alt="Documentation" src="https://img.shields.io/badge/docs-latest-brightgreen.svg" /></a>
 <a class="reference external image-reference" href="https://github.com/NicolaDonelli/py4ai-data/workflows/CI%20-%20Build%20and%20Test/badge.svg"><img alt="Python package" src="https://github.com/NicolaDonelli/py4ai-data/workflows/CI%20-%20Build%20and%20Test/badge.svg" /></a>
 <hr class="docutils" />
@@ -115,17 +114,14 @@
 ingestion pipelines and run end to end machine learning pipelines.
 The library offers lightweight object-oriented interface to MongoDB as well as Pandas based data structures.
 The aim of the library is to provide extensive support for developing machine learning based applications
-with a focus on practicing clean code and modular design.</p>
+with a focus on practicing clean code and modular design.
+The detailed documentation for all its features is available <a class="reference external" href="https://nicoladonelli.github.io/py4ai-data/intro/readme.html">here</a>.</p>
 </section>
 <section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
 <p>Some cool features that we are proud to mention are:</p>
-</section>
 <section id="id1">
-<h2>Features<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<p>Some cool features that we are proud to mention are:</p>
-<section id="data-layers">
-<h3>Data layers<a class="headerlink" href="#data-layers" title="Permalink to this heading"></a></h3>
+<h3><a class="reference external" href="https://nicoladonelli.github.io/py4ai-data/api/py4ai.data.layer.html">Data layers</a><a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>The Data Layer abstractions are designed to decouple the business layers from
 the detail of the persistence layer implementation.
 We currently implemented a few data layers based on some common abstractions:</p>
@@ -142,8 +138,8 @@ The data layer currently implemented are:</p></li>
 <li><p>sqlalchemy: access data stored in a database handled with sqlalchemy ORM. Serializers for this layer should be implemented by the user according to its specific needs.</p></li>
 </ul>
 </section>
-<section id="data-model">
-<h3>Data Model<a class="headerlink" href="#data-model" title="Permalink to this heading"></a></h3>
+<section id="id2">
+<h3><a class="reference external" href="https://nicoladonelli.github.io/py4ai-data/api/py4ai.data.model.html">Data Model</a><a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <p>Offers the following data structures:</p>
 <ol class="arabic simple">
 <li><p>Document : Data structure specifically designed to work with NLP applications that parses a json-like document
@@ -183,8 +179,8 @@ of samples.</p></li>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
-<section id="id2">
-<h3>Data Layers<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<section id="id3">
+<h3>Data Layers<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <p>The Data Layer abstractions are designed to decouple the business layers from
 the detail of the persistence layer implementation. The basic abstraction that will
 make this possible is the <code class="docutils literal notranslate"><span class="pre">Repository</span></code>.</p>
@@ -319,8 +315,8 @@ needs to be specified</p>
 </div>
 </section>
 </section>
-<section id="id3">
-<h3>Data Model<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<section id="id4">
+<h3>Data Model<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <p>The <em>data.model</em> module contains data structures commonly used.
 The most relevant structures defined in the <em>core</em> submodule are <code class="docutils literal notranslate"><span class="pre">CachedIterable</span></code> and <code class="docutils literal notranslate"><span class="pre">LazyIterable</span></code>
 that represent iterable objects that are either completely stored in memory or accessed lazily. In

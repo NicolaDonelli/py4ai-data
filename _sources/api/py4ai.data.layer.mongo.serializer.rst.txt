@@ -1,0 +1,7 @@
+py4ai.data.layer.mongo.serializer module
+========================================
+
+.. automodule:: py4ai.data.layer.mongo.serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:

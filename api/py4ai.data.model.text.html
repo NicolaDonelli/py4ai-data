@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>py4ai.data.model.text module &mdash; py4ai-data  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="py4ai.data.exceptions module" href="py4ai.data.exceptions.html" />
+    <link rel="prev" title="py4ai.data.model.ml module" href="py4ai.data.model.ml.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> py4ai-data
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Intro:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/readme.html">py4ai data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userguide/index.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">py4ai</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="py4ai.html">py4ai namespace</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="py4ai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="py4ai.data.html">py4ai.data package</a><ul class="current">
+<li class="toctree-l5 current"><a class="reference internal" href="py4ai.data.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.datasets.html">py4ai.data.datasets package</a></li>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.layer.html">py4ai.data.layer package</a></li>
+<li class="toctree-l6 current"><a class="reference internal" href="py4ai.data.model.html">py4ai.data.model package</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">py4ai-data</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">py4ai</a></li>
+          <li class="breadcrumb-item"><a href="py4ai.html">py4ai namespace</a></li>
+          <li class="breadcrumb-item"><a href="py4ai.data.html">py4ai.data package</a></li>
+          <li class="breadcrumb-item"><a href="py4ai.data.model.html">py4ai.data.model package</a></li>
+      <li class="breadcrumb-item active">py4ai.data.model.text module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/py4ai.data.model.text.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-py4ai.data.model.text">
+<span id="py4ai-data-model-text-module"></span><h1>py4ai.data.model.text module<a class="headerlink" href="#module-py4ai.data.model.text" title="Permalink to this heading"></a></h1>
+<p>Module for providing abstraction and classes for handling NLP data.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.text.CachedDocuments">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.text.</span></span><span class="sig-name descname"><span class="pre">CachedDocuments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.text.CachedDocuments" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.CachedIterable" title="py4ai.data.model.core.CachedIterable"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedIterable</span></code></a>[<a class="reference internal" href="#py4ai.data.model.text.Document" title="py4ai.data.model.text.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>]], <a class="reference internal" href="#py4ai.data.model.text.DocumentsUtilsMixin" title="py4ai.data.model.text.DocumentsUtilsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocumentsUtilsMixin</span></code></a>, <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.DillSerialization" title="py4ai.data.model.core.DillSerialization"><code class="xref py py-class docutils literal notranslate"><span class="pre">DillSerialization</span></code></a></p>
+<p>Class representing a collection of documents cached in memory.</p>
+<p>Return instance of a class to be used for implementing cached iterables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> – sequence or iterable of elements</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.text.CachedDocuments.cached_type">
+<span class="sig-name descname"><span class="pre">cached_type</span></span><a class="headerlink" href="#py4ai.data.model.text.CachedDocuments.cached_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.text.CachedDocuments" title="py4ai.data.model.text.CachedDocuments"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedDocuments</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.text.CachedDocuments.lazy_type">
+<span class="sig-name descname"><span class="pre">lazy_type</span></span><a class="headerlink" href="#py4ai.data.model.text.CachedDocuments.lazy_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.text.LazyDocuments" title="py4ai.data.model.text.LazyDocuments"><code class="xref py py-class docutils literal notranslate"><span class="pre">LazyDocuments</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.text.CachedDocuments.to_df">
+<span class="sig-name descname"><span class="pre">to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#py4ai.data.model.text.CachedDocuments.to_df" title="Permalink to this definition"></a></dt>
+<dd><p>Represent the corpus of documents as a table by unpacking provided fields as columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fields</strong> – Name of the document property to be unpacked as columns</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dataframe representing the corpus with the given fields</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.text.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.text.Document" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">K</span></code>]</p>
+<p>Document representation as couple of uuid and dictionary of information.</p>
+<p>Return instance of a document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uuid</strong> – document id</p></li>
+<li><p><strong>data</strong> – document data as a dictionary</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document.addProperty">
+<span class="sig-name descname"><span class="pre">addProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.model.text.Document" title="py4ai.data.model.text.Document"><span class="pre">Document</span></a><span class="p"><span class="pre">[</span></span><span class="pre">K</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.text.Document.addProperty" title="Permalink to this definition"></a></dt>
+<dd><p>Generate new Document instance with given new data element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – key of the data element to add</p></li>
+<li><p><strong>value</strong> – value of the data element to add</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Document with new given data element</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document.author">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">author</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.text.Document.author" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve ‘author’ field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>author data field value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document.getOrThrow">
+<span class="sig-name descname"><span class="pre">getOrThrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.text.Document.getOrThrow" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve value associated to given key or return default value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – key to retrieve</p></li>
+<li><p><strong>default</strong> – default value to return</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>retrieve element</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – if key not found and default not provided</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.text.Document.items" title="Permalink to this definition"></a></dt>
+<dd><p>Yield data items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Yield</dt>
+<dd class="field-odd"><p>iterator with tuples of data properties names and values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document.language">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">language</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.text.Document.language" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve ‘language’ field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>language data field value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document.properties">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.text.Document.properties" title="Permalink to this definition"></a></dt>
+<dd><p>Yield data properties names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Yield</dt>
+<dd class="field-odd"><p>iterator with data properties names</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document.removeProperty">
+<span class="sig-name descname"><span class="pre">removeProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.model.text.Document" title="py4ai.data.model.text.Document"><span class="pre">Document</span></a><span class="p"><span class="pre">[</span></span><span class="pre">K</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.text.Document.removeProperty" title="Permalink to this definition"></a></dt>
+<dd><p>Generate new Document instance without given data element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – key of data element to remove</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Document without given data element</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document.setRandomUUID">
+<span class="sig-name descname"><span class="pre">setRandomUUID</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.model.text.Document" title="py4ai.data.model.text.Document"><span class="pre">Document</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.model.text.Document.setRandomUUID" title="Permalink to this definition"></a></dt>
+<dd><p>Generate new document instance with the same data as the current one but with random uuid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Document instance with the same data as the current one but with random uuid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.text.Document.text">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.text.Document.text" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve ‘text’ field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>text data field value</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.text.DocumentsUtilsMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.text.</span></span><span class="sig-name descname"><span class="pre">DocumentsUtilsMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.text.DocumentsUtilsMixin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.IterableUtilsMixin" title="py4ai.data.model.core.IterableUtilsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterableUtilsMixin</span></code></a>[<a class="reference internal" href="#py4ai.data.model.text.Document" title="py4ai.data.model.text.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="#py4ai.data.model.text.LazyDocuments" title="py4ai.data.model.text.LazyDocuments"><code class="xref py py-class docutils literal notranslate"><span class="pre">LazyDocuments</span></code></a>, <a class="reference internal" href="#py4ai.data.model.text.CachedDocuments" title="py4ai.data.model.text.CachedDocuments"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedDocuments</span></code></a>]</p>
+<p>Utilities for Documents iterables.</p>
+<p>Create a new instance of this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> – parent object class</p></li>
+<li><p><strong>args</strong> – passed to the super class __new__ method</p></li>
+<li><p><strong>kwargs</strong> – passed to the super class __new__ method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – if the cached and lazy versions were not defined before instantiating the class</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an instance of this class</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.text.DocumentsUtilsMixin.cached_type">
+<span class="sig-name descname"><span class="pre">cached_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">CachedIterableType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.text.DocumentsUtilsMixin.cached_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.text.DocumentsUtilsMixin.lazy_type">
+<span class="sig-name descname"><span class="pre">lazy_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">LazyIterableType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.text.DocumentsUtilsMixin.lazy_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.model.text.DocumentsUtilsMixin.type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#py4ai.data.model.text.Document" title="py4ai.data.model.text.Document"><span class="pre">Document</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.model.text.DocumentsUtilsMixin.type" title="Permalink to this definition"></a></dt>
+<dd><p>Return the type of the objects in the Iterable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Document class object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.model.text.LazyDocuments">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.model.text.</span></span><span class="sig-name descname"><span class="pre">LazyDocuments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.model.text.LazyDocuments" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="py4ai.data.model.core.html#py4ai.data.model.core.LazyIterable" title="py4ai.data.model.core.LazyIterable"><code class="xref py py-class docutils literal notranslate"><span class="pre">LazyIterable</span></code></a>[<a class="reference internal" href="#py4ai.data.model.text.Document" title="py4ai.data.model.text.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>]], <a class="reference internal" href="#py4ai.data.model.text.DocumentsUtilsMixin" title="py4ai.data.model.text.DocumentsUtilsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocumentsUtilsMixin</span></code></a></p>
+<p>Class representing a collection of documents provided by a generator.</p>
+<p>Return an instance of the class to be used for implementing lazy iterables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> – IterGenerator containing the generator of items</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.text.LazyDocuments.cached_type">
+<span class="sig-name descname"><span class="pre">cached_type</span></span><a class="headerlink" href="#py4ai.data.model.text.LazyDocuments.cached_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.text.CachedDocuments" title="py4ai.data.model.text.CachedDocuments"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedDocuments</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py4ai.data.model.text.LazyDocuments.lazy_type">
+<span class="sig-name descname"><span class="pre">lazy_type</span></span><a class="headerlink" href="#py4ai.data.model.text.LazyDocuments.lazy_type" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#py4ai.data.model.text.LazyDocuments" title="py4ai.data.model.text.LazyDocuments"><code class="xref py py-class docutils literal notranslate"><span class="pre">LazyDocuments</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="py4ai.data.model.text.generate_random_uuid">
+<span class="sig-prename descclassname"><span class="pre">py4ai.data.model.text.</span></span><span class="sig-name descname"><span class="pre">generate_random_uuid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#py4ai.data.model.text.generate_random_uuid" title="Permalink to this definition"></a></dt>
+<dd><p>Create a random number with 12 digits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>uuid</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="py4ai.data.model.ml.html" class="btn btn-neutral float-left" title="py4ai.data.model.ml module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="py4ai.data.exceptions.html" class="btn btn-neutral float-right" title="py4ai.data.exceptions module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Nicola Donelli &amp; Enrico Deusebio.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

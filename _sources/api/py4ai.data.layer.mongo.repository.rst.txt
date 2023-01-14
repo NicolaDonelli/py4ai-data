@@ -1,0 +1,7 @@
+py4ai.data.layer.mongo.repository module
+========================================
+
+.. automodule:: py4ai.data.layer.mongo.repository
+   :members:
+   :undoc-members:
+   :show-inheritance:

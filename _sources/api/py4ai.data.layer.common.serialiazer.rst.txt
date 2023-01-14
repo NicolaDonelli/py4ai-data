@@ -1,0 +1,7 @@
+py4ai.data.layer.common.serialiazer module
+==========================================
+
+.. automodule:: py4ai.data.layer.common.serialiazer
+   :members:
+   :undoc-members:
+   :show-inheritance:

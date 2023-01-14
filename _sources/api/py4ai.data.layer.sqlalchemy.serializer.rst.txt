@@ -1,0 +1,7 @@
+py4ai.data.layer.sqlalchemy.serializer module
+=============================================
+
+.. automodule:: py4ai.data.layer.sqlalchemy.serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:

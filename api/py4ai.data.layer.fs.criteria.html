@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>py4ai.data.layer.fs.criteria module &mdash; py4ai-data  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="py4ai.data.layer.fs.repository module" href="py4ai.data.layer.fs.repository.html" />
+    <link rel="prev" title="py4ai.data.layer.fs package" href="py4ai.data.layer.fs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> py4ai-data
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Intro:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/readme.html">py4ai data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userguide/index.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">py4ai</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="py4ai.html">py4ai namespace</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="py4ai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="py4ai.data.html">py4ai.data package</a><ul class="current">
+<li class="toctree-l5 current"><a class="reference internal" href="py4ai.data.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.datasets.html">py4ai.data.datasets package</a></li>
+<li class="toctree-l6 current"><a class="reference internal" href="py4ai.data.layer.html">py4ai.data.layer package</a></li>
+<li class="toctree-l6"><a class="reference internal" href="py4ai.data.model.html">py4ai.data.model package</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">py4ai-data</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">py4ai</a></li>
+          <li class="breadcrumb-item"><a href="py4ai.html">py4ai namespace</a></li>
+          <li class="breadcrumb-item"><a href="py4ai.data.html">py4ai.data package</a></li>
+          <li class="breadcrumb-item"><a href="py4ai.data.layer.html">py4ai.data.layer package</a></li>
+          <li class="breadcrumb-item"><a href="py4ai.data.layer.fs.html">py4ai.data.layer.fs package</a></li>
+      <li class="breadcrumb-item active">py4ai.data.layer.fs.criteria module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/py4ai.data.layer.fs.criteria.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-py4ai.data.layer.fs.criteria">
+<span id="py4ai-data-layer-fs-criteria-module"></span><h1>py4ai.data.layer.fs.criteria module<a class="headerlink" href="#module-py4ai.data.layer.fs.criteria" title="Permalink to this heading"></a></h1>
+<p>Module containing implementations and abstractions for query to be used in FileSystem persistence layers.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.criteria.</span></span><span class="sig-name descname"><span class="pre">FileSystemCriteriaFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PosixPath('indices.json')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>]</p>
+<p>Base class to be used for extending CriteriaFactory for FileSystems.</p>
+<p>Instantiate the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – path where to store the objects</p></li>
+<li><p><strong>index_file</strong> – file where to store the indexing of the files, to be used to querying and fast-retrieving.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.all">
+<span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria"><span class="pre">FileSystemSearchCriteria</span></a><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.all" title="Permalink to this definition"></a></dt>
+<dd><p>Return empty query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>empty query.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.filter_path_by_condition">
+<span class="sig-name descname"><span class="pre">filter_path_by_condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria"><span class="pre">FileSystemSearchCriteria</span></a><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.filter_path_by_condition" title="Permalink to this definition"></a></dt>
+<dd><p>Return query with filtered elements based on a given condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>condition</strong> – filtering function to be applied at indexed fields.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>resulting query</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.format_name">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.format_name" title="Permalink to this definition"></a></dt>
+<dd><p>Reformat full path to transform it to a file-system key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – full path.</p></li>
+<li><p><strong>path</strong> – base path to be used to strip the full path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>file-system key.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.get_index_fields">
+<span class="sig-name descname"><span class="pre">get_index_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.get_index_fields" title="Permalink to this definition"></a></dt>
+<dd><p>Extract the indexed field from an entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>entity</strong> – entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>indices fields</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.index">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.index" title="Permalink to this definition"></a></dt>
+<dd><p>Return a hash-property dictionary, to be used to filter objects and retrieve the corresponding hash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary with entity hash, properties as (key, value) pairs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.sort_by">
+<span class="sig-name descname"><span class="pre">sort_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria"><span class="pre">FileSystemSearchCriteria</span></a><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorting_option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.SortingDirection" title="py4ai.data.layer.common.repository.SortingDirection"><span class="pre">SortingDirection</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria"><span class="pre">FileSystemSearchCriteria</span></a><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.sort_by" title="Permalink to this definition"></a></dt>
+<dd><p>Create a sorted query, based on a sorting option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>criteria</strong> – file-system query.</p></li>
+<li><p><strong>sorting_option</strong> – sorting options to be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>sorted query.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.update_index">
+<span class="sig-name descname"><span class="pre">update_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.update_index" title="Permalink to this definition"></a></dt>
+<dd><p>Update indices file in the file-system, with the entity key and the corresponding indexed fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – entity key</p></li>
+<li><p><strong>entity</strong> – entity whose indices are to be computed</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.criteria.</span></span><span class="sig-name descname"><span class="pre">FileSystemSearchCriteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="py4ai.data.layer.common.criteria.html#py4ai.data.layer.common.criteria.SearchCriteria" title="py4ai.data.layer.common.criteria.SearchCriteria"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearchCriteria</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>]]</p>
+<p>Base class for representing a FileSystem query.</p>
+<p>Instantiate class based on list of filenames.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>iterable</strong> – list of filenames</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria.query">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria.query" title="Permalink to this definition"></a></dt>
+<dd><p>Return the underlying query based on a PandasFilter condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>underlying query</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="py4ai.data.layer.fs.html" class="btn btn-neutral float-left" title="py4ai.data.layer.fs package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="py4ai.data.layer.fs.repository.html" class="btn btn-neutral float-right" title="py4ai.data.layer.fs.repository module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Nicola Donelli &amp; Enrico Deusebio.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

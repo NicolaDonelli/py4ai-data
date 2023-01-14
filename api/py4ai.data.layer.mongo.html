@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="py4ai.data.layer.pandas package" href="py4ai.data.layer.pandas.html" />
-    <link rel="prev" title="py4ai.data.layer.fs package" href="py4ai.data.layer.fs.html" /> 
+    <link rel="next" title="py4ai.data.layer.mongo.criteria module" href="py4ai.data.layer.mongo.criteria.html" />
+    <link rel="prev" title="py4ai.data.layer.fs.tables module" href="py4ai.data.layer.fs.tables.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,8 +60,6 @@
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#submodules">Submodules</a></li>
-<li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#module-py4ai.data.exceptions">py4ai.data.exceptions module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#module-py4ai.data">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -100,223 +98,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="py4ai-data-layer-mongo-package">
-<h1>py4ai.data.layer.mongo package<a class="headerlink" href="#py4ai-data-layer-mongo-package" title="Permalink to this heading"></a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-py4ai.data.layer.mongo.criteria">
-<span id="py4ai-data-layer-mongo-criteria-module"></span><h2>py4ai.data.layer.mongo.criteria module<a class="headerlink" href="#module-py4ai.data.layer.mongo.criteria" title="Permalink to this heading"></a></h2>
-<p>Module for Criteria abstraction for MongoDB persistence layer.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.criteria.MongoSearchCriteria">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.mongo.criteria.</span></span><span class="sig-name descname"><span class="pre">MongoSearchCriteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.mongo.criteria.MongoSearchCriteria" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.criteria.SearchCriteria" title="py4ai.data.layer.common.criteria.SearchCriteria"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearchCriteria</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>]]</p>
-<p>General Criteria to be used in MongoDB repositories.</p>
-<p>Instantiate a new MongoDB Criteria object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>query</strong> – Optional[Dict] representing the MongoDB query</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.criteria.MongoSearchCriteria.empty">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.mongo.criteria.MongoSearchCriteria" title="py4ai.data.layer.mongo.criteria.MongoSearchCriteria"><span class="pre">MongoSearchCriteria</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.criteria.MongoSearchCriteria.empty" title="Permalink to this definition"></a></dt>
-<dd><p>Return an empty query, i.e. that retrieve all records.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>MongoSearchCriteria with empty query</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.criteria.MongoSearchCriteria.query">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.layer.mongo.criteria.MongoSearchCriteria.query" title="Permalink to this definition"></a></dt>
-<dd><p>Return the query.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Dict with the MongoDB query</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.mongo.repository">
-<span id="py4ai-data-layer-mongo-repository-module"></span><h2>py4ai.data.layer.mongo.repository module<a class="headerlink" href="#module-py4ai.data.layer.mongo.repository" title="Permalink to this heading"></a></h2>
-<p>Module for Repository pattern for MongoDB persistence layers.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.repository.MongoRepository">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.mongo.repository.</span></span><span class="sig-name descname"><span class="pre">MongoRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MotorCollection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.serialiazer.DataSerializer" title="py4ai.data.layer.common.serialiazer.DataSerializer"><span class="pre">DataSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">KD</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">E</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">MotorClientSession</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.mongo.repository.MongoRepository" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.repository.Repository" title="py4ai.data.layer.common.repository.Repository"><code class="xref py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">KD</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>]], <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">KD</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>]</p>
-<p>Class implementing MongoDB repository.</p>
-<p>Return a MongoDB Repository Implementation.</p>
-<blockquote>
-<div><p>The current implementation uses the Motor async framework.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>collection</strong> – MongoDB collection</p></li>
-<li><p><strong>serializer</strong> – Serializer to be used to serialize/deserialize MongoDB documents into domain objects</p></li>
-<li><p><strong>session</strong> – MongoDB session to be used for unit-of-work operations</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.repository.MongoRepository.create">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">E</span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.repository.MongoRepository.create" title="Permalink to this definition"></a></dt>
-<dd><p>Create the entity in the underlying persistence layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entity</strong> – Entity to be created</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>same entity provided as input, after creation. If creation fails, an error should be returned.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.repository.MongoRepository.delete">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.repository.MongoRepository.delete" title="Permalink to this definition"></a></dt>
-<dd><p>Delete the entry in the persisence layer associated to the provided entity key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – key identifying the entity.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>boolean value indicating whether the deletion has completed successfully.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.repository.MongoRepository.delete_by_criteria">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_by_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.criteria.SearchCriteria" title="py4ai.data.layer.common.criteria.SearchCriteria"><span class="pre">SearchCriteria</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.repository.MongoRepository.delete_by_criteria" title="Permalink to this definition"></a></dt>
-<dd><p>Delete all entries matching a given query.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>criteria</strong> – query to be used for deleting entries.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>boolean value indicating whether the deletion has completed successfully.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.repository.MongoRepository.list">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options:</span> <span class="pre">~py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">=</span> <span class="pre">&lt;py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.repository.Paged" title="py4ai.data.layer.common.repository.Paged"><span class="pre">Paged</span></a><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.repository.MongoRepository.list" title="Permalink to this definition"></a></dt>
-<dd><p>Return a full list of entities stored in the persistence layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>options</strong> – query options to be used when retrieving data</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Paged object for retrieved list of entities</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.repository.MongoRepository.retrieve">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.repository.MongoRepository.retrieve" title="Permalink to this definition"></a></dt>
-<dd><p>Return an entry corresponding to a determined Entity key. If no match is found, returns None.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – Entity Key to be used for retrieving the entity.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Entity associated with the provided key. If no match is found, None is returned.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.repository.MongoRepository.retrieve_by_criteria">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve_by_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">criteria:</span> <span class="pre">~py4ai.data.layer.common.criteria.SearchCriteria[~typing.Dict[str,</span> <span class="pre">~typing.Any]],</span> <span class="pre">options:</span> <span class="pre">~py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">=</span> <span class="pre">&lt;py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.repository.Paged" title="py4ai.data.layer.common.repository.Paged"><span class="pre">Paged</span></a><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.repository.MongoRepository.retrieve_by_criteria" title="Permalink to this definition"></a></dt>
-<dd><p>Return a list of entities, matching the query provided.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>criteria</strong> – query to be used for selecting items</p></li>
-<li><p><strong>options</strong> – query options to be used when retrieving data</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Paged object for retrieved list of entities</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.repository.MongoRepository.save">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.repository.MongoRepository.save" title="Permalink to this definition"></a></dt>
-<dd><p>Create the entries in the persistence layer associated to a list of entities.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entities</strong> – list of entities to be created.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of entities that have been successfully created in the persistence layer</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.repository.MongoRepository.serializer">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">serializer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.serialiazer.DataSerializer" title="py4ai.data.layer.common.serialiazer.DataSerializer"><span class="pre">DataSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">KD</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">E</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.layer.mongo.repository.MongoRepository.serializer" title="Permalink to this definition"></a></dt>
-<dd><p>Return the serializer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>DataSerializer for serializing/deserializing MongoDB documents into domain objects</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.mongo.serializer">
-<span id="py4ai-data-layer-mongo-serializer-module"></span><h2>py4ai.data.layer.mongo.serializer module<a class="headerlink" href="#module-py4ai.data.layer.mongo.serializer" title="Permalink to this heading"></a></h2>
-<p>Module for implementation of serializer objects for Mongo persistence layers.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.serializer.MongoModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.mongo.serializer.</span></span><span class="sig-name descname"><span class="pre">MongoModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.mongo.serializer.MongoModel" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelMetaclass</span></code></p>
-<p>Class to convert pydantic model into MongoDB schema objects.</p>
-<p>Create a MongoDB schema object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – name of the class</p></li>
-<li><p><strong>bases</strong> – Bases for the class</p></li>
-<li><p><strong>dct</strong> – extra arguments</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="py4ai.data.layer.mongo.serializer.create_mongo_id">
-<span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.mongo.serializer.</span></span><span class="sig-name descname"><span class="pre">create_mongo_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ObjectId</span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.serializer.create_mongo_id" title="Permalink to this definition"></a></dt>
-<dd><p>Create a MongoDB hash compatible key from a general string.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – input string to be converted to a Mongo compatible hash</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>MongoDB compatible ObjectId</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.mongo">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-py4ai.data.layer.mongo" title="Permalink to this heading"></a></h2>
+  <section id="module-py4ai.data.layer.mongo">
+<span id="py4ai-data-layer-mongo-package"></span><h1>py4ai.data.layer.mongo package<a class="headerlink" href="#module-py4ai.data.layer.mongo" title="Permalink to this heading"></a></h1>
 <p>Module for MongoDB persistence layer abstractions and implementations.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="py4ai.data.layer.mongo.MongoConfig">
@@ -375,7 +158,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="py4ai.data.layer.mongo.MongoConfig.getCollection">
-<span class="sig-name descname"><span class="pre">getCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.MongoConfig.getCollection" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">getCollection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#py4ai.data.layer.mongo.MongoConfig.getCollection" title="Permalink to this definition"></a></dt>
 <dd><p>Return collection name at a given configuration node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -411,6 +194,39 @@
 
 </dd></dl>
 
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.mongo.criteria.html">py4ai.data.layer.mongo.criteria module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.mongo.criteria.html#py4ai.data.layer.mongo.criteria.MongoSearchCriteria"><code class="docutils literal notranslate"><span class="pre">MongoSearchCriteria</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.criteria.html#py4ai.data.layer.mongo.criteria.MongoSearchCriteria.empty"><code class="docutils literal notranslate"><span class="pre">MongoSearchCriteria.empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.criteria.html#py4ai.data.layer.mongo.criteria.MongoSearchCriteria.query"><code class="docutils literal notranslate"><span class="pre">MongoSearchCriteria.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html">py4ai.data.layer.mongo.repository module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html#py4ai.data.layer.mongo.repository.MongoRepository"><code class="docutils literal notranslate"><span class="pre">MongoRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html#py4ai.data.layer.mongo.repository.MongoRepository.create"><code class="docutils literal notranslate"><span class="pre">MongoRepository.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html#py4ai.data.layer.mongo.repository.MongoRepository.delete"><code class="docutils literal notranslate"><span class="pre">MongoRepository.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html#py4ai.data.layer.mongo.repository.MongoRepository.delete_by_criteria"><code class="docutils literal notranslate"><span class="pre">MongoRepository.delete_by_criteria()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html#py4ai.data.layer.mongo.repository.MongoRepository.list"><code class="docutils literal notranslate"><span class="pre">MongoRepository.list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html#py4ai.data.layer.mongo.repository.MongoRepository.retrieve"><code class="docutils literal notranslate"><span class="pre">MongoRepository.retrieve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html#py4ai.data.layer.mongo.repository.MongoRepository.retrieve_by_criteria"><code class="docutils literal notranslate"><span class="pre">MongoRepository.retrieve_by_criteria()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html#py4ai.data.layer.mongo.repository.MongoRepository.save"><code class="docutils literal notranslate"><span class="pre">MongoRepository.save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.mongo.repository.html#py4ai.data.layer.mongo.repository.MongoRepository.serializer"><code class="docutils literal notranslate"><span class="pre">MongoRepository.serializer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.mongo.serializer.html">py4ai.data.layer.mongo.serializer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.mongo.serializer.html#py4ai.data.layer.mongo.serializer.MongoModel"><code class="docutils literal notranslate"><span class="pre">MongoModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.mongo.serializer.html#py4ai.data.layer.mongo.serializer.create_mongo_id"><code class="docutils literal notranslate"><span class="pre">create_mongo_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -418,8 +234,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="py4ai.data.layer.fs.html" class="btn btn-neutral float-left" title="py4ai.data.layer.fs package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="py4ai.data.layer.pandas.html" class="btn btn-neutral float-right" title="py4ai.data.layer.pandas package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="py4ai.data.layer.fs.tables.html" class="btn btn-neutral float-left" title="py4ai.data.layer.fs.tables module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="py4ai.data.layer.mongo.criteria.html" class="btn btn-neutral float-right" title="py4ai.data.layer.mongo.criteria module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

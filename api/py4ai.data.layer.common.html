@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="py4ai.data.layer.fs package" href="py4ai.data.layer.fs.html" />
+    <link rel="next" title="py4ai.data.layer.common.criteria module" href="py4ai.data.layer.common.criteria.html" />
     <link rel="prev" title="py4ai.data.layer package" href="py4ai.data.layer.html" /> 
 </head>
 
@@ -60,8 +60,6 @@
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#submodules">Submodules</a></li>
-<li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#module-py4ai.data.exceptions">py4ai.data.exceptions module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#module-py4ai.data">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -100,304 +98,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="py4ai-data-layer-common-package">
-<h1>py4ai.data.layer.common package<a class="headerlink" href="#py4ai-data-layer-common-package" title="Permalink to this heading"></a></h1>
+  <section id="module-py4ai.data.layer.common">
+<span id="py4ai-data-layer-common-package"></span><h1>py4ai.data.layer.common package<a class="headerlink" href="#module-py4ai.data.layer.common" title="Permalink to this heading"></a></h1>
+<p>Module for common implementation and abstraction for persistence layers.</p>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-py4ai.data.layer.common.criteria">
-<span id="py4ai-data-layer-common-criteria-module"></span><h2>py4ai.data.layer.common.criteria module<a class="headerlink" href="#module-py4ai.data.layer.common.criteria" title="Permalink to this heading"></a></h2>
-<p>Module containing basic classes and abstractions for creating persistence layers query.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.criteria.BaseCriteria">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.common.criteria.</span></span><span class="sig-name descname"><span class="pre">BaseCriteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.common.criteria.BaseCriteria" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Q</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">WithLogging</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Basic query class.</p>
-<dl class="py property">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.criteria.BaseCriteria.query">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Q</span></em><a class="headerlink" href="#py4ai.data.layer.common.criteria.BaseCriteria.query" title="Permalink to this definition"></a></dt>
-<dd><p>Return the underlying query.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.criteria.SearchCriteria">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.common.criteria.</span></span><span class="sig-name descname"><span class="pre">SearchCriteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.common.criteria.SearchCriteria" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#py4ai.data.layer.common.criteria.BaseCriteria" title="py4ai.data.layer.common.criteria.BaseCriteria"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCriteria</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Q</span></code>]</p>
-<p>Base query extended with logical operations.</p>
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.common.repository">
-<span id="py4ai-data-layer-common-repository-module"></span><h2>py4ai.data.layer.common.repository module<a class="headerlink" href="#module-py4ai.data.layer.common.repository" title="Permalink to this heading"></a></h2>
-<p>Module containing the abstractions and implementations for repository classes.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Paged">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.common.repository.</span></span><span class="sig-name descname"><span class="pre">Paged</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">more_pages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.common.repository.Paged" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">WithLogging</span></code></p>
-<p>Class representing a Paged query result.</p>
-<p>Instantiate a paged list of elements class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> – number of results</p></li>
-<li><p><strong>items</strong> – list of returned objects</p></li>
-<li><p><strong>more_pages</strong> – flag to notify whether there are more pages or not</p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.common.criteria.html">py4ai.data.layer.common.criteria module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.common.criteria.html#py4ai.data.layer.common.criteria.BaseCriteria"><code class="docutils literal notranslate"><span class="pre">BaseCriteria</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.criteria.html#py4ai.data.layer.common.criteria.BaseCriteria.query"><code class="docutils literal notranslate"><span class="pre">BaseCriteria.query</span></code></a></li>
 </ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Paged.items">
-<span class="sig-name descname"><span class="pre">items</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.layer.common.repository.Paged.items" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Paged.more_pages">
-<span class="sig-name descname"><span class="pre">more_pages</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#py4ai.data.layer.common.repository.Paged.more_pages" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Paged.size">
-<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#py4ai.data.layer.common.repository.Paged.size" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.QueryOptions">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.common.repository.</span></span><span class="sig-name descname"><span class="pre">QueryOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorting_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.layer.common.repository.SortingDirection" title="py4ai.data.layer.common.repository.SortingDirection"><span class="pre">SortingDirection</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.common.repository.QueryOptions" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">WithLogging</span></code></p>
-<p>Class for providing query options.</p>
-<p>Implement the options to be used in a query call in the repository abstraction.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>page_start</strong> – integer setting the current page</p></li>
-<li><p><strong>page_size</strong> – integer setting the size of paging (default value is -1 - all result are returned in one page)</p></li>
-<li><p><strong>sorting_options</strong> – a list of options for ordering results</p></li>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.common.criteria.html#py4ai.data.layer.common.criteria.SearchCriteria"><code class="docutils literal notranslate"><span class="pre">SearchCriteria</span></code></a></li>
 </ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.QueryOptions.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorting_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.layer.common.repository.SortingDirection" title="py4ai.data.layer.common.repository.SortingDirection"><span class="pre">SortingDirection</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.common.repository.QueryOptions" title="py4ai.data.layer.common.repository.QueryOptions"><span class="pre">QueryOptions</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.common.repository.QueryOptions.copy" title="Permalink to this definition"></a></dt>
-<dd><p>Copy the object, overriding provided properties.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>page_start</strong> – integer setting the current page</p></li>
-<li><p><strong>page_size</strong> – integer setting the size of paging (default value is -1 - all result are returned in one page)</p></li>
-<li><p><strong>sorting_options</strong> – a list of options for ordering results</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.common.repository.html">py4ai.data.layer.common.repository module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Paged"><code class="docutils literal notranslate"><span class="pre">Paged</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Paged.items"><code class="docutils literal notranslate"><span class="pre">Paged.items</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Paged.more_pages"><code class="docutils literal notranslate"><span class="pre">Paged.more_pages</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Paged.size"><code class="docutils literal notranslate"><span class="pre">Paged.size</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>new object, with overridden properties.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Repository">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.common.repository.</span></span><span class="sig-name descname"><span class="pre">Repository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.common.repository.Repository" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">KD</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">D</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Q</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">WithLogging</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Abstract class representing the base Repository.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Repository.create">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">E</span></span></span><a class="headerlink" href="#py4ai.data.layer.common.repository.Repository.create" title="Permalink to this definition"></a></dt>
-<dd><p>Create the entity in the underlying persistence layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entity</strong> – Entity to be created</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>same entity provided as input, after creation. If creation fails, an error should be returned.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Repository.delete">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#py4ai.data.layer.common.repository.Repository.delete" title="Permalink to this definition"></a></dt>
-<dd><p>Delete the entry in the persistence layer associated to the provided entity key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – key identifying the entity.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>boolean value indicating whether the deletion has completed successfully.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Repository.delete_by_criteria">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_by_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.common.criteria.SearchCriteria" title="py4ai.data.layer.common.criteria.SearchCriteria"><span class="pre">SearchCriteria</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Q</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#py4ai.data.layer.common.repository.Repository.delete_by_criteria" title="Permalink to this definition"></a></dt>
-<dd><p>Delete all entries matching a given query.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>criteria</strong> – query to be used for deleting entries.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>boolean value indicating whether the deletion has completed successfully.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Repository.list">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options:</span> <span class="pre">~py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">=</span> <span class="pre">&lt;py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.common.repository.Paged" title="py4ai.data.layer.common.repository.Paged"><span class="pre">Paged</span></a><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.common.repository.Repository.list" title="Permalink to this definition"></a></dt>
-<dd><p>Return a full list of entities stored in the persistence layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>options</strong> – query options to be used when retrieving data</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Paged object for retrieved list of entities</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Repository.retrieve">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.common.repository.Repository.retrieve" title="Permalink to this definition"></a></dt>
-<dd><p>Return an entry corresponding to a determined Entity key. If no match is found, returns None.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – Entity Key to be used for retrieving the entity.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Repository.retrieve_by_criteria">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve_by_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">criteria:</span> <span class="pre">~py4ai.data.layer.common.criteria.SearchCriteria[~py4ai.core.types.Q],</span> <span class="pre">options:</span> <span class="pre">~py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">=</span> <span class="pre">&lt;py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.common.repository.Paged" title="py4ai.data.layer.common.repository.Paged"><span class="pre">Paged</span></a><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.common.repository.Repository.retrieve_by_criteria" title="Permalink to this definition"></a></dt>
-<dd><p>Return a list of entities, matching the query provided.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>criteria</strong> – query to be used for selecting items</p></li>
-<li><p><strong>options</strong> – query options to be used when retrieving data</p></li>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.QueryOptions"><code class="docutils literal notranslate"><span class="pre">QueryOptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.QueryOptions.copy"><code class="docutils literal notranslate"><span class="pre">QueryOptions.copy()</span></code></a></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Paged object for retrieved list of entities</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Repository.save">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.common.repository.Repository.save" title="Permalink to this definition"></a></dt>
-<dd><p>Create the entries in the persistence layer associated to a list of entities.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entities</strong> – list of entities to be created.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of entities that have been successfully created in the persistence layer</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.Repository.serializer">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">serializer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.layer.common.serialiazer.DataSerializer" title="py4ai.data.layer.common.serialiazer.DataSerializer"><span class="pre">DataSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">KD</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">E</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">D</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.layer.common.repository.Repository.serializer" title="Permalink to this definition"></a></dt>
-<dd><p>Return the data serializer used in the repository.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.SortingDirection">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.common.repository.</span></span><span class="sig-name descname"><span class="pre">SortingDirection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.common.repository.SortingDirection" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
-<p>Enum class representing the direction for sorting results in queries.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.SortingDirection.ASC">
-<span class="sig-name descname"><span class="pre">ASC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#py4ai.data.layer.common.repository.SortingDirection.ASC" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.repository.SortingDirection.DES">
-<span class="sig-name descname"><span class="pre">DES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#py4ai.data.layer.common.repository.SortingDirection.DES" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.common.serialiazer">
-<span id="py4ai-data-layer-common-serialiazer-module"></span><h2>py4ai.data.layer.common.serialiazer module<a class="headerlink" href="#module-py4ai.data.layer.common.serialiazer" title="Permalink to this heading"></a></h2>
-<p>Module containing implementations and abstractions for data serializers.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.serialiazer.DataSerializer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.common.serialiazer.</span></span><span class="sig-name descname"><span class="pre">DataSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.common.serialiazer.DataSerializer" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">KD</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">D</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">WithLogging</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Base DataSerializer.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.serialiazer.DataSerializer.get_key">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">KE</span></span></span><a class="headerlink" href="#py4ai.data.layer.common.serialiazer.DataSerializer.get_key" title="Permalink to this definition"></a></dt>
-<dd><p>Extract key for given entity.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entity</strong> – provided entity</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>entity key</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.serialiazer.DataSerializer.to_entity">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">D</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">E</span></span></span><a class="headerlink" href="#py4ai.data.layer.common.serialiazer.DataSerializer.to_entity" title="Permalink to this definition"></a></dt>
-<dd><p>Deserialize raw content into domain object entity.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>document</strong> – raw content</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>domain object entity</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.serialiazer.DataSerializer.to_object">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">D</span></span></span><a class="headerlink" href="#py4ai.data.layer.common.serialiazer.DataSerializer.to_object" title="Permalink to this definition"></a></dt>
-<dd><p>Serialize domain object entity into raw content.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entity</strong> – domain object entity</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>raw content</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.common.serialiazer.DataSerializer.to_object_key">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_object_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">KD</span></span></span><a class="headerlink" href="#py4ai.data.layer.common.serialiazer.DataSerializer.to_object_key" title="Permalink to this definition"></a></dt>
-<dd><p>Transform entity key into raw key, to be used for indexing in the persistence layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – entity key</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>raw key</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.common">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-py4ai.data.layer.common" title="Permalink to this heading"></a></h2>
-<p>Module for common implementation and abstraction for persistence layers.</p>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Repository"><code class="docutils literal notranslate"><span class="pre">Repository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Repository.create"><code class="docutils literal notranslate"><span class="pre">Repository.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Repository.delete"><code class="docutils literal notranslate"><span class="pre">Repository.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Repository.delete_by_criteria"><code class="docutils literal notranslate"><span class="pre">Repository.delete_by_criteria()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Repository.list"><code class="docutils literal notranslate"><span class="pre">Repository.list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Repository.retrieve"><code class="docutils literal notranslate"><span class="pre">Repository.retrieve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Repository.retrieve_by_criteria"><code class="docutils literal notranslate"><span class="pre">Repository.retrieve_by_criteria()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Repository.save"><code class="docutils literal notranslate"><span class="pre">Repository.save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.Repository.serializer"><code class="docutils literal notranslate"><span class="pre">Repository.serializer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.SortingDirection"><code class="docutils literal notranslate"><span class="pre">SortingDirection</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.SortingDirection.ASC"><code class="docutils literal notranslate"><span class="pre">SortingDirection.ASC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.repository.html#py4ai.data.layer.common.repository.SortingDirection.DES"><code class="docutils literal notranslate"><span class="pre">SortingDirection.DES</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.common.serialiazer.html">py4ai.data.layer.common.serialiazer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.common.serialiazer.html#py4ai.data.layer.common.serialiazer.DataSerializer"><code class="docutils literal notranslate"><span class="pre">DataSerializer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.serialiazer.html#py4ai.data.layer.common.serialiazer.DataSerializer.get_key"><code class="docutils literal notranslate"><span class="pre">DataSerializer.get_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.serialiazer.html#py4ai.data.layer.common.serialiazer.DataSerializer.to_entity"><code class="docutils literal notranslate"><span class="pre">DataSerializer.to_entity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.serialiazer.html#py4ai.data.layer.common.serialiazer.DataSerializer.to_object"><code class="docutils literal notranslate"><span class="pre">DataSerializer.to_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.common.serialiazer.html#py4ai.data.layer.common.serialiazer.DataSerializer.to_object_key"><code class="docutils literal notranslate"><span class="pre">DataSerializer.to_object_key()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -406,7 +162,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="py4ai.data.layer.html" class="btn btn-neutral float-left" title="py4ai.data.layer package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="py4ai.data.layer.fs.html" class="btn btn-neutral float-right" title="py4ai.data.layer.fs package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="py4ai.data.layer.common.criteria.html" class="btn btn-neutral float-right" title="py4ai.data.layer.common.criteria module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,9 +1,6 @@
 py4ai.data.datasets package
 ===========================
 
-Module contents
----------------
-
 .. automodule:: py4ai.data.datasets
    :members:
    :undoc-members:

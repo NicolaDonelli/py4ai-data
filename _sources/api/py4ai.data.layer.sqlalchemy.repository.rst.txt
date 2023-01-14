@@ -1,0 +1,7 @@
+py4ai.data.layer.sqlalchemy.repository module
+=============================================
+
+.. automodule:: py4ai.data.layer.sqlalchemy.repository
+   :members:
+   :undoc-members:
+   :show-inheritance:

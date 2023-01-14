@@ -1,0 +1,7 @@
+py4ai.data.model.core module
+============================
+
+.. automodule:: py4ai.data.model.core
+   :members:
+   :undoc-members:
+   :show-inheritance:

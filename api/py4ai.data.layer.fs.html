@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="py4ai.data.layer.mongo package" href="py4ai.data.layer.mongo.html" />
-    <link rel="prev" title="py4ai.data.layer.common package" href="py4ai.data.layer.common.html" /> 
+    <link rel="next" title="py4ai.data.layer.fs.criteria module" href="py4ai.data.layer.fs.criteria.html" />
+    <link rel="prev" title="py4ai.data.layer.common.serialiazer module" href="py4ai.data.layer.common.serialiazer.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,8 +60,6 @@
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#submodules">Submodules</a></li>
-<li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#module-py4ai.data.exceptions">py4ai.data.exceptions module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="py4ai.data.html#module-py4ai.data">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -100,598 +98,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="py4ai-data-layer-fs-package">
-<h1>py4ai.data.layer.fs package<a class="headerlink" href="#py4ai-data-layer-fs-package" title="Permalink to this heading"></a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-py4ai.data.layer.fs.criteria">
-<span id="py4ai-data-layer-fs-criteria-module"></span><h2>py4ai.data.layer.fs.criteria module<a class="headerlink" href="#module-py4ai.data.layer.fs.criteria" title="Permalink to this heading"></a></h2>
-<p>Module containing implementations and abstractions for query to be used in FileSystem persistence layers.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.criteria.</span></span><span class="sig-name descname"><span class="pre">FileSystemCriteriaFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PosixPath('indices.json')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>]</p>
-<p>Base class to be used for extending CriteriaFactory for FileSystems.</p>
-<p>Instantiate the class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – path where to store the objects</p></li>
-<li><p><strong>index_file</strong> – file where to store the indexing of the files, to be used to querying and fast-retrieving.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.all">
-<span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria"><span class="pre">FileSystemSearchCriteria</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.all" title="Permalink to this definition"></a></dt>
-<dd><p>Return empty query.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>empty query.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.filter_path_by_condition">
-<span class="sig-name descname"><span class="pre">filter_path_by_condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria"><span class="pre">FileSystemSearchCriteria</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.filter_path_by_condition" title="Permalink to this definition"></a></dt>
-<dd><p>Return query with filtered elements based on a given condition.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>condition</strong> – filtering function to be applied at indexed fields.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>resulting query</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.format_name">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.format_name" title="Permalink to this definition"></a></dt>
-<dd><p>Reformat full path to transform it to a file-system key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – full path.</p></li>
-<li><p><strong>path</strong> – base path to be used to strip the full path.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>file-system key.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.get_index_fields">
-<span class="sig-name descname"><span class="pre">get_index_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.get_index_fields" title="Permalink to this definition"></a></dt>
-<dd><p>Extract the indexed field from an entity.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entity</strong> – entity</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>indices fields</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.index">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.index" title="Permalink to this definition"></a></dt>
-<dd><p>Return a hash-property dictionary, to be used to filter objects and retrieve the corresponding hash.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>dictionary with entity hash, properties as (key, value) pairs.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.sort_by">
-<span class="sig-name descname"><span class="pre">sort_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria"><span class="pre">FileSystemSearchCriteria</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorting_option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.repository.SortingDirection" title="py4ai.data.layer.common.repository.SortingDirection"><span class="pre">SortingDirection</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria"><span class="pre">FileSystemSearchCriteria</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.sort_by" title="Permalink to this definition"></a></dt>
-<dd><p>Create a sorted query, based on a sorting option.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>criteria</strong> – file-system query.</p></li>
-<li><p><strong>sorting_option</strong> – sorting options to be used.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>sorted query.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.update_index">
-<span class="sig-name descname"><span class="pre">update_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.update_index" title="Permalink to this definition"></a></dt>
-<dd><p>Update indices file in the file-system, with the entity key and the corresponding indexed fields.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> – entity key</p></li>
-<li><p><strong>entity</strong> – entity whose indices are to be computed</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.criteria.</span></span><span class="sig-name descname"><span class="pre">FileSystemSearchCriteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.criteria.SearchCriteria" title="py4ai.data.layer.common.criteria.SearchCriteria"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearchCriteria</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>]]</p>
-<p>Base class for representing a FileSystem query.</p>
-<p>Instantiate class based on list of filenames.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>iterable</strong> – list of filenames</p>
-</dd>
-</dl>
-<dl class="py property">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.criteria.FileSystemSearchCriteria.query">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria.query" title="Permalink to this definition"></a></dt>
-<dd><p>Return the underlying query based on a PandasFilter condition.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>underlying query</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.fs.repository">
-<span id="py4ai-data-layer-fs-repository-module"></span><h2>py4ai.data.layer.fs.repository module<a class="headerlink" href="#module-py4ai.data.layer.fs.repository" title="Permalink to this heading"></a></h2>
-<p>Module for Repository pattern for FileSystem persistence layers.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.repository.</span></span><span class="sig-name descname"><span class="pre">FileSystemRepository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.fs.serializer.FileSerializer" title="py4ai.data.layer.fs.serializer.FileSerializer"><span class="pre">FileSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.repository.Repository" title="py4ai.data.layer.common.repository.Repository"><code class="xref py py-class docutils literal notranslate"><span class="pre">Repository</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>, <a class="reference internal" href="#py4ai.data.layer.fs.serializer.IndexedIO" title="py4ai.data.layer.fs.serializer.IndexedIO"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexedIO</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>]], <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>]</p>
-<p>Class implementing MongoDB repository.</p>
-<p>Return a FileSystem Repository Implementation.</p>
-<blockquote>
-<div><p>The current implementation uses the Motor async framework.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – location where objects are stored</p></li>
-<li><p><strong>serializer</strong> – Serializer to be used to serialize/deserialize FileSystem raw objects into domain objects</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository.create">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">E</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">E</span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository.create" title="Permalink to this definition"></a></dt>
-<dd><p>Create the entity in the underlying persistence layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entity</strong> – Entity to be created</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>same entity provided as input, after creation. If creation fails, an error should be returned.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository.criteria">
-<span class="sig-name descname"><span class="pre">criteria</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory" title="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory"><span class="pre">FileSystemCriteriaFactory</span></a></em><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository.criteria" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository.delete">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository.delete" title="Permalink to this definition"></a></dt>
-<dd><p>Delete the entry in the persisence layer associated to the provided entity key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – key identifying the entity.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>boolean value indicating whether the deletion has completed successfully.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository.delete_by_criteria">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_by_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.criteria.SearchCriteria" title="py4ai.data.layer.common.criteria.SearchCriteria"><span class="pre">SearchCriteria</span></a><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository.delete_by_criteria" title="Permalink to this definition"></a></dt>
-<dd><p>Delete all entries matching a given query.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>criteria</strong> – query to be used for deleting entries.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>boolean value indicating whether the deletion has completed successfully.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository.list">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options:</span> <span class="pre">~py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">=</span> <span class="pre">&lt;py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.repository.Paged" title="py4ai.data.layer.common.repository.Paged"><span class="pre">Paged</span></a><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository.list" title="Permalink to this definition"></a></dt>
-<dd><p>Return a full list of entities stored in the persistence layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>options</strong> – query options to be used when retrieving data</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Paged object for retrieved list of entities</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository.retrieve">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository.retrieve" title="Permalink to this definition"></a></dt>
-<dd><p>Return an entry corresponding to a determined Entity key. If no match is found, returns None.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – Entity Key to be used for retrieving the entity.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Entity associated with the provided key. If no match is found, None is returned.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository.retrieve_by_criteria">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">retrieve_by_criteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">criteria:</span> <span class="pre">~py4ai.data.layer.common.criteria.SearchCriteria[~typing.List[~py4ai.core.types.KE]],</span> <span class="pre">options:</span> <span class="pre">~py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">=</span> <span class="pre">&lt;py4ai.data.layer.common.repository.QueryOptions</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.repository.Paged" title="py4ai.data.layer.common.repository.Paged"><span class="pre">Paged</span></a><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository.retrieve_by_criteria" title="Permalink to this definition"></a></dt>
-<dd><p>Return a list of entities, matching the query provided.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>criteria</strong> – query to be used for selecting items</p></li>
-<li><p><strong>options</strong> – query options to be used when retrieving data</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Paged object for retrieved list of entities</p>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – when multiple sorting options are provided. Note that FileSystem repositories only
-support one sorting option.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository.save">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository.save" title="Permalink to this definition"></a></dt>
-<dd><p>Create the entries in the persistence layer associated to a list of entities.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entities</strong> – list of entities to be created.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of entities that have been successfully created in the persistence layer</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.repository.FileSystemRepository.serializer">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">serializer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.layer.fs.serializer.FileSerializer" title="py4ai.data.layer.fs.serializer.FileSerializer"><span class="pre">FileSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">KE</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">E</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py4ai.data.layer.fs.repository.FileSystemRepository.serializer" title="Permalink to this definition"></a></dt>
-<dd><p>Return the serializer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>DataSerializer for serializing/deserializing FileSystem documents into domain objects</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.fs.serializer">
-<span id="py4ai-data-layer-fs-serializer-module"></span><h2>py4ai.data.layer.fs.serializer module<a class="headerlink" href="#module-py4ai.data.layer.fs.serializer" title="Permalink to this heading"></a></h2>
-<p>Module for implementation of serializer objects for FileSystem persistence layers.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.FileSerializer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.serializer.</span></span><span class="sig-name descname"><span class="pre">FileSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.serializer.FileSerializer" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>], <a class="reference internal" href="py4ai.data.layer.common.html#py4ai.data.layer.common.serialiazer.DataSerializer" title="py4ai.data.layer.common.serialiazer.DataSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSerializer</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">E</span></code>, <a class="reference internal" href="#py4ai.data.layer.fs.serializer.IndexedIO" title="py4ai.data.layer.fs.serializer.IndexedIO"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexedIO</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>DataSerializer to read raw data and convert it into IndexedIO.</p>
-<p>Return instance of DataSerializer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – local folder to be used to construct filenames</p></li>
-<li><p><strong>encoding</strong> – type of IO serialization (text, binary) to be used when writing files</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.FileSerializer.mode">
-<span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.layer.fs.serializer.FileSerializerMode" title="py4ai.data.layer.fs.serializer.FileSerializerMode"><span class="pre">FileSerializerMode</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#py4ai.data.layer.fs.serializer.FileSerializer.mode" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.FileSerializer.with_path">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">with_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.serializer.FileSerializer" title="py4ai.data.layer.fs.serializer.FileSerializer"><span class="pre">FileSerializer</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.fs.serializer.FileSerializer.with_path" title="Permalink to this definition"></a></dt>
-<dd><p>Return an instance of the class, pointing to a given path.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> – new path to be used for the serializer.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>FileSerializer instance with path set to the input path.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.FileSerializerMode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.serializer.</span></span><span class="sig-name descname"><span class="pre">FileSerializerMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.serializer.FileSerializerMode" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
-<p>Enum representing the type of reading/writing mode for files.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.FileSerializerMode.BINARY">
-<span class="sig-name descname"><span class="pre">BINARY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'b'</span></em><a class="headerlink" href="#py4ai.data.layer.fs.serializer.FileSerializerMode.BINARY" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.FileSerializerMode.TEXT">
-<span class="sig-name descname"><span class="pre">TEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#py4ai.data.layer.fs.serializer.FileSerializerMode.TEXT" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.IndexedIO">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.serializer.</span></span><span class="sig-name descname"><span class="pre">IndexedIO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">KE</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IOBase</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.serializer.IndexedIO" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">KE</span></code>]</p>
-<p>Domain object to represent data read from FileSystem.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.IndexedIO.Config">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#py4ai.data.layer.fs.serializer.IndexedIO.Config" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Specs for the pydantic model.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.IndexedIO.Config.arbitrary_types_allowed">
-<span class="sig-name descname"><span class="pre">arbitrary_types_allowed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#py4ai.data.layer.fs.serializer.IndexedIO.Config.arbitrary_types_allowed" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.IndexedIO.buffer">
-<span class="sig-name descname"><span class="pre">buffer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">IOBase</span></em><a class="headerlink" href="#py4ai.data.layer.fs.serializer.IndexedIO.buffer" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.serializer.IndexedIO.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">KE</span></em><a class="headerlink" href="#py4ai.data.layer.fs.serializer.IndexedIO.name" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.fs.tables">
-<span id="py4ai-data-layer-fs-tables-module"></span><h2>py4ai.data.layer.fs.tables module<a class="headerlink" href="#module-py4ai.data.layer.fs.tables" title="Permalink to this heading"></a></h2>
-<p>Module with abstraction for accessing to data persisted in files and represented by TabularData.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.CsvSerializer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.tables.</span></span><span class="sig-name descname"><span class="pre">CsvSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">';'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.tables.CsvSerializer" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#py4ai.data.layer.fs.serializer.FileSerializer" title="py4ai.data.layer.fs.serializer.FileSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileSerializer</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="#py4ai.data.layer.fs.tables.TabularData" title="py4ai.data.layer.fs.tables.TabularData"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularData</span></code></a>]</p>
-<p>DataSerializer to be used for serializing/deserializing CSV files.</p>
-<p>Return instance of DataSerializer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – local folder to be used to construct filenames</p></li>
-<li><p><strong>encoding</strong> – type of IO serialization (text, binary) to be used when writing files</p></li>
-<li><p><strong>sep</strong> – separator used in the csv</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.CsvSerializer.get_key">
-<span class="sig-name descname"><span class="pre">get_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.fs.tables.TabularData" title="py4ai.data.layer.fs.tables.TabularData"><span class="pre">TabularData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.tables.CsvSerializer.get_key" title="Permalink to this definition"></a></dt>
-<dd><p>Extract key for given entity.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entity</strong> – provided TabularData</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>entity key</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.CsvSerializer.mode">
-<span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.layer.fs.serializer.FileSerializerMode" title="py4ai.data.layer.fs.serializer.FileSerializerMode"><span class="pre">FileSerializerMode</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#py4ai.data.layer.fs.tables.CsvSerializer.mode" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.CsvSerializer.to_entity">
-<span class="sig-name descname"><span class="pre">to_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.fs.serializer.IndexedIO" title="py4ai.data.layer.fs.serializer.IndexedIO"><span class="pre">IndexedIO</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.tables.TabularData" title="py4ai.data.layer.fs.tables.TabularData"><span class="pre">TabularData</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.fs.tables.CsvSerializer.to_entity" title="Permalink to this definition"></a></dt>
-<dd><p>Deserialize raw content into domain object entity.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>document</strong> – raw content</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>domain object entity</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.CsvSerializer.to_object">
-<span class="sig-name descname"><span class="pre">to_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.fs.tables.TabularData" title="py4ai.data.layer.fs.tables.TabularData"><span class="pre">TabularData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.serializer.IndexedIO" title="py4ai.data.layer.fs.serializer.IndexedIO"><span class="pre">IndexedIO</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.fs.tables.CsvSerializer.to_object" title="Permalink to this definition"></a></dt>
-<dd><p>Serialize domain object entity into raw content.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entity</strong> – domain object entity</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>raw content</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.CsvSerializer.to_object_key">
-<span class="sig-name descname"><span class="pre">to_object_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.tables.CsvSerializer.to_object_key" title="Permalink to this definition"></a></dt>
-<dd><p>Transform entity key into raw key, to be used for indexing in the persistence layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – entity key</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>raw key</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.LocalDatabase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.tables.</span></span><span class="sig-name descname"><span class="pre">LocalDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path:</span> <span class="pre">~pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serializer:</span> <span class="pre">~typing.Type[~py4ai.data.layer.fs.serializer.FileSerializer[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">~py4ai.data.layer.fs.tables.TabularData]]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'py4ai.data.layer.fs.tables.CsvSerializer'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.tables.LocalDatabase" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#py4ai.data.layer.fs.repository.FileSystemRepository" title="py4ai.data.layer.fs.repository.FileSystemRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileSystemRepository</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="#py4ai.data.layer.fs.tables.TabularData" title="py4ai.data.layer.fs.tables.TabularData"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabularData</span></code></a>]</p>
-<p>Archiver used for persistent layers used to store tabular data files.</p>
-<p>Return an instance of the class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – path where to store the files.</p></li>
-<li><p><strong>serializer</strong> – An instance of serializer to convert between raw and domain objects.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.LocalDatabase.criteria">
-<span class="sig-name descname"><span class="pre">criteria</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory" title="py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory"><span class="pre">FileSystemCriteriaFactory</span></a></em><a class="headerlink" href="#py4ai.data.layer.fs.tables.LocalDatabase.criteria" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.PickleSerializer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.tables.</span></span><span class="sig-name descname"><span class="pre">PickleSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">';'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.tables.PickleSerializer" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#py4ai.data.layer.fs.tables.CsvSerializer" title="py4ai.data.layer.fs.tables.CsvSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">CsvSerializer</span></code></a></p>
-<p>DataSerializer to be used for serializing/deserializing pickle files.</p>
-<p>Return instance of DataSerializer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – local folder to be used to construct filenames</p></li>
-<li><p><strong>encoding</strong> – type of IO serialization (text, binary) to be used when writing files</p></li>
-<li><p><strong>sep</strong> – separator used in the csv</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.PickleSerializer.mode">
-<span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py4ai.data.layer.fs.serializer.FileSerializerMode" title="py4ai.data.layer.fs.serializer.FileSerializerMode"><span class="pre">FileSerializerMode</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'b'</span></em><a class="headerlink" href="#py4ai.data.layer.fs.tables.PickleSerializer.mode" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.PickleSerializer.to_entity">
-<span class="sig-name descname"><span class="pre">to_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.fs.serializer.IndexedIO" title="py4ai.data.layer.fs.serializer.IndexedIO"><span class="pre">IndexedIO</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.tables.TabularData" title="py4ai.data.layer.fs.tables.TabularData"><span class="pre">TabularData</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.fs.tables.PickleSerializer.to_entity" title="Permalink to this definition"></a></dt>
-<dd><p>Deserialize raw content into domain object entity.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>document</strong> – raw content</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>domain object entity</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.PickleSerializer.to_object">
-<span class="sig-name descname"><span class="pre">to_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.fs.tables.TabularData" title="py4ai.data.layer.fs.tables.TabularData"><span class="pre">TabularData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.serializer.IndexedIO" title="py4ai.data.layer.fs.serializer.IndexedIO"><span class="pre">IndexedIO</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.fs.tables.PickleSerializer.to_object" title="Permalink to this definition"></a></dt>
-<dd><p>Serialize domain object entity into raw content.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>entity</strong> – domain object entity</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>raw content</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.PickleSerializer.to_object_key">
-<span class="sig-name descname"><span class="pre">to_object_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#py4ai.data.layer.fs.tables.PickleSerializer.to_object_key" title="Permalink to this definition"></a></dt>
-<dd><p>Transform entity key into raw key, to be used for indexing in the persistence layer.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – entity key</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>raw key</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.TabularData">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py4ai.data.layer.fs.tables.</span></span><span class="sig-name descname"><span class="pre">TabularData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#py4ai.data.layer.fs.tables.TabularData" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
-<p>Domain object to represent tabular data.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.TabularData.Config">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#py4ai.data.layer.fs.tables.TabularData.Config" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Specs for the pydantic model.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.TabularData.Config.arbitrary_types_allowed">
-<span class="sig-name descname"><span class="pre">arbitrary_types_allowed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#py4ai.data.layer.fs.tables.TabularData.Config.arbitrary_types_allowed" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.TabularData.data">
-<span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#py4ai.data.layer.fs.tables.TabularData.data" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.TabularData.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#py4ai.data.layer.fs.tables.TabularData.name" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="py4ai.data.layer.fs.tables.TabularData.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py4ai.data.layer.fs.tables.TabularData" title="py4ai.data.layer.fs.tables.TabularData"><span class="pre">TabularData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py4ai.data.layer.fs.tables.TabularData" title="py4ai.data.layer.fs.tables.TabularData"><span class="pre">TabularData</span></a></span></span><a class="headerlink" href="#py4ai.data.layer.fs.tables.TabularData.update" title="Permalink to this definition"></a></dt>
-<dd><p>Return TabularData object by concatenating two TabularData objects.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>other</strong> – second TabularData</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>merged TabularData</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-py4ai.data.layer.fs">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-py4ai.data.layer.fs" title="Permalink to this heading"></a></h2>
+  <section id="module-py4ai.data.layer.fs">
+<span id="py4ai-data-layer-fs-package"></span><h1>py4ai.data.layer.fs package<a class="headerlink" href="#module-py4ai.data.layer.fs" title="Permalink to this heading"></a></h1>
 <p>Helpers functions for handling file systems paths.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="py4ai.data.layer.fs.complete_path_split">
@@ -721,6 +129,98 @@ support one sorting option.</p>
 </dl>
 </dd></dl>
 
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html">py4ai.data.layer.fs.criteria module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory"><code class="docutils literal notranslate"><span class="pre">FileSystemCriteriaFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.all"><code class="docutils literal notranslate"><span class="pre">FileSystemCriteriaFactory.all()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.filter_path_by_condition"><code class="docutils literal notranslate"><span class="pre">FileSystemCriteriaFactory.filter_path_by_condition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.format_name"><code class="docutils literal notranslate"><span class="pre">FileSystemCriteriaFactory.format_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.get_index_fields"><code class="docutils literal notranslate"><span class="pre">FileSystemCriteriaFactory.get_index_fields()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.index"><code class="docutils literal notranslate"><span class="pre">FileSystemCriteriaFactory.index</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.sort_by"><code class="docutils literal notranslate"><span class="pre">FileSystemCriteriaFactory.sort_by()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemCriteriaFactory.update_index"><code class="docutils literal notranslate"><span class="pre">FileSystemCriteriaFactory.update_index()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria"><code class="docutils literal notranslate"><span class="pre">FileSystemSearchCriteria</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.criteria.html#py4ai.data.layer.fs.criteria.FileSystemSearchCriteria.query"><code class="docutils literal notranslate"><span class="pre">FileSystemSearchCriteria.query</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.fs.repository.html">py4ai.data.layer.fs.repository module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository.create"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository.criteria"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository.criteria</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository.delete"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository.delete_by_criteria"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository.delete_by_criteria()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository.list"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository.list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository.retrieve"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository.retrieve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository.retrieve_by_criteria"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository.retrieve_by_criteria()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository.save"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository.save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.repository.html#py4ai.data.layer.fs.repository.FileSystemRepository.serializer"><code class="docutils literal notranslate"><span class="pre">FileSystemRepository.serializer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html">py4ai.data.layer.fs.serializer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.FileSerializer"><code class="docutils literal notranslate"><span class="pre">FileSerializer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.FileSerializer.mode"><code class="docutils literal notranslate"><span class="pre">FileSerializer.mode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.FileSerializer.with_path"><code class="docutils literal notranslate"><span class="pre">FileSerializer.with_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.FileSerializerMode"><code class="docutils literal notranslate"><span class="pre">FileSerializerMode</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.FileSerializerMode.BINARY"><code class="docutils literal notranslate"><span class="pre">FileSerializerMode.BINARY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.FileSerializerMode.TEXT"><code class="docutils literal notranslate"><span class="pre">FileSerializerMode.TEXT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.IndexedIO"><code class="docutils literal notranslate"><span class="pre">IndexedIO</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.IndexedIO.Config"><code class="docutils literal notranslate"><span class="pre">IndexedIO.Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.IndexedIO.Config.arbitrary_types_allowed"><code class="docutils literal notranslate"><span class="pre">IndexedIO.Config.arbitrary_types_allowed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.IndexedIO.buffer"><code class="docutils literal notranslate"><span class="pre">IndexedIO.buffer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.serializer.html#py4ai.data.layer.fs.serializer.IndexedIO.name"><code class="docutils literal notranslate"><span class="pre">IndexedIO.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py4ai.data.layer.fs.tables.html">py4ai.data.layer.fs.tables module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.CsvSerializer"><code class="docutils literal notranslate"><span class="pre">CsvSerializer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.CsvSerializer.get_key"><code class="docutils literal notranslate"><span class="pre">CsvSerializer.get_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.CsvSerializer.mode"><code class="docutils literal notranslate"><span class="pre">CsvSerializer.mode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.CsvSerializer.to_entity"><code class="docutils literal notranslate"><span class="pre">CsvSerializer.to_entity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.CsvSerializer.to_object"><code class="docutils literal notranslate"><span class="pre">CsvSerializer.to_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.CsvSerializer.to_object_key"><code class="docutils literal notranslate"><span class="pre">CsvSerializer.to_object_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.LocalDatabase"><code class="docutils literal notranslate"><span class="pre">LocalDatabase</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.LocalDatabase.criteria"><code class="docutils literal notranslate"><span class="pre">LocalDatabase.criteria</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.PickleSerializer"><code class="docutils literal notranslate"><span class="pre">PickleSerializer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.PickleSerializer.mode"><code class="docutils literal notranslate"><span class="pre">PickleSerializer.mode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.PickleSerializer.to_entity"><code class="docutils literal notranslate"><span class="pre">PickleSerializer.to_entity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.PickleSerializer.to_object"><code class="docutils literal notranslate"><span class="pre">PickleSerializer.to_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.PickleSerializer.to_object_key"><code class="docutils literal notranslate"><span class="pre">PickleSerializer.to_object_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.TabularData"><code class="docutils literal notranslate"><span class="pre">TabularData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.TabularData.Config"><code class="docutils literal notranslate"><span class="pre">TabularData.Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.TabularData.Config.arbitrary_types_allowed"><code class="docutils literal notranslate"><span class="pre">TabularData.Config.arbitrary_types_allowed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.TabularData.data"><code class="docutils literal notranslate"><span class="pre">TabularData.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.TabularData.name"><code class="docutils literal notranslate"><span class="pre">TabularData.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py4ai.data.layer.fs.tables.html#py4ai.data.layer.fs.tables.TabularData.update"><code class="docutils literal notranslate"><span class="pre">TabularData.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -728,8 +228,8 @@ support one sorting option.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="py4ai.data.layer.common.html" class="btn btn-neutral float-left" title="py4ai.data.layer.common package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="py4ai.data.layer.mongo.html" class="btn btn-neutral float-right" title="py4ai.data.layer.mongo package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="py4ai.data.layer.common.serialiazer.html" class="btn btn-neutral float-left" title="py4ai.data.layer.common.serialiazer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="py4ai.data.layer.fs.criteria.html" class="btn btn-neutral float-right" title="py4ai.data.layer.fs.criteria module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

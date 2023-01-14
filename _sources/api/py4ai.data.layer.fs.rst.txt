@@ -1,45 +1,18 @@
 py4ai.data.layer.fs package
 ===========================
 
-Submodules
-----------
-
-py4ai.data.layer.fs.criteria module
------------------------------------
-
-.. automodule:: py4ai.data.layer.fs.criteria
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-py4ai.data.layer.fs.repository module
--------------------------------------
-
-.. automodule:: py4ai.data.layer.fs.repository
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-py4ai.data.layer.fs.serializer module
--------------------------------------
-
-.. automodule:: py4ai.data.layer.fs.serializer
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-py4ai.data.layer.fs.tables module
----------------------------------
-
-.. automodule:: py4ai.data.layer.fs.tables
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
 .. automodule:: py4ai.data.layer.fs
    :members:
    :undoc-members:
    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 20
+
+   py4ai.data.layer.fs.criteria
+   py4ai.data.layer.fs.repository
+   py4ai.data.layer.fs.serializer
+   py4ai.data.layer.fs.tables

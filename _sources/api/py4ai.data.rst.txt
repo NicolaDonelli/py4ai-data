@@ -1,11 +1,16 @@
 py4ai.data package
 ==================
 
+.. automodule:: py4ai.data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 20
 
    py4ai.data.datasets
    py4ai.data.layer
@@ -14,18 +19,7 @@ Subpackages
 Submodules
 ----------
 
-py4ai.data.exceptions module
-----------------------------
+.. toctree::
+   :maxdepth: 20
 
-.. automodule:: py4ai.data.exceptions
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: py4ai.data
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   py4ai.data.exceptions

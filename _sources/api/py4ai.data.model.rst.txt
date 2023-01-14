@@ -1,37 +1,17 @@
 py4ai.data.model package
 ========================
 
-Submodules
-----------
-
-py4ai.data.model.core module
-----------------------------
-
-.. automodule:: py4ai.data.model.core
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-py4ai.data.model.ml module
---------------------------
-
-.. automodule:: py4ai.data.model.ml
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-py4ai.data.model.text module
-----------------------------
-
-.. automodule:: py4ai.data.model.text
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
 .. automodule:: py4ai.data.model
    :members:
    :undoc-members:
    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 20
+
+   py4ai.data.model.core
+   py4ai.data.model.ml
+   py4ai.data.model.text

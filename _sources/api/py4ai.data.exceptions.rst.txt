@@ -1,0 +1,7 @@
+py4ai.data.exceptions module
+============================
+
+.. automodule:: py4ai.data.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
